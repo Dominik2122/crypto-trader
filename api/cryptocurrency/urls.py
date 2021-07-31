@@ -10,5 +10,5 @@ router.register('', views.CryptocurrencyViewSet)
 app_name = 'cryptocurrency'
 
 urlpatterns = [
-    path('a', views.current_datetime, name='index'),
+    # path('a', views.current_datetime, name='index'),
 ]

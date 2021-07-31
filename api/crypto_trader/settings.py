@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'cryptocurrency',
     'rest_framework',
     'rest_framework.authtoken',
-    'django_celery_results'
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +148,8 @@ AUTH_USER_MODEL = 'Auth.User'
 
 
 # CELERY STUFF
-CELERY_BROKER_URL = 'redis://:pe8c9b5be760e533395873863fc98c469f126ca80574a04d6112a172d1756e2aa@ec2-34-194-101-94.compute-1.amazonaws.com:7140'
+CELERY_BROKER_URL = 'redis://redistogo:f13050dd6f933249957bb94c9866cf09@soapfish.redistogo.com:11622/'
+CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

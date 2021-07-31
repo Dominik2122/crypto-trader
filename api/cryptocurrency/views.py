@@ -1,13 +1,17 @@
 from rest_framework import viewsets, mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from .tasks import sleepy
+from .tasks import makeAnAPICall
 from django.http import HttpResponse
 import datetime
 
+from pycoingecko import CoinGeckoAPI
+
+cg = CoinGeckoAPI()
 
 from .models import Cryptocurrency
 from .serializers import CryptocurrencySerializer
+
 
 class CryptocurrencyViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
     # authentication_classes = (TokenAuthentication,)
@@ -20,9 +24,12 @@ class CryptocurrencyViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
         return Cryptocurrency.objects.all()
 
 
+# if needed - async task ready
+# def current_datetime(request):
+#     now = datetime.datetime.now()
+#     html = "<html><body>It is now %s.</body></html>" % now
+#     makeAnAPICall.delay()
+#     return HttpResponse(html)
 
-def current_datetime(request):
-    now = datetime.datetime.now()
-    html = "<html><body>It is now %s.</body></html>" % now
-    sleepy.delay(4)
-    return HttpResponse(html)
+
+
