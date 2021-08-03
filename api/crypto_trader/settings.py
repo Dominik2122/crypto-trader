@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'Auth',
+    'cryptoAccount',
+    'account',
     'cryptocurrency',
     'rest_framework',
     'rest_framework.authtoken',

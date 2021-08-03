@@ -5,8 +5,8 @@ from . import views
 
 
 router = DefaultRouter()
-router.register('', views.CryptocurrencyViewSet)
+router.register('', views.TransactionViewSet)
 
-app_name = 'cryptocurrency'
+app_name = 'transactions'
 
 urlpatterns = router.urls
