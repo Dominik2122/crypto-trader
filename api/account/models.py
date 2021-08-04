@@ -1,13 +1,21 @@
 from django.db import models
-from Auth.models import User
+from django.contrib.auth import get_user_model
 from cryptocurrency.models import Cryptocurrency, Price
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+User = get_user_model()
 
 
-# Create your models here.
 class Account(models.Model):
-    balance = models.DecimalField(decimal_places=2, max_digits=9, default=0)
+    balance = models.DecimalField(decimal_places=2, max_digits=9, default=1000)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='account')
 
+
+@receiver(post_save, sender=User)
+def create_user_account(sender, instance, created, **kwargs):
+    if created:
+        Account.objects.create(owner=instance)
 
 class TransactionManager(models.Manager):
     def create_transaction(self, crypto, user, amount):
@@ -15,7 +23,6 @@ class TransactionManager(models.Manager):
         price = Price.objects.filter(cryptocurrency=cryptocurrency).first()
         account = Account.objects.get(owner=user)
         value = amount * price.value
-        print(value)
         transaction = self.create(price=price, account=account, crypto=cryptocurrency, owner=user, amount=amount, value=value)
         return transaction
 

@@ -5,8 +5,12 @@ from . import views
 
 
 router = DefaultRouter()
-router.register('', views.TransactionViewSet, basename='Transaction')
+router.register('', views.AccountViewSet, basename='account')
+router.register('transactions', views.TransactionViewSet, basename='transactions')
 
-app_name = 'transactions'
 
-urlpatterns = router.urls
+app_name = 'account'
+
+urlpatterns = [
+    path('', include((router.urls, 'account'), namespace='account')),
+]
