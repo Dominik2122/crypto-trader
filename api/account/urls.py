@@ -5,7 +5,7 @@ from . import views
 
 
 router = DefaultRouter()
-router.register('', views.TransactionViewSet)
+router.register('', views.TransactionViewSet, basename='Transaction')
 
 app_name = 'transactions'
 

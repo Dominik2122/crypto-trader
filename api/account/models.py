@@ -9,6 +9,16 @@ class Account(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='account')
 
 
+class TransactionManager(models.Manager):
+    def create_transaction(self, crypto, user, amount):
+        cryptocurrency = Cryptocurrency.objects.get(name=crypto)
+        price = Price.objects.filter(cryptocurrency=cryptocurrency).first()
+        account = Account.objects.get(owner=user)
+        value = amount * price.value
+        print(value)
+        transaction = self.create(price=price, account=account, crypto=cryptocurrency, owner=user, amount=amount, value=value)
+        return transaction
+
 class Transaction(models.Model):
     price = models.ForeignKey(Price, on_delete=models.CASCADE, related_name='transaction')
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='transactions')
@@ -18,13 +28,3 @@ class Transaction(models.Model):
     value = models.DecimalField(decimal_places=2, max_digits=9, default=0)
 
     objects = TransactionManager()
-
-
-class TransactionManager(models.Manager):
-    def create_transaction(self, crypto, user, amount):
-        crypto = Cryptocurrency.objects.get(name=crypto)
-        price = Price.objects.filter(crypto=crypto)
-        account = Account.object.get(owner=user)
-        value = amount * price.value
-        transaction = self.create(price=price, account=account, cyrpto=crypto, owner=user, amount=amount, value=value)
-        return transaction

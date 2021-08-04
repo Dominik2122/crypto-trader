@@ -10,21 +10,20 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, password, **extra_fields):
+    def create_user(self, login, email, password, **extra_fields):
         if not email or not password:
             raise ValueError('Insert correct data')
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
+        user.login = login
         user.save()
         return user
 
-    def create_superuser(self, email, password):
-        print(email, password)
-        user = self.create_user(email, password)
+    def create_superuser(self, login, email, password):
+        user = self.create_user(login, email, password)
         user.is_staff = True
         user.is_superuser = True
         user.save()
-        print('problem' ,user.is_superuser)
         return user
 
 
@@ -38,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-
+    REQUIRED_FIELDS = ['login']
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
