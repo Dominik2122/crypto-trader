@@ -6,17 +6,16 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-
 from .serializers import AccountSerializer, TransactionSerializer, TransactionCreateSerializer
 from .models import Account, Transaction
 
 
-class AccountViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
-    # authentication_classes = (TokenAuthentication,)
-    # permission_classes = (IsAuthenticated,)
+class AccountViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = AccountSerializer
 
-    def retrieve(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs):
         user = request.user
         serializer = self.get_serializer(Account.objects.get(owner=user))
         return Response(serializer.data)
