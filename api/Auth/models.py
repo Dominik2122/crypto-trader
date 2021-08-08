@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-
+from datetime import datetime
 # Create your models here.
 
 
@@ -29,13 +29,22 @@ class User(AbstractBaseUser, PermissionsMixin):
     login = models.CharField(max_length=255, blank=False, unique=True)
     is_staff = models.BooleanField(max_length=255, default=False)
     is_superuser = models.BooleanField(max_length=255, default=False)
+    last_login = models.DateTimeField(auto_now_add=True, blank=True)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['login']
 
+
+    def __str__(self):
+        return self.login
+
+
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
     avatar_url = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.user.login

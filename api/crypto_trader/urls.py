@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/crypto/', include('cryptocurrency.urls')),
     path('api/user/', include('Auth.urls')),
-    path('api/account/', include('account.urls'))
+    path('api/account/', include('account.urls')),
+    path('api/crypto-account/', include('cryptoAccount.urls'))
 ]

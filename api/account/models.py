@@ -11,20 +11,25 @@ class Account(models.Model):
     balance = models.DecimalField(decimal_places=2, max_digits=9, default=1000)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='account')
 
+    def __str__(self):
+        return self.owner.login + ' account'
+
 
 @receiver(post_save, sender=User)
 def create_user_account(sender, instance, created, **kwargs):
     if created:
         Account.objects.create(owner=instance)
 
+
 class TransactionManager(models.Manager):
     def create_transaction(self, crypto, user, amount):
         cryptocurrency = Cryptocurrency.objects.get(name=crypto)
-        price = Price.objects.filter(cryptocurrency=cryptocurrency).first()
+        price = Price.objects.filter(cryptocurrency=cryptocurrency).latest('date')
         account = Account.objects.get(owner=user)
         value = amount * price.value
         transaction = self.create(price=price, account=account, crypto=cryptocurrency, owner=user, amount=amount, value=value)
         return transaction
+
 
 class Transaction(models.Model):
     price = models.ForeignKey(Price, on_delete=models.CASCADE, related_name='transaction')
@@ -35,3 +40,6 @@ class Transaction(models.Model):
     value = models.DecimalField(decimal_places=2, max_digits=9, default=0)
 
     objects = TransactionManager()
+
+    def __str__(self):
+        return self.crypto.name + ' ' + str(self.amount) + ' ' + self.owner.login

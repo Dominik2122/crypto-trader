@@ -4,6 +4,9 @@ from django.db import models
 class Cryptocurrency(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Price(models.Model):
     cryptocurrency = models.ForeignKey(Cryptocurrency, related_name='price', on_delete=models.CASCADE)
@@ -11,4 +14,4 @@ class Price(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.cryptocurrency.name + 'price'
+        return self.cryptocurrency.name + ' price ' + str(self.date)
