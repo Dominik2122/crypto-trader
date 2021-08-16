@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
+from datetime import date
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -39,6 +40,11 @@ class AuthTokenSerializer(serializers.Serializer):
             )
 
         if not user:
-            raise serializers.ValidationError('unab;e to authenticate', code='authentication')
+            raise serializers.ValidationError('unable to authenticate', code='authentication')
         attrs['user'] = user
+        if date() - user.last_login >= 1:
+            user.account.balance += 500
+        user.last_login = date()
+        user.save()
+
         return attrs
