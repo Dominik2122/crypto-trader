@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+
+
+export interface Worker {
+  name: string;
+  id: number;
+  good: boolean;
+}
 
 @Component({
   selector: 'app-home-root',
@@ -7,10 +15,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeRootComponent implements OnInit {
 
+  @Input()
+  worker: Worker
+
+
+  workerForm: FormGroup
+
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log('init')
+    this.doSomething(this.worker)
+  }
+
+  doSomething(worker: Worker) {
+    this.workerForm = new FormGroup({
+      id: new FormControl(
+        worker && worker.id ? worker.id : `${Math.floor(Math.random()*1000)}`,
+        [Validators.required]
+      ),
+      name: new FormControl(
+        worker && worker.name,
+        [Validators.required]
+      ),
+
+      good: new FormControl(
+        worker && worker.good,
+        [Validators.required]
+      ),
+    })
   }
 
 }

@@ -2,13 +2,19 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
 
-import {TreeComponent} from './tree.component';
+import {TreeComponent} from 'src/app/util/tree/ui/tree.component';
 import {CommonModule} from "@angular/common";
+import { TreeNodeCollectionComponent } from './ui/tree-node-collection/tree-node-collection.component';
+import { TreeNodeComponent } from './ui/tree-node/tree-node.component';
+import { TreeHeaderComponent } from './ui/tree-header/tree-header.component';
 
 
 @NgModule({
   declarations: [
-    TreeComponent
+    TreeComponent,
+    TreeNodeCollectionComponent,
+    TreeNodeComponent,
+    TreeHeaderComponent
   ],
   exports: [
     TreeComponent
