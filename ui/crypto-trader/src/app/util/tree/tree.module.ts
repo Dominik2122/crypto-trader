@@ -13,6 +13,7 @@ import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
 import {reducers, STORE_FEATURE} from "src/app/util/tree/store/tree-node-reducers";
 import {TreeNodeEffects} from "src/app/util/tree/store/tree-node-effects";
 import {TreeNodeResource} from "src/app/util/tree/infrastructure/tree-node-resource";
+import { TreeNodeCommandDispatcher } from 'src/app/util/tree/store/tree-node-command-dispatcher';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {TreeNodeResource} from "src/app/util/tree/infrastructure/tree-node-resou
   ],
   providers: [
     TreeNodeResource,
-    TreeNodeService
+    TreeNodeService,
+    TreeNodeCommandDispatcher
   ]
 })
 export class TreeModule {

@@ -8,7 +8,7 @@ export enum TreeNodeActionTypes {
 
 
 export class FetchTreeNodesAction implements Action {
-  type = TreeNodeActionTypes.FetchTreeNodes;
+  type: string = TreeNodeActionTypes.FetchTreeNodes;
 
   constructor() {
   }
@@ -16,7 +16,7 @@ export class FetchTreeNodesAction implements Action {
 }
 
 export class FetchTreeNodesSuccessAction implements Action {
-  type: string = TreeNodeActionTypes.FetchTreeNodes;
+  type: string = TreeNodeActionTypes.FetchTreeNodesSuccess;
 
   constructor(public payload?: Array<TreeNode>) {
   }
