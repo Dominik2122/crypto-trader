@@ -3,7 +3,7 @@ import {Observable, of} from "rxjs";
 
 
 
-export class BaseResourceComponent {
+export class BaseResource {
 
 
   constructor(private readonly http: HttpClient) {}
