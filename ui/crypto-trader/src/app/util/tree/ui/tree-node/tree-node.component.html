@@ -1,1 +1,12 @@
-<p>tree-node works!</p>
+<div *ngFor="let column of treeColumns; let index = index"
+ [style.flex] = "column.flex">
+  <ng-container *ngIf="column.dragButton">
+    <i class="fa fa-arrows-alt-v"></i>
+  </ng-container>
+  <ng-container *ngIf="column.expand">
+    <i class="fa fa-arrows-alt-v"></i>
+  </ng-container>
+  <ng-container *ngIf="isColumnShowingData(column.name)">
+    <p> {{ getContext(column.name) }} </p>
+  </ng-container>
+</div>

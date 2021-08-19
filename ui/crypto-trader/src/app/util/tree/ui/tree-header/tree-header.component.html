@@ -1,1 +1,5 @@
-<p>tree-header works!</p>
+<div *ngFor="let column of treeColumns; let index = index"
+     [style.flex] = "column.flex"
+      class="tree__header">
+  <p>{{column.name}}</p>
+</div>
