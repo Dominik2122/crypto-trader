@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TreeColumnModel } from 'src/app/util/tree/ui/models/tree-column.model';
+import { TreeColumn } from 'src/app/util/tree/ui/models/tree-column.model';
 import { TreeNode } from 'src/app/util/tree/ui/models/tree-node.model';
 import { Store } from '@ngrx/store';
 import { TreeNodeCommandDispatcher } from 'src/app/util/tree/store/tree-node-command-dispatcher';
@@ -11,19 +11,19 @@ import { TreeNodeCommandDispatcher } from 'src/app/util/tree/store/tree-node-com
 })
 export class TreeComponent implements OnInit {
 
-  treeColumns: Array<TreeColumnModel>;
+  treeColumns: Array<TreeColumn>;
 
   nodes: Array<TreeNode>;
 
-  constructor(private readonly store: Store,
-              private readonly treeNodeCommandDispatcher: TreeNodeCommandDispatcher) {
+  constructor(private readonly treeNodeCommandDispatcher: TreeNodeCommandDispatcher) {
 
   }
 
 
   ngOnInit() {
     this.treeNodeCommandDispatcher.fetchTreeNodes();
-    this.treeNodeCommandDispatcher.getTreeNodes().subscribe(x => {
+    this.treeNodeCommandDispatcher.selectTreeNodes().subscribe(x => {
+      console.log(x)
       this.nodes = x;
     });
   }

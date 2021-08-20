@@ -1,18 +1,14 @@
-export class TreeColumnModel {
-  id: string;
+export class TreeColumn {
 
-  name: string;
-
-  cssClass: string;
-
-  fieldId: string;
-
-  header: string;
-
-  flex: string;
-
-  dragButton?: boolean;
-
-  expand?: boolean;
+  constructor(public id: string,
+              public name: string,
+              public cssClass: string,
+              public fieldId: string,
+              public header: string,
+              public flex: string,
+              public dragButton?: boolean,
+              public expand?: boolean,
+  ) {
+  }
 
 }

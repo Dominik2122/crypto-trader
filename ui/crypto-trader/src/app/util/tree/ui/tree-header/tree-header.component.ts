@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TreeColumnModel} from "src/app/util/tree/ui/models/tree-column.model";
+import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 
 @Component({
   selector: 'app-tree-header',
@@ -9,7 +9,7 @@ import {TreeColumnModel} from "src/app/util/tree/ui/models/tree-column.model";
 export class TreeHeaderComponent implements OnInit {
 
   @Input()
-  treeColumns: Array<TreeColumnModel>
+  treeColumns: Array<TreeColumn>
 
   constructor() { }
 

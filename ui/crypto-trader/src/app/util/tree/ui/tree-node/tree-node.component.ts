@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TreeColumnModel} from "src/app/util/tree/ui/models/tree-column.model";
+import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 
 @Component({
@@ -10,7 +10,7 @@ import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 export class TreeNodeComponent implements OnInit {
 
   @Input()
-  treeColumns: Array<TreeColumnModel>
+  treeColumns: Array<TreeColumn>
 
   @Input()
   node: TreeNode
