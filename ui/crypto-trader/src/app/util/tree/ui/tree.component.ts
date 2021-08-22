@@ -5,7 +5,7 @@ import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
 
 
 const treeColumns: Array<TreeColumn> = [
-  new TreeColumn(null, 'Name', '0 1 40%'),
+  new TreeColumn(null, 'Name', '0 1 40%', true, true),
   new TreeColumn(null, 'Price', '0 1 40%')
 ]
 
@@ -18,19 +18,31 @@ const treeColumns: Array<TreeColumn> = [
 export class TreeComponent implements OnInit {
 
   @Input()
-  treeColumns: Array<TreeColumn>;
+  columnHeaders: Array<string>
 
   @Input()
+  columnFlex: Array<string>
+
+  @Input()
+  cssClass: Array<string>
+
+  @Input()
+  withDragAndDrop: Array<string>
+
   nodes: Array<TreeNode>;
 
-  constructor(private readonly treeNodeService: TreeNodeService) {
+  treeColumns: Array<TreeColumn>;
 
+  constructor(private readonly treeNodeService: TreeNodeService) {
   }
 
   ngOnInit() {
+    this.initTreeNodes()
+  }
+
+  initTreeNodes() {
     this.treeNodeService.fetchNodes()
     this.treeNodeService.getNodes().subscribe((treeNodes: Array<TreeNode>) => {
-      console.log(treeNodes)
       this.nodes = treeNodes
     })
     this.treeColumns = treeColumns

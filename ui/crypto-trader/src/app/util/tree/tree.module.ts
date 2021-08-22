@@ -13,6 +13,7 @@ import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
 import {reducers, STORE_FEATURE} from "src/app/util/tree/store/tree-node-reducers";
 import {TreeNodeEffects} from "src/app/util/tree/store/tree-node-effects";
 import {TreeNodeCommandDispatcher} from 'src/app/util/tree/store/tree-node-command-dispatcher';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 
@@ -30,13 +31,14 @@ import {TreeNodeCommandDispatcher} from 'src/app/util/tree/store/tree-node-comma
   exports: [
     TreeComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    StoreModule.forFeature(STORE_FEATURE, reducers),
-    EffectsModule.forFeature([
-      TreeNodeEffects
-    ]),
-  ]
+	imports: [
+		CommonModule,
+		FormsModule,
+		StoreModule.forFeature(STORE_FEATURE, reducers),
+		EffectsModule.forFeature([
+			TreeNodeEffects
+		]),
+		FontAwesomeModule,
+	]
 })
 export class TreeModule {}

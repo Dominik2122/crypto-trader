@@ -1,0 +1,17 @@
+$root: 'tree-node';
+$border: 'border-purple-600 border-opacity-25';
+
+
+.#{$root} {
+  @apply flex justify-around flex-wrap border-b #{$border};
+
+  &__children {
+    @apply #{$border} border-t;
+    flex: 0 1 100%
+  }
+}
+
+.drag-button, .expand-button {
+  @apply mr-1;
+  width: 10px
+}

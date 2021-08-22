@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
+import {faAngleDoubleDown, faArrowsAltV} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-tree-node',
@@ -15,6 +16,10 @@ export class TreeNodeComponent implements OnInit {
   @Input()
   node: TreeNode
 
+  dragIcon = faArrowsAltV
+
+  expandIcon = faAngleDoubleDown
+
   constructor() {
   }
 
@@ -22,7 +27,7 @@ export class TreeNodeComponent implements OnInit {
   }
 
   getContext(columnName: string): string {
-    return 'data'
+    return this.node.data[columnName.toLowerCase()]
   }
 
   isColumnShowingData(columnName: string): boolean {

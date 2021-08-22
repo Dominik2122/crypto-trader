@@ -1,12 +1,24 @@
-<div *ngFor="let column of treeColumns; let index = index"
- [style.flex] = "column.flex">
-  <ng-container *ngIf="column.dragButton">
-    <i class="fa fa-arrows-alt-v"></i>
-  </ng-container>
-  <ng-container *ngIf="column.expand">
-    <i class="fa fa-arrows-alt-v"></i>
-  </ng-container>
-  <ng-container *ngIf="isColumnShowingData(column.name)">
-    <p> {{ getContext(column.name) }} </p>
-  </ng-container>
+<div class="tree-node">
+  <div *ngFor="let column of treeColumns; let index = index"
+       [style.flex] = "column.flex"
+       class="flex justify-start">
+    <ng-container *ngIf="column.dragButton">
+      <div class="drag-button">
+        <fa-icon [icon]="dragIcon"></fa-icon>
+      </div>
+    </ng-container >
+    <ng-container *ngIf="column.expand">
+      <div class="expand-button">
+      <fa-icon [icon]="expandIcon" class="flex-1"></fa-icon>
+      </div>
+    </ng-container >
+    <ng-container *ngIf="isColumnShowingData(column.header)">
+      <h4 class="flex-1"> {{ getContext(column.header) }} </h4>
+    </ng-container>
+  </div>
+  <div *ngIf="!node.children && !node.expanded" class="tree-node__children">
+    <p>ABN</p>
+  </div>
 </div>
+
+

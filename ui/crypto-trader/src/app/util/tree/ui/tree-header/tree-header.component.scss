@@ -1,7 +1,8 @@
-.tree__header {
-  background: #0074D9;
-  p {
+$root: 'tree-header';
 
+.#{$root} {
+
+  &__container {
+    @apply flex border-purple-600 border-b justify-around border-opacity-60;
   }
-
 }
