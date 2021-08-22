@@ -1,46 +1,17 @@
 import {BaseResource} from "src/app/util/base/infrastructure/base-resource";
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import { Injectable } from '@angular/core';
-
-
-const treeNodes: Array<TreeNode> = [
-  {
-    id: '1',
-    data: {
-      name: 'Bitcoin',
-      price: 10000
-    },
-    level: 0,
-    expanded: false,
-    position: 0
-  },
-  {
-    id: '2',
-    data: {
-      name: 'DogeCoin',
-      price: 10
-    },
-    level: 0,
-    expanded: false,
-    position: 1
-  }
-
-]
+import {Injectable} from '@angular/core';
 
 @Injectable()
-export class TreeNodeResource extends BaseResource {
+export abstract class TreeNodeResource extends BaseResource {
 
   constructor(http: HttpClient) {
     super(http)
   }
 
-  getTreeNode(url: string): Observable<Array<TreeNode>> {
-    return of(treeNodes)
-  }
+  abstract getTreeNode(url: string): Observable<Array<TreeNode>>
 
-  putTreeNode(url: string): Observable<Array<TreeNode>> {
-    return of(treeNodes)
-  }
+  abstract putTreeNode(url: string): Observable<Array<TreeNode>>
 }

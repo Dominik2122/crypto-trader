@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { TreeColumn } from 'src/app/util/tree/ui/models/tree-column.model';
-import { TreeNode } from 'src/app/util/tree/ui/models/tree-node.model';
-import { Store } from '@ngrx/store';
-import { TreeNodeCommandDispatcher } from 'src/app/util/tree/store/tree-node-command-dispatcher';
+import {Component, Input, OnInit} from '@angular/core';
+import {TreeColumn} from 'src/app/util/tree/ui/models/tree-column.model';
+import {TreeNode} from 'src/app/util/tree/ui/models/tree-node.model';
+import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
+
+
+const treeColumns: Array<TreeColumn> = [
+  new TreeColumn(null, 'Name', '0 1 40%'),
+  new TreeColumn(null, 'Price', '0 1 40%')
+]
+
 
 @Component({
   selector: 'app-tree',
@@ -11,21 +17,23 @@ import { TreeNodeCommandDispatcher } from 'src/app/util/tree/store/tree-node-com
 })
 export class TreeComponent implements OnInit {
 
+  @Input()
   treeColumns: Array<TreeColumn>;
 
+  @Input()
   nodes: Array<TreeNode>;
 
-  constructor(private readonly treeNodeCommandDispatcher: TreeNodeCommandDispatcher) {
+  constructor(private readonly treeNodeService: TreeNodeService) {
 
   }
 
-
   ngOnInit() {
-    this.treeNodeCommandDispatcher.fetchTreeNodes();
-    this.treeNodeCommandDispatcher.selectTreeNodes().subscribe(x => {
-      console.log(x)
-      this.nodes = x;
-    });
+    this.treeNodeService.fetchNodes()
+    this.treeNodeService.getNodes().subscribe((treeNodes: Array<TreeNode>) => {
+      console.log(treeNodes)
+      this.nodes = treeNodes
+    })
+    this.treeColumns = treeColumns
   }
 
 }

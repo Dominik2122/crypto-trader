@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeRootComponent } from './home-root/home-root.component';
-import {TreeModule} from "src/app/util/tree/tree.module";
 import {HomeRoutingModule} from "src/app/home/home-routing.module";
+import {HomeTreeModule} from "src/app/home/home-tree/home-tree.module";
 
 
 
@@ -11,10 +11,10 @@ import {HomeRoutingModule} from "src/app/home/home-routing.module";
     HomeRootComponent,
 
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    TreeModule
-  ]
+	imports: [
+		CommonModule,
+		HomeRoutingModule,
+		HomeTreeModule
+	]
 })
 export class HomeModule { }

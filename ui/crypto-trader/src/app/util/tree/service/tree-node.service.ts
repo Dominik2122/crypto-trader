@@ -2,13 +2,16 @@ import {Injectable} from "@angular/core";
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {Observable} from "rxjs";
 import {TreeNodeCommandDispatcher} from "src/app/util/tree/store/tree-node-command-dispatcher";
-import {map} from "rxjs/operators";
 
 @Injectable()
 export class TreeNodeService {
 
   constructor(private readonly treeNodeCommandDispatcher: TreeNodeCommandDispatcher) {
 
+  }
+
+  fetchNodes(): void {
+    return this.treeNodeCommandDispatcher.fetchTreeNodes()
   }
 
   getNodes(): Observable<Array<TreeNode>> {

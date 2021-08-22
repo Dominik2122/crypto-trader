@@ -1,9 +1,6 @@
 export class TreeColumn {
 
-  constructor(public id: string,
-              public name: string,
-              public cssClass: string,
-              public fieldId: string,
+  constructor(public cssClass: string,
               public header: string,
               public flex: string,
               public dragButton?: boolean,

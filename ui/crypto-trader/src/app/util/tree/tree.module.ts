@@ -12,11 +12,15 @@ import {EffectsModule} from "@ngrx/effects";
 import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
 import {reducers, STORE_FEATURE} from "src/app/util/tree/store/tree-node-reducers";
 import {TreeNodeEffects} from "src/app/util/tree/store/tree-node-effects";
-import {TreeNodeResource} from "src/app/util/tree/infrastructure/tree-node-resource";
-import { TreeNodeCommandDispatcher } from 'src/app/util/tree/store/tree-node-command-dispatcher';
+import {TreeNodeCommandDispatcher} from 'src/app/util/tree/store/tree-node-command-dispatcher';
+
 
 
 @NgModule({
+  providers: [
+  TreeNodeService,
+  TreeNodeCommandDispatcher
+],
   declarations: [
     TreeComponent,
     TreeNodeCollectionComponent,
@@ -33,12 +37,6 @@ import { TreeNodeCommandDispatcher } from 'src/app/util/tree/store/tree-node-com
     EffectsModule.forFeature([
       TreeNodeEffects
     ]),
-  ],
-  providers: [
-    TreeNodeResource,
-    TreeNodeService,
-    TreeNodeCommandDispatcher
   ]
 })
-export class TreeModule {
-}
+export class TreeModule {}
