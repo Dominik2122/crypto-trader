@@ -23,7 +23,6 @@ def createNewObjects(APIResponse):
 
 @shared_task
 def getBitcoinPrices():
-
     RequestResponse = cg.get_price(ids=cryptos, vs_currencies='usd')
     for key in RequestResponse.keys():
         crypto = Cryptocurrency.objects.get_or_create(name=key)

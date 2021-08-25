@@ -6,10 +6,8 @@ from . import views
 
 router = DefaultRouter()
 router.register('', views.CryptocurrencyViewSet)
+router.register('home', views.CryptocurrencyWithPriceChangedViewSet)
 
 app_name = 'cryptocurrency'
 
 urlpatterns = router.urls
-# urlpatterns = [
-#     path('a', views.current_datetime)
-# ]

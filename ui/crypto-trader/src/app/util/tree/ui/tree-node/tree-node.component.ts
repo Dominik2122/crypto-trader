@@ -27,6 +27,7 @@ export class TreeNodeComponent implements OnInit {
   }
 
   getContext(columnName: string): string {
+    console.log(this.node.data)
     return this.node.data[columnName.toLowerCase()]
   }
 

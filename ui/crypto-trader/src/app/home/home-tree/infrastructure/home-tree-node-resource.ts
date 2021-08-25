@@ -3,31 +3,9 @@ import {BaseResource} from "src/app/util/base/infrastructure/base-resource";
 import {TreeNodeResource} from "src/app/util/tree/infrastructure/tree-node-resource";
 import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
-import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
-
-const treeNodes: Array<TreeNode> = [
-  {
-    id: '1',
-    data: {
-      name: 'Bitcoin',
-      price: 20000
-    },
-    level: 0,
-    expanded: false,
-    position: 0
-  },
-  {
-    id: '2',
-    data: {
-      name: 'DogeCoin',
-      price: 100
-    },
-    level: 0,
-    expanded: false,
-    position: 1
-  }
-
-]
+import {map} from "rxjs/operators";
+import {TreeNodeDTO} from "src/app/home/home-tree/infrastructure/TreeNodeDTO";
+import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 
 @Injectable()
 export class HomeTreeNodeResource extends BaseResource implements TreeNodeResource {
@@ -36,12 +14,10 @@ export class HomeTreeNodeResource extends BaseResource implements TreeNodeResour
     super(http)
   }
 
-  getTreeNode(url: string): Observable<Array<TreeNode>> {
-    return of(treeNodes)
-  }
-
-  putTreeNode(url: string): Observable<Array<TreeNode>> {
-    return of(treeNodes)
+  getTreeNode(): Observable<Array<HomeTreeNode>> {
+    return this.get<Array<TreeNodeDTO>>('http://127.0.0.1:8000/api/crypto/home/').pipe(
+      map((dto: Array<TreeNodeDTO>) => HomeTreeNode.fromArrayDTO(dto))
+    )
   }
 
 }

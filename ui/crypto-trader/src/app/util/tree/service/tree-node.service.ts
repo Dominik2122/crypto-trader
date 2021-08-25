@@ -19,7 +19,7 @@ export class TreeNodeService {
   }
 
   selectTreeNodes(): Observable<Array<TreeNode>> {
-    return this.treeNodeCommandDispatcher.getTreeNodes()
+    return this.treeNodeCommandDispatcher.selectTreeNodes()
   }
 
 }

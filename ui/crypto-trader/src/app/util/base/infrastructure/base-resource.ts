@@ -9,8 +9,8 @@ export class BaseResource {
 
   constructor(private readonly http: HttpClient) {}
 
-  get(url: string, params?:{[key:string] : string}): Observable<any> {
-    return of(null)
+  get<T>(url: string, params?:{[key:string] : string}): Observable<T> {
+    return this.http.get<T>(url)
   }
 
   put(url: string, params?:{[key:string] : string}): Observable<any> {
