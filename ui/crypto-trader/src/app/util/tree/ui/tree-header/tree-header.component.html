@@ -1,7 +1,9 @@
 <div class="tree-header__container">
-    <p *ngFor="let column of treeColumns; let index = index"
+  <div *ngFor="let column of treeColumns; let index = index"
        [ngStyle]="{flex: column.flex}"
-    class="tree-header__header">
+       class="tree-header__header">
+    <p>
       {{column.header}}</p>
+  </div>
 </div>
 

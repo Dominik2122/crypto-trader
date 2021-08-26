@@ -3,7 +3,7 @@ $root: 'tree-header';
 .#{$root} {
 
   &__container {
-    @apply flex border-purple-600 border-b border-l border-r border-opacity-60;
+    @apply flex border-purple-600 border-b border-l border-r border-opacity-60  items-center;
   }
 
   &__header {
