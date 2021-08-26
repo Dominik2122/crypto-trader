@@ -4,11 +4,6 @@ import {TreeNode} from 'src/app/util/tree/ui/models/tree-node.model';
 import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
 
 
-const treeColumns: Array<TreeColumn> = [
-  new TreeColumn('name',null, 'name', '0 1 40%', true, true),
-  new TreeColumn( 'netChange' , null, 'netChange', '0 1 40%')
-]
-
 
 @Component({
   selector: 'app-tree',
@@ -28,8 +23,6 @@ export class TreeComponent implements OnInit {
 
   nodes: Array<TreeNode>;
 
-  treeColumns: Array<TreeColumn>;
-
   constructor(private readonly treeNodeService: TreeNodeService) {
   }
 
@@ -42,7 +35,6 @@ export class TreeComponent implements OnInit {
     this.treeNodeService.selectTreeNodes().subscribe((treeNodes: Array<TreeNode>) => {
       this.nodes = treeNodes
     })
-    this.treeColumns = treeColumns
   }
 
 }

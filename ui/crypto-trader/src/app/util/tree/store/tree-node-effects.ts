@@ -18,7 +18,6 @@ export class TreeNodeEffects {
         return this.treeNodeResource.getTreeNode()
           .pipe(
             map((treeNodes: Array<TreeNode>) => {
-              console.log(treeNodes)
               return new FetchTreeNodesSuccessAction(treeNodes);
             })
           );

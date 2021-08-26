@@ -26,12 +26,11 @@ export class TreeNodeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getContext(columnName: string): string {
-    console.log(this.node.data)
-    return this.node.data[columnName.toLowerCase()]
+  getContext(index: number): string {
+    return this.node.data[this.treeColumns[index].name]
   }
 
-  isColumnShowingData(columnName: string): boolean {
+  isColumnShowingData(index: number): boolean {
     return true
   }
 

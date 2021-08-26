@@ -3,7 +3,12 @@ $border: 'border-purple-600 border-opacity-25';
 
 
 .#{$root} {
-  @apply flex justify-around flex-wrap border-b #{$border};
+  @apply flex flex-wrap border-b border-l border-r #{$border};
+
+
+  &__column {
+    @apply flex justify-center border-l border-r #{$border}
+  }
 
   &__children {
     @apply #{$border} border-t;
@@ -13,5 +18,5 @@ $border: 'border-purple-600 border-opacity-25';
 
 .drag-button, .expand-button {
   @apply mr-1;
-  width: 10px
+  flex: 0 0 10%
 }

@@ -10,53 +10,64 @@ export class TreeColumn {
   ) {
   }
 
-  static Builder = class TreeColumnBuilder implements ngOnInit {
+  static Builder = class TreeColumnBuilder {
 
     columns: Array<TreeColumn>;
 
-    names: string
+    names: Array<string>
 
-    cssClasses: string
+    cssClasses: Array<string>
 
-    headers: string
+    headers: Array<string>
 
-    flexes: string
+    flex: Array<string>
 
-    dragButton?: boolean
+    dragButton: boolean = false
 
-    expand?: boolean
+    expand: boolean = false
 
 
-    static buildOne(): TreeColumn {
-      return new TreeColumn(this.name, cssClass, header, flex, dragButton, expand);
-    }
-
-    static buildBlank(): TreeColumn {
-      return new TreeColumn(null, null, null, null, null, null);
-    }
-
-    static build(amount: number): Array<TreeColumn> {
+    build(amount: number): Array<TreeColumn> {
       const columns: Array<TreeColumn> = [];
       for (let i = 0; i < amount; i++) {
-        columns.push(TreeColumn.Builder.buildBlank())
+        columns.push(this.buildOne(i))
       }
       return columns
     }
 
     withHeaders(headers: Array<string>) {
-      this.columns = this.columns.map((column: TreeColumn, index: number) => {
-        column.header = headers[index];
-        return column;
-      })
+      this.headers = headers
       return this
     }
 
     withNames(names: Array<string>) {
-      this.columns = this.columns.map((column: TreeColumn, index: number) => {
-        column.header = names[index];
-        return column;
-      })
+     this.names = names
       return this
+    }
+
+    withFlex(flex: Array<string>) {
+      this.flex = flex
+      return this
+    }
+
+    withDragAndDrop() {
+      this.dragButton = true
+      return this
+    }
+
+    withExpand() {
+      this.expand = true
+      return this
+    }
+
+    private buildOne(index: number): TreeColumn {
+      return new TreeColumn(
+        this.names && this.names[index],
+        this.cssClasses && this.cssClasses[index],
+        this.headers && this.headers[index],
+        this.flex && this.flex[index],
+        index === 0 && this.dragButton,
+        index === 0 && this.expand);
     }
 
   }

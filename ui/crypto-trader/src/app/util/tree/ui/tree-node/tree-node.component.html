@@ -1,19 +1,23 @@
 <div class="tree-node">
   <div *ngFor="let column of treeColumns; let index = index"
        [style.flex] = "column.flex"
-       class="flex justify-start">
+       class="tree-node__column">
     <ng-container *ngIf="column.dragButton">
-      <div class="drag-button">
+      <div class="drag-button text-center">
         <fa-icon [icon]="dragIcon"></fa-icon>
       </div>
-    </ng-container >
+    </ng-container>
     <ng-container *ngIf="column.expand">
-      <div class="expand-button">
+      <div class="expand-button text-center">
       <fa-icon [icon]="expandIcon" class="flex-1"></fa-icon>
       </div>
     </ng-container >
-    <ng-container *ngIf="isColumnShowingData(column.header)">
-      <h4 class="flex-1"> {{ getContext(column.header) }} </h4>
+    <ng-container *ngIf="isColumnShowingData(index)">
+      <h4
+        class="truncate"
+        [ngStyle]="{'flex': (column.dragButton || column.expand) ? '1 1 80%' : '1 1 100%',
+        'text-align': (column.dragButton || column.expand) ? 'inherit' : 'center'}">
+        {{ getContext(index) }}</h4>
     </ng-container>
   </div>
   <div *ngIf="!node.children && !node.expanded" class="tree-node__children">
