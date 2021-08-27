@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+$font: 'Lato', sans-serif;
+
+$primary: #79C7C5;
+$secondary: #A1E2D9;
+$white: #F9FBFF;
+$dark: #777777;
+
+
+html {
+  display: grid;
+  min-height: 100%;
+}
+
+.background {
+  background: linear-gradient(to bottom left, $primary 40%, $white 100%);
+}

@@ -15,6 +15,7 @@
     <ng-container *ngIf="isColumnShowingData(index)">
       <h4
         class="truncate"
+        [class.ml-2]="column.dragButton || column.expand"
         [ngStyle]="{'flex': (column.dragButton || column.expand) ? '1 1 80%' : '1 1 100%',
         'text-align': (column.dragButton || column.expand) ? 'inherit' : 'center'}">
         {{ getContext(index) }}</h4>

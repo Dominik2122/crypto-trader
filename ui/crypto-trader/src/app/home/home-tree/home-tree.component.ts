@@ -11,7 +11,7 @@ export class HomeTreeComponent implements OnInit {
   homeTreeColumns: Array<TreeColumn> = new TreeColumn.Builder()
     .withHeaders(['Name', 'Current Price', 'Net change', 'Last update'])
     .withNames(['name', 'currentPrice', 'netChange','lastFetchingDate'])
-    .withFlex(['0 1 40%', '0 1 20%', '0 1 20%', '0 1 20%'])
+    .withFlex(['0 1 45%', '0 1 15%', '0 1 15%', '0 1 25%'])
     .withDragAndDrop()
     .withExpand()
     .build(4)
