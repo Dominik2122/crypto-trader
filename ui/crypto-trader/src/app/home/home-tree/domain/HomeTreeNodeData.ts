@@ -9,13 +9,16 @@ export class HomeTreeNodeData implements TreeNodeData {
   readonly lastFetchingDate: string) {}
 
   static fromDTO(dto): HomeTreeNodeData {
+    const currentPriceRounded: number = dto.price.value > 100 ?
+      Math.round(dto.price.value ) :
+      Math.round(dto.price.value * 100)/100
 
     const date: Date = new Date(dto.price.date)
     return new HomeTreeNodeData(
       dto.name,
-      Math.round(dto.price.value * 100)/100,
-      Math.round((+dto.price.value - +dto.change.value)*100)/100,
-      `${date.getDate()}.${date.getUTCMonth() + 1}.${date.getFullYear()}`
+      currentPriceRounded,
+      Math.round((+dto.price.value - + dto.change.value)*10)/10,
+      `${date.getHours()}:${date.getMinutes()}`
     )
   }
 

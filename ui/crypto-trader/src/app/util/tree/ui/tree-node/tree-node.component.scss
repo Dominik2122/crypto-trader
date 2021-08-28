@@ -1,13 +1,12 @@
 $root: 'tree-node';
-$border: 'border-purple-600 border-opacity-25';
+$border: 'border-gray-600 border-opacity-25';
 
 
 .#{$root} {
-  @apply flex flex-wrap border-b border-l border-r #{$border};
-
+  @apply flex flex-wrap;
 
   &__column {
-    @apply flex justify-center border-l border-r #{$border}
+    @apply flex justify-center h-8 items-center;
   }
 
   &__children {
