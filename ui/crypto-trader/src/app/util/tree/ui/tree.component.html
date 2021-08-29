@@ -1,7 +1,10 @@
-<div class="w-full bg-white bg-opacity-40 rounded-3xl shadow-2xl">
+<div class="w-full" (click)="onClick()">
   <app-tree-header [treeColumns]="columns"></app-tree-header>
   <app-tree-node-collection
     [nodes]="nodes"
     [treeColumns]="columns"></app-tree-node-collection>
+  <ng-content #templateRef></ng-content>
+  <h1 #templateReff>aaa</h1>
+  <ng-container *ngTemplateOutlet="template"></ng-container>
 </div>
 

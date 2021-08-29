@@ -3,10 +3,10 @@ $root: 'tree-header';
 .#{$root} {
 
   &__container {
-    @apply flex border-b border-l border-r border-opacity-60  items-center bg-red-200 rounded-t-3xl h-12;
+    @apply flex border-b border-l border-r border-opacity-60  items-center  h-12;
   }
 
   &__header {
-    @apply text-center font-bold;
+    @apply text-center;
   }
 }

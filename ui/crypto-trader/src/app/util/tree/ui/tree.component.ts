@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
 import {TreeColumn} from 'src/app/util/tree/ui/models/tree-column.model';
 import {TreeNode} from 'src/app/util/tree/ui/models/tree-node.model';
 import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
+import {TreeColumnCollectionRef} from "src/app/util/tree/ui/models/TreeColumnCollectionRef";
 
 
 
@@ -12,6 +13,13 @@ import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
 })
 export class TreeComponent implements OnInit {
 
+  @ContentChildren(TreeColumnCollectionRef)
+  treeColumnCollection: QueryList<TreeColumnCollectionRef>
+
+  @ViewChild('templateReff', {static: true})
+  templateRef: ElementRef
+
+
   @Input()
   columns: Array<TreeColumn>;
 
@@ -21,6 +29,10 @@ export class TreeComponent implements OnInit {
   @Input()
   withDragAndDrop: Array<string>;
 
+  @Input()
+  template: any;
+
+
   nodes: Array<TreeNode>;
 
   constructor(private readonly treeNodeService: TreeNodeService) {
@@ -28,6 +40,16 @@ export class TreeComponent implements OnInit {
 
   ngOnInit() {
     this.initTreeNodes()
+  }
+
+  ngAfterViewInit() {
+    console.log(this.treeColumnCollection)
+
+  }
+
+  onClick() {
+    console.log(this.templateRef)
+    console.log(this.treeColumnCollection.toArray())
   }
 
   initTreeNodes(): void {

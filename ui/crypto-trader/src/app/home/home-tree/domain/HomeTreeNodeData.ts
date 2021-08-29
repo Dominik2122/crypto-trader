@@ -4,21 +4,21 @@ export class HomeTreeNodeData implements TreeNodeData {
 
   constructor(
   readonly name: string,
-  readonly currentPrice: number,
-  readonly netChange: number,
-  readonly lastFetchingDate: string) {}
+  readonly currentPrice: string,
+  readonly netChange: string,
+  readonly percentageNetChange: string) {}
 
   static fromDTO(dto): HomeTreeNodeData {
     const currentPriceRounded: number = dto.price.value > 100 ?
       Math.round(dto.price.value ) :
       Math.round(dto.price.value * 100)/100
-
-    const date: Date = new Date(dto.price.date)
+    const netChange: number = Math.round((+dto.price.value - + dto.change.value)*10)/10
+    const percentageNetChange: number = Math.round(netChange / currentPriceRounded * 10000 ) / 100
     return new HomeTreeNodeData(
       dto.name,
-      currentPriceRounded,
-      Math.round((+dto.price.value - + dto.change.value)*10)/10,
-      `${date.getHours()}:${date.getMinutes()}`
+      `${currentPriceRounded}$`,
+      `${netChange}$`,
+      `${percentageNetChange}%`
     )
   }
 
