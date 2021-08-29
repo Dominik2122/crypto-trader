@@ -2,18 +2,19 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@500&family=Ubuntu&family=Yanone+Kaffeesatz:wght@500&display=swap');
 
 p, h1, h2, h3, h4, h5, h6 {
-  @apply text-gray-900;
+  @apply text-gray-700;
+  font-family: 'Kaisei Tokumin', serif;
 }
 
 p {
-  @apply text-xs;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 h1 {
-  @apply text-4xl;
+  @apply text-4xl font-bold;
 }
 
 
@@ -23,4 +24,8 @@ h2 {
 
 h3 {
   @apply text-lg
+}
+
+h4 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
