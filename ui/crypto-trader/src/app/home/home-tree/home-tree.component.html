@@ -1,12 +1,15 @@
-<ng-template let-template='nodes' #templateRef>
-  {{template | json}}
-  <h1>aBC</h1>
-</ng-template>
 <div>
   <app-tree
     [withDragAndDrop]="true"
     [columns]="homeTreeColumns"
-    [template]="templateRef"
-  ></app-tree>
+  [viewStrategy]="">
+    <app-tree-column></app-tree-column>
+    <app-tree-column></app-tree-column>
+    <app-tree-column></app-tree-column>
+  </app-tree>
 </div>
 
+<!--<ng-template let-column let-data='data' #templateRef>-->
+<!--  {{column | json}}-->
+<!--</ng-template>-->
+<!--<app-tree-node-collection></app-tree-node-collection>-->

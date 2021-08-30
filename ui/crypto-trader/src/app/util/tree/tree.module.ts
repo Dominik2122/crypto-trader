@@ -14,7 +14,7 @@ import {reducers, STORE_FEATURE} from "src/app/util/tree/store/tree-node-reducer
 import {TreeNodeEffects} from "src/app/util/tree/store/tree-node-effects";
 import {TreeNodeCommandDispatcher} from 'src/app/util/tree/store/tree-node-command-dispatcher';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import { TreeColumnCollectionComponent } from './ui/tree-column-collection/tree-column-collection.component';
+import { TreeColumnComponent } from './ui/tree-column/tree-column.component';
 
 
 
@@ -28,11 +28,12 @@ import { TreeColumnCollectionComponent } from './ui/tree-column-collection/tree-
     TreeNodeCollectionComponent,
     TreeNodeComponent,
     TreeHeaderComponent,
-    TreeColumnCollectionComponent
+    TreeColumnComponent,
   ],
   exports: [
     TreeComponent,
-    TreeColumnCollectionComponent
+    TreeNodeCollectionComponent,
+    TreeColumnComponent
   ],
 	imports: [
 		CommonModule,

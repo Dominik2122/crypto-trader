@@ -3,8 +3,6 @@
   <app-tree-node-collection
     [nodes]="nodes"
     [treeColumns]="columns"></app-tree-node-collection>
-  <ng-content #templateRef></ng-content>
-  <h1 #templateReff>aaa</h1>
-  <ng-container *ngTemplateOutlet="template"></ng-container>
+  <ng-container *ngTemplateOutlet="template, context:{$implicit: columns,data: nodes}"></ng-container>
 </div>
 
