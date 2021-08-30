@@ -1,20 +1,18 @@
 import {
+  AfterContentInit,
   Component,
   ContentChild,
   ContentChildren,
-  ElementRef,
   Input,
   OnInit,
   QueryList,
-  TemplateRef,
-  ViewChild
+  TemplateRef
 } from '@angular/core';
 import {TreeColumn} from 'src/app/util/tree/ui/models/tree-column.model';
 import {TreeNode} from 'src/app/util/tree/ui/models/tree-node.model';
 import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
-import {TreeNodeCollectionComponent} from "src/app/util/tree/ui/tree-node-collection/tree-node-collection.component";
 import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
-
+import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 
 
 @Component({
@@ -22,17 +20,10 @@ import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss']
 })
-export class TreeComponent implements OnInit {
+export class TreeComponent implements OnInit, AfterContentInit {
 
   @ContentChildren(TreeColumnComponent)
   treeColumnCollection: QueryList<TreeColumnComponent>
-
-  @ViewChild('templateReff', {static: true})
-  templateRef: ElementRef
-
-  @ContentChild("templateRef")
-  template: TemplateRef<any>;
-
 
   @Input()
   columns: Array<TreeColumn>;
@@ -42,6 +33,8 @@ export class TreeComponent implements OnInit {
 
   @Input()
   withDragAndDrop: Array<string>;
+
+  viewStrategy: TreeViewStrategy = TreeViewStrategy.DEFAULT
 
   nodes: Array<TreeNode>;
 
@@ -53,18 +46,26 @@ export class TreeComponent implements OnInit {
   }
 
   ngAfterContentInit() {
-    console.log(this.treeColumnCollection.toArray())
-  }
-
-  onClick() {
-    console.log(this.templateRef)
-    console.log(this.treeColumnCollection.toArray())
+    this.setViewStrategy();
+    this.initColumnTemplates()
   }
 
   initTreeNodes(): void {
     this.treeNodeService.fetchNodes()
     this.treeNodeService.selectTreeNodes().subscribe((treeNodes: Array<TreeNode>) => {
       this.nodes = treeNodes
+    })
+  }
+
+  private setViewStrategy(): void {
+    this.viewStrategy = this.treeColumnCollection.toArray().length === 0 ?
+      TreeViewStrategy.DEFAULT : TreeViewStrategy.TEMPLATE;
+  }
+
+  private initColumnTemplates(): void {
+    const treeColumnTemplates: Array<TemplateRef<any>> = []
+    this.treeColumnCollection.toArray().map((columnComponent: TreeColumnComponent) => {
+      treeColumnTemplates.push(columnComponent.templateFromContentChild)
     })
   }
 

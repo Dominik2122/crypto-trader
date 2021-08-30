@@ -1,3 +1,5 @@
+import {TemplateRef} from "@angular/core";
+
 export class TreeColumn {
 
   constructor(
@@ -5,9 +7,14 @@ export class TreeColumn {
     public cssClass: string,
     public header: string,
     public flex: string,
+    public template?: TemplateRef<any>,
     public dragButton?: boolean,
     public expand?: boolean,
   ) {
+  }
+
+  withTemplates() {
+
   }
 
   static Builder = class TreeColumnBuilder {
@@ -25,6 +32,8 @@ export class TreeColumn {
     dragButton: boolean = false
 
     expand: boolean = false
+
+    templates: Array<TemplateRef<any>>;
 
 
     build(amount: number): Array<TreeColumn> {
@@ -66,6 +75,7 @@ export class TreeColumn {
         this.cssClasses && this.cssClasses[index],
         this.headers && this.headers[index],
         this.flex && this.flex[index],
+        this.templates && this.templates[index],
         index === 0 && this.dragButton,
         index === 0 && this.expand);
     }

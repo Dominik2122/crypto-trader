@@ -1,11 +1,23 @@
 <div>
   <app-tree
     [withDragAndDrop]="true"
-    [columns]="homeTreeColumns"
-  [viewStrategy]="">
-    <app-tree-column></app-tree-column>
-    <app-tree-column></app-tree-column>
-    <app-tree-column></app-tree-column>
+    [columns]="homeTreeColumns">
+
+      <app-tree-column>
+        <ng-template>
+          <h1>AAAAAAA</h1>
+        </ng-template>
+      </app-tree-column>
+      <app-tree-column>
+        <ng-template>
+          <h1>BBBBBBBBB</h1>
+        </ng-template>
+      </app-tree-column>
+      <app-tree-column>
+        <ng-template>
+          <h1>AAAACCCCCCCCCCCAAA</h1>
+        </ng-template>
+      </app-tree-column>
   </app-tree>
 </div>
 

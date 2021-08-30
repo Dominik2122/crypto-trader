@@ -1,8 +1,7 @@
-<div class="w-full" (click)="onClick()">
+<div class="w-full">
   <app-tree-header [treeColumns]="columns"></app-tree-header>
   <app-tree-node-collection
     [nodes]="nodes"
     [treeColumns]="columns"></app-tree-node-collection>
-  <ng-container *ngTemplateOutlet="template, context:{$implicit: columns,data: nodes}"></ng-container>
 </div>
 
