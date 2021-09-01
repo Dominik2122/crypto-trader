@@ -12,15 +12,22 @@
         <div class="expand-button text-center">
           <fa-icon [icon]="expandIcon" class="flex-1"></fa-icon>
         </div>
-      </ng-container >
-      <ng-container *ngIf="isColumnShowingData(index)">
-        <h4
-          class="truncate"
-          [class.ml-2]="column.dragButton || column.expand"
-          [ngStyle]="{'flex': (column.dragButton || column.expand) ? '1 1 80%' : '1 1 100%',
-        'text-align': (column.dragButton || column.expand) ? 'inherit' : 'center'}">
-          {{ getContext(index) }}</h4>
       </ng-container>
+      <div [ngStyle]="{'flex': (column.dragButton || column.expand) ? '1 1 80%' : '1 1 100%',
+        'text-align': (column.dragButton || column.expand) ? 'inherit' : 'center'}">
+        <ng-container *ngIf="viewStrategy === TreeViewStrategy.DEFAULT; else templateColumnView">
+          <h4
+            class="truncate"
+            [class.ml-2]="column.dragButton || column.expand">
+            {{ getContext(index) }}</h4>
+        </ng-container>
+
+        <ng-template #templateColumnView>
+          <ng-container *ngTemplateOutlet="column.template; context: {'node': node, 'data': node.data} "></ng-container>
+        </ng-template>
+      </div>
+
+
     </div>
   <div *ngIf="node.children && node.expanded" class="tree-node__children">
     <p>ABN</p>

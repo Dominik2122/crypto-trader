@@ -1,4 +1,5 @@
 import {TemplateRef} from "@angular/core";
+import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
 
 export class TreeColumn {
 
@@ -7,14 +8,14 @@ export class TreeColumn {
     public cssClass: string,
     public header: string,
     public flex: string,
-    public template?: TemplateRef<any>,
+    public template?: TemplateRef<TreeColumnComponent>,
     public dragButton?: boolean,
     public expand?: boolean,
   ) {
   }
 
-  withTemplates() {
-
+  setTemplate(template: TemplateRef<TreeColumnComponent>): void {
+    this.template = template
   }
 
   static Builder = class TreeColumnBuilder {

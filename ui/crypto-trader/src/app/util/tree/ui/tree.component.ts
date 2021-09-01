@@ -33,9 +33,12 @@ export class TreeComponent implements OnInit, AfterContentInit {
   @Input()
   withDragAndDrop: Array<string>;
 
+  @Input()
   viewStrategy: TreeViewStrategy = TreeViewStrategy.DEFAULT
 
+
   nodes: Array<TreeNode>;
+  columnTemplates: Array<TemplateRef<TreeColumnComponent>>;
 
   constructor(private readonly treeNodeService: TreeNodeService) {
   }
@@ -61,11 +64,12 @@ export class TreeComponent implements OnInit, AfterContentInit {
       TreeViewStrategy.DEFAULT : TreeViewStrategy.TEMPLATE;
   }
 
+
   private initColumnTemplates(): void {
-    const treeColumnTemplates: Array<TemplateRef<any>> = []
-    this.treeColumnCollection.toArray().map((columnComponent: TreeColumnComponent) => {
-      treeColumnTemplates.push(columnComponent.templateFromContentChild)
-    })
+    const treeColumnTemplates: Array<TemplateRef<TreeColumnComponent>> = []
+    this.treeColumnCollection.forEach(
+      (column: TreeColumnComponent, index: number) => this.columns[index].setTemplate(column.template))
+    this.columnTemplates = treeColumnTemplates
   }
 
 }

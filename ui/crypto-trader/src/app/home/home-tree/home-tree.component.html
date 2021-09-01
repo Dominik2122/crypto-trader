@@ -1,23 +1,29 @@
 <div>
   <app-tree
     [withDragAndDrop]="true"
-    [columns]="homeTreeColumns">
+    [columns]="homeTreeColumns"
+    [viewStrategy]="viewStrategy">
 
       <app-tree-column>
-        <ng-template>
-          <h1>AAAAAAA</h1>
+        <ng-template let-node='node'>
+          <p>{{node.data.name}}</p>
         </ng-template>
       </app-tree-column>
       <app-tree-column>
-        <ng-template>
-          <h1>BBBBBBBBB</h1>
+        <ng-template let-node='node'>
+          <p>{{node.data.currentPrice}}</p>
         </ng-template>
       </app-tree-column>
       <app-tree-column>
-        <ng-template>
-          <h1>AAAACCCCCCCCCCCAAA</h1>
+        <ng-template let-node='node'>
+         <p> {{node.data.netChange}}</p>
         </ng-template>
       </app-tree-column>
+    <app-tree-column>
+      <ng-template let-node='node'>
+       <p> {{node.data.percentageNetChange}}</p>
+      </ng-template>
+    </app-tree-column>
   </app-tree>
 </div>
 
