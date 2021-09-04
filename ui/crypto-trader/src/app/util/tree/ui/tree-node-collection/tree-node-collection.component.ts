@@ -6,8 +6,7 @@ import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 
 @Component({
   selector: 'app-tree-node-collection',
-  templateUrl: './tree-node-collection.component.html',
-  styleUrls: ['./tree-node-collection.component.scss']
+  templateUrl: './tree-node-collection.component.html'
 })
 export class TreeNodeCollectionComponent implements OnInit {
 

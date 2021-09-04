@@ -6,7 +6,7 @@ export class HomeTreeNodeData implements TreeNodeData {
   readonly name: string,
   readonly currentPrice: string,
   readonly netChange: string,
-  readonly percentageNetChange: string) {}
+  readonly percentageNetChange: number) {}
 
   static fromDTO(dto): HomeTreeNodeData {
     const currentPriceRounded: number = dto.price.value > 100 ?
@@ -18,7 +18,7 @@ export class HomeTreeNodeData implements TreeNodeData {
       dto.name,
       `${currentPriceRounded}$`,
       `${netChange}$`,
-      `${percentageNetChange}%`
+      percentageNetChange
     )
   }
 

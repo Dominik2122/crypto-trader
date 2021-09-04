@@ -9,13 +9,14 @@ import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 })
 export class HomeTreeComponent implements OnInit {
 
+  NUMBER_OF_COLUMNS: number = 4;
+
   homeTreeColumns: Array<TreeColumn> = new TreeColumn.Builder()
     .withHeaders(['Name', 'Current Price', 'Net change', '%'])
-    .withNames(['name', 'currentPrice', 'netChange','percentageNetChange'])
     .withFlex(['0 1 45%', '0 1 15%', '0 1 15%', '0 1 25%'])
     .withDragAndDrop()
     .withExpand()
-    .build(4)
+    .build(this.NUMBER_OF_COLUMNS)
 
   viewStrategy: TreeViewStrategy = TreeViewStrategy.TEMPLATE
 

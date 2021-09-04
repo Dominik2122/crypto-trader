@@ -20,14 +20,11 @@
         </ng-template>
       </app-tree-column>
     <app-tree-column>
-      <ng-template let-node='node'>
-       <p> {{node.data.percentageNetChange}}</p>
-      </ng-template>
+        <ng-template let-node='node'>
+          <app-text-badge [color]="node.data.percentageNetChange > 0 ? 'green' : 'red'">
+            {{node.data.percentageNetChange}}%
+          </app-text-badge>
+        </ng-template>
     </app-tree-column>
   </app-tree>
 </div>
-
-<!--<ng-template let-column let-data='data' #templateRef>-->
-<!--  {{column | json}}-->
-<!--</ng-template>-->
-<!--<app-tree-node-collection></app-tree-node-collection>-->

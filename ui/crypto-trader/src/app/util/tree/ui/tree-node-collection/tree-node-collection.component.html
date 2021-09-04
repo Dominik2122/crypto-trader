@@ -1,7 +1,6 @@
 <div *ngFor="let node of nodes; let index = index"
      class="w-full">
   <app-tree-node
-    #nodeHTMLElement
     [node]="node"
     [treeColumns]="treeColumns"
     [viewStrategy]="viewStrategy"
