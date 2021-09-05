@@ -6,23 +6,25 @@
 
       <app-tree-column>
         <ng-template let-node='node'>
-          <p>{{node.data.name}}</p>
+          <p style="flex: 0 1 90%">{{node.data.name}}</p>
         </ng-template>
       </app-tree-column>
       <app-tree-column>
         <ng-template let-node='node'>
-          <p>{{node.data.currentPrice}}</p>
+          <p>{{node.data.currentPrice | price }}$</p>
         </ng-template>
       </app-tree-column>
       <app-tree-column>
         <ng-template let-node='node'>
-         <p> {{node.data.netChange}}</p>
+          <app-text-badge [color]="node.data.netChange > 0 ? 'green' : 'red'">
+            {{node.data.netChange | price}}$
+          </app-text-badge>
         </ng-template>
       </app-tree-column>
     <app-tree-column>
         <ng-template let-node='node'>
-          <app-text-badge [color]="node.data.percentageNetChange > 0 ? 'green' : 'red'">
-            {{node.data.percentageNetChange}}%
+          <app-text-badge [color]="node.data.percentageNetChange > 0 ? 'green' : 'red'" subtle="true">
+            {{node.data.percentageNetChange | price}}%
           </app-text-badge>
         </ng-template>
     </app-tree-column>

@@ -5,6 +5,7 @@ import {TreeModule} from "src/app/util/tree/tree.module";
 import {TreeNodeResource} from "src/app/util/tree/infrastructure/tree-node-resource";
 import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/home-tree-node-resource";
 import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
+import {UtilModule} from "src/app/util/util.module";
 
 
 
@@ -15,7 +16,8 @@ import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
 	imports: [
 		CommonModule,
 		TreeModule,
-		TextBadgeModule
+		TextBadgeModule,
+		UtilModule
 	],
   exports: [
     HomeTreeComponent
