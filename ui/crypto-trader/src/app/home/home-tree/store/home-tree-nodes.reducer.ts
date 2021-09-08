@@ -1,12 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import * as HomeTreeNodesActions from './home-tree-nodes.actions';
-import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
+import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 
 
 export const homeTreeNodesFeatureKey = 'homeTreeNodes';
 
 export interface HomeTreeNodesState {
-  treeNodes: Array<TreeNode>;
+  treeNodes: Array<HomeTreeNode>;
 }
 
 export const initialState: HomeTreeNodesState = {
@@ -17,7 +17,6 @@ export const initialState: HomeTreeNodesState = {
 export const reducer = createReducer(
   initialState,
   on(HomeTreeNodesActions.fetchTreeNodesActionSuccess, (state, action) => {
-    console.log(action.data)
     return Object.assign({}, state, { treeNodes: action.data });
   }),
 );

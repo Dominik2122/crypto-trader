@@ -13,7 +13,7 @@ import { HomeTreeNodesEffects } from './store/home-tree-nodes.effects';
 import {StoreModule} from "@ngrx/store";
 import {homeTreeNodesFeatureKey, reducer} from "src/app/home/home-tree/store/home-tree-nodes.reducer";
 import {HomeTreeNodeCommandDispatcher} from "src/app/home/home-tree/store/home-tree-node-command-dispatcher";
-import {TreeNodeService} from "src/app/home/home-tree/domain/service/tree-node.service";
+import {HomeTreeNodeService} from "src/app/home/home-tree/domain/service/home-tree-node.service";
 
 
 
@@ -37,7 +37,7 @@ import {TreeNodeService} from "src/app/home/home-tree/domain/service/tree-node.s
   providers: [
     {provide: TreeNodeResource, useClass: HomeTreeNodeResource},
     HomeTreeNodeCommandDispatcher,
-    TreeNodeService
+    HomeTreeNodeService
   ]
 })
 export class HomeTreeModule {}

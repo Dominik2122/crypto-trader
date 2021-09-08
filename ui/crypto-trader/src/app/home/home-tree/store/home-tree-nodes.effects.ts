@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {map, switchMap} from 'rxjs/operators';
 import * as HomeTreeNodesActions from './home-tree-nodes.actions';
 import {TreeNodeResource} from "src/app/util/tree/infrastructure/tree-node-resource";
-import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
+import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 
 
 
@@ -15,7 +15,7 @@ export class HomeTreeNodesEffects {
       ofType(HomeTreeNodesActions.fetchTreeNodesAction),
       switchMap(() =>
       this.treeNodeResource.getTreeNodes().pipe(
-        map((treeNodes: Array<TreeNode>) =>
+        map((treeNodes: Array<HomeTreeNode>) =>
           HomeTreeNodesActions.fetchTreeNodesActionSuccess({data : treeNodes}))
       )))
   });

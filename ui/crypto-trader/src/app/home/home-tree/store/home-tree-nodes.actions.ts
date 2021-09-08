@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
+import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 
 export const fetchTreeNodesAction = createAction(
   '[HomeTreeNodes]fetchTreeNodesAction'
@@ -7,5 +7,5 @@ export const fetchTreeNodesAction = createAction(
 
 export const fetchTreeNodesActionSuccess = createAction(
   '[HomeTreeNodes]fetchTreeNodesAction Success',
-  props<{ data: Array<TreeNode> }>()
+  props<{ data: Array<HomeTreeNode> }>()
 );

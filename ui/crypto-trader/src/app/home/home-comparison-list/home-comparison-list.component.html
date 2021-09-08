@@ -1,1 +1,9 @@
-<p>home-comparison-list works!</p>
+<div class="flex mr-4">
+  <ng-container *ngFor="let secondary of secondaries">
+    <app-comparison class="mr-4"
+      [main]="main"
+      [secondary]="secondary"
+    ></app-comparison>
+  </ng-container>
+</div>
+

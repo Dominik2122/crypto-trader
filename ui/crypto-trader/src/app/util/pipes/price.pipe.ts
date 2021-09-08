@@ -6,9 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PricePipe implements PipeTransform {
 
   transform(value: number): number {
-    console.log(Math.round(value))
-    console.log(value)
-
     if (Math.abs(value) > 100) {
       return Math.round(value)
     } else if (value < 10 && value > 0) {

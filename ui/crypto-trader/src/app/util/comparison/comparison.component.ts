@@ -1,5 +1,6 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
 import {Crypto} from "src/app/util/comparison/models/Crypto";
+import {faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-comparison',
@@ -20,15 +21,21 @@ export class ComparisonComponent {
 
   difference: number;
 
+  isPositive: boolean;
+
+  upIcon = faArrowUp
+  downIcon = faArrowDown
+
   ngOnChanges() {
     this.createHeader();
     this.createDifference();
     this.createPercentageDifference();
+    this.isPositive = this.difference > 0
   }
 
   private createHeader() {
-    const first: string = [...this.main.name].slice(0, 2).join('').toUpperCase()
-    const second: string = [...this.secondary.name].slice(0, 2).join('').toUpperCase()
+    const first: string = [...this.main.name].slice(0, 3).join('').toUpperCase()
+    const second: string = [...this.secondary.name].slice(0, 3).join('').toUpperCase()
     this.header = `${first}/${second}`
   }
 

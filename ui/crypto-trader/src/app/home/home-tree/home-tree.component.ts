@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
-import {TreeNodeService} from "src/app/home/home-tree/domain/service/tree-node.service";
+import {HomeTreeNodeService} from "src/app/home/home-tree/domain/service/home-tree-node.service";
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 
 @Component({
@@ -23,7 +23,7 @@ export class HomeTreeComponent implements OnInit {
 
   viewStrategy: TreeViewStrategy = TreeViewStrategy.TEMPLATE
 
-  constructor(private readonly treeNodeService: TreeNodeService) {
+  constructor(private readonly treeNodeService: HomeTreeNodeService) {
   }
 
   ngOnInit(): void {
@@ -32,5 +32,4 @@ export class HomeTreeComponent implements OnInit {
       this.nodes = treeNodes
     })
   }
-
 }

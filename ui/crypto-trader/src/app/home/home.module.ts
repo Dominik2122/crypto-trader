@@ -5,6 +5,7 @@ import {HomeRoutingModule} from "src/app/home/home-routing.module";
 import {HomeTreeModule} from "src/app/home/home-tree/home-tree.module";
 import {HomeTitleComponent} from './home-title/home-title.component';
 import {HomeSkeletonComponent} from './home-root/home-skeleton/home-skeleton.component';
+import {HomeComparisonListModule} from "src/app/home/home-comparison-list/home-comparison-list.module";
 
 
 @NgModule({
@@ -14,11 +15,12 @@ import {HomeSkeletonComponent} from './home-root/home-skeleton/home-skeleton.com
     HomeSkeletonComponent,
 
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    HomeTreeModule
-  ]
+	imports: [
+		CommonModule,
+		HomeRoutingModule,
+		HomeTreeModule,
+		HomeComparisonListModule
+	]
 })
 export class HomeModule {
 

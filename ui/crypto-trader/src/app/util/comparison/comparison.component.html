@@ -1,13 +1,19 @@
 <div class="box">
-  <div class="flex">
-    <p class="header">
+  <div class="flex items-center justify-center w-full">
+    <h4 class="header">
       {{header}}
-    </p>
-    <app-text-badge>
+    </h4>
+    <app-text-badge
+      class="ml-1"
+      [color]="isPositive ? 'green' : 'red'">
       {{ percentageDifference | price }}%
     </app-text-badge>
   </div>
-  <h1 class="difference">
+  <h2 class="difference flex justify-center">
+    <fa-icon [icon]="isPositive ? upIcon : downIcon"
+             [ngClass]="isPositive ? 'text-green-500' : 'text-red-500'"
+             class="mr-2"
+    ></fa-icon>
     {{ difference | price }}$
-  </h1>
+  </h2>
 </div>
