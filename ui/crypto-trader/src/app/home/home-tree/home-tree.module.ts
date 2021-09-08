@@ -7,6 +7,16 @@ import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/home-t
 import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
 import {UtilModule} from "src/app/util/util.module";
 
+import {EffectsModule} from "@ngrx/effects";
+
+import { HomeTreeNodesEffects } from './store/home-tree-nodes.effects';
+import {StoreModule} from "@ngrx/store";
+import {homeTreeNodesFeatureKey, reducer} from "src/app/home/home-tree/store/home-tree-nodes.reducer";
+import {HomeTreeNodeCommandDispatcher} from "src/app/home/home-tree/store/home-tree-node-command-dispatcher";
+import {TreeNodeService} from "src/app/home/home-tree/domain/service/tree-node.service";
+
+
+
 
 
 @NgModule({
@@ -17,13 +27,17 @@ import {UtilModule} from "src/app/util/util.module";
 		CommonModule,
 		TreeModule,
 		TextBadgeModule,
-		UtilModule
+		UtilModule,
+    StoreModule.forFeature(homeTreeNodesFeatureKey, reducer),
+		EffectsModule.forFeature([HomeTreeNodesEffects])
 	],
   exports: [
     HomeTreeComponent
   ],
   providers: [
-    {provide: TreeNodeResource, useClass: HomeTreeNodeResource}
+    {provide: TreeNodeResource, useClass: HomeTreeNodeResource},
+    HomeTreeNodeCommandDispatcher,
+    TreeNodeService
   ]
 })
 export class HomeTreeModule {}

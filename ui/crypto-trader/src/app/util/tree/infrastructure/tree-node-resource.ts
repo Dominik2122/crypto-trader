@@ -11,7 +11,7 @@ export abstract class TreeNodeResource extends BaseResource {
     super(http)
   }
 
-  abstract getTreeNode(): Observable<Array<TreeNode>>
+  abstract getTreeNodes(): Observable<Array<TreeNode>>
 
   abstract putTreeNode?(url: string): Observable<Array<TreeNode>>
 }

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
+import {TreeNodeService} from "src/app/home/home-tree/domain/service/tree-node.service";
+import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 
 @Component({
   selector: 'app-home-tree',
@@ -11,6 +13,8 @@ export class HomeTreeComponent implements OnInit {
 
   NUMBER_OF_COLUMNS: number = 4;
 
+  nodes: Array<TreeNode>;
+
   homeTreeColumns: Array<TreeColumn> = new TreeColumn.Builder()
     .withHeaders(['Name', 'Current Price', 'Net change', '%'])
     .withFlex(['0 1 35%', '0 1 20%', '0 1 22%', '0 1 23%'])
@@ -19,11 +23,14 @@ export class HomeTreeComponent implements OnInit {
 
   viewStrategy: TreeViewStrategy = TreeViewStrategy.TEMPLATE
 
-  constructor() {
+  constructor(private readonly treeNodeService: TreeNodeService) {
   }
 
   ngOnInit(): void {
-
+    this.treeNodeService.fetchNodes()
+    this.treeNodeService.selectTreeNodes().subscribe((treeNodes: Array<TreeNode>) => {
+      this.nodes = treeNodes
+    })
   }
 
 }

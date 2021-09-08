@@ -14,7 +14,7 @@ export class HomeTreeNodeResource extends BaseResource implements TreeNodeResour
     super(http)
   }
 
-  getTreeNode(): Observable<Array<HomeTreeNode>> {
+  getTreeNodes(): Observable<Array<HomeTreeNode>> {
     return this.get<Array<TreeNodeDTO>>('http://127.0.0.1:8000/api/crypto/home/').pipe(
       map((dto: Array<TreeNodeDTO>) => HomeTreeNode.fromArrayDTO(dto))
     )

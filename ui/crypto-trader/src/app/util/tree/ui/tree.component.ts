@@ -3,13 +3,11 @@ import {
   Component,
   ContentChildren,
   Input,
-  OnInit,
   QueryList,
   TemplateRef
 } from '@angular/core';
 import {TreeColumn} from 'src/app/util/tree/ui/models/tree-column.model';
 import {TreeNode} from 'src/app/util/tree/ui/models/tree-node.model';
-import {TreeNodeService} from "src/app/util/tree/service/tree-node.service";
 import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 
@@ -19,7 +17,7 @@ import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss']
 })
-export class TreeComponent implements OnInit, AfterContentInit {
+export class TreeComponent implements AfterContentInit {
 
   @ContentChildren(TreeColumnComponent)
   treeColumnCollection: QueryList<TreeColumnComponent>
@@ -31,32 +29,19 @@ export class TreeComponent implements OnInit, AfterContentInit {
   cssClass: Array<string>;
 
   @Input()
-  withDragAndDrop: Array<string>;
-
-  @Input()
   viewStrategy: TreeViewStrategy = TreeViewStrategy.DEFAULT
 
-
+  @Input()
   nodes: Array<TreeNode>;
+
   columnTemplates: Array<TemplateRef<TreeColumnComponent>>;
 
-  constructor(private readonly treeNodeService: TreeNodeService) {
-  }
-
-  ngOnInit() {
-    this.initTreeNodes()
+  constructor() {
   }
 
   ngAfterContentInit() {
     this.setViewStrategy();
     this.initColumnTemplates()
-  }
-
-  initTreeNodes(): void {
-    this.treeNodeService.fetchNodes()
-    this.treeNodeService.selectTreeNodes().subscribe((treeNodes: Array<TreeNode>) => {
-      this.nodes = treeNodes
-    })
   }
 
   private setViewStrategy(): void {
