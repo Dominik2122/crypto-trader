@@ -1,7 +1,8 @@
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {TreeNodeDTO} from "src/app/home/home-tree/infrastructure/TreeNodeDTO";
-import {TreeNodeData} from "src/app/util/tree/ui/models/tree-node-data.model";
 import {HomeTreeNodeData} from "src/app/home/home-tree/domain/HomeTreeNodeData";
+import {HomeTreeNodeChildComponent} from "src/app/home/home-tree/home-tree-node-child/HomeTreeNodeChildComponent";
+import {HomeTreeNodeHistoryPrice} from "src/app/home/home-tree/domain/HomeTreeNodeHistoryPrice";
 
 export class HomeTreeNode implements TreeNode {
 
@@ -11,7 +12,7 @@ export class HomeTreeNode implements TreeNode {
   readonly level: number,
   public expanded: boolean,
   public position: number,
-  public children?: Array<TreeNode>,
+  public child?: Array<HomeTreeNodeHistoryPrice>,
   readonly parent?: TreeNode) {}
 
   static fromDTO(dto: TreeNodeDTO): HomeTreeNode {
@@ -20,7 +21,8 @@ export class HomeTreeNode implements TreeNode {
       HomeTreeNodeData.fromDTO(dto),
       0,
       false,
-      null
+      null,
+      HomeTreeNodeHistoryPrice.fromDTO(dto)
     )
   }
 

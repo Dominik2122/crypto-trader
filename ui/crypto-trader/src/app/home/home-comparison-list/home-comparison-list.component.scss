@@ -1,0 +1,14 @@
+.panel-container {
+  @apply overflow-hidden w-full;
+
+  .panel {
+    @apply flex mr-8 relative;
+    animation: panelMove 25s linear infinite;
+  }
+}
+
+
+@keyframes panelMove {
+  0% {left:-350%;}
+  100% {left:110%;}
+}

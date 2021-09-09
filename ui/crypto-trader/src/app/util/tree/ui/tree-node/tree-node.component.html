@@ -9,8 +9,9 @@
       </div>
     </ng-container>
     <ng-container *ngIf="column.expand">
-      <div class="expand-button text-center text-gray-500 cursor-pointer">
-        <fa-icon [icon]="expandIcon" class="flex-1"></fa-icon>
+      <div class="expand-button text-center text-gray-500 cursor-pointer"
+           (click)="expandNode(node)">
+        <fa-icon [icon]="expandIcon" class="flex-1" [class.spin-up]="isExpanded"></fa-icon>
       </div>
     </ng-container>
 
@@ -28,8 +29,8 @@
 
 
   </div>
-  <div *ngIf="node.children && node.expanded" class="tree-node__children">
-    <p>ABN</p>
+  <div *ngIf="isExpanded" class="tree-node__children">
+    <ng-container *ngTemplateOutlet="childTemplate; context: {'node': node, 'data': node.data} "></ng-container>
   </div>
 </div>
 

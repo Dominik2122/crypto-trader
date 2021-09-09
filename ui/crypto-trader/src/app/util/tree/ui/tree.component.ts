@@ -1,6 +1,6 @@
 import {
   AfterContentInit,
-  Component,
+  Component, ContentChild,
   ContentChildren,
   Input,
   QueryList,
@@ -22,6 +22,10 @@ export class TreeComponent implements AfterContentInit {
   @ContentChildren(TreeColumnComponent)
   treeColumnCollection: QueryList<TreeColumnComponent>
 
+
+  @ContentChild('child')
+  treeChildTemplate: TemplateRef<any>
+
   @Input()
   columns: Array<TreeColumn>;
 
@@ -42,6 +46,7 @@ export class TreeComponent implements AfterContentInit {
   ngAfterContentInit() {
     this.setViewStrategy();
     this.initColumnTemplates()
+    console.log(this.treeChildTemplate.elementRef.nativeElement)
   }
 
   private setViewStrategy(): void {

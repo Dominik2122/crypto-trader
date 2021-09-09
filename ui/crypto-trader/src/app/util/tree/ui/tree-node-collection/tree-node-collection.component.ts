@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
@@ -9,6 +9,9 @@ import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
   templateUrl: './tree-node-collection.component.html'
 })
 export class TreeNodeCollectionComponent implements OnInit {
+
+  @Input()
+  childTemplate: TemplateRef<any>
 
   @Input()
   nodes: Array<TreeNode>

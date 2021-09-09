@@ -3,7 +3,10 @@
     [nodes]="nodes"
     [columns]="homeTreeColumns"
     [viewStrategy]="viewStrategy">
-
+    <ng-template #child>
+      <h1>AAAAA</h1>
+      <app-home-tree-child-component></app-home-tree-child-component>
+    </ng-template>
       <app-tree-column>
         <ng-template let-node='node'>
           <p style="flex: 0 1 90%">{{node.data.name}}</p>

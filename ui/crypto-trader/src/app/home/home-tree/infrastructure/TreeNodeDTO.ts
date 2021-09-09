@@ -10,5 +10,7 @@ export class TreeNodeDTO {
 
   price: PriceDTO;
 
+  children?: Array<PriceDTO>
+
 
 }

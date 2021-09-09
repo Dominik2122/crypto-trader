@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ExpandTreeNodeRepository} from "src/app/util/tree/domain/ExpandTreeNodeRepository";
+import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 
 
 @Component({
@@ -8,9 +10,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomeRootComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly expandTreeNodeRepository: ExpandTreeNodeRepository<HomeTreeNode>) { }
 
   ngOnInit(): void {
+    this.expandTreeNodeRepository.observe().subscribe((x: HomeTreeNode) => {
+      console.log(x.data.currentPrice)
+    })
   }
 
 

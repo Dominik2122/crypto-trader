@@ -12,7 +12,7 @@ export class TreeNode {
 
   position: number;
 
-  children?: Array<TreeNode>;
+  child?: any;
 
   parent?: TreeNode;
 

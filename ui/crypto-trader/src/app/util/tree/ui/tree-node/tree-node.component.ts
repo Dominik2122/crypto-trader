@@ -4,13 +4,17 @@ import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {faAngleDoubleDown, faArrowsAltV} from "@fortawesome/free-solid-svg-icons";
 import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
+import {ExpandTreeNodeRepository} from "src/app/util/tree/domain/ExpandTreeNodeRepository";
 
 @Component({
   selector: 'app-tree-node',
   templateUrl: './tree-node.component.html',
   styleUrls: ['./tree-node.component.scss']
 })
-export class TreeNodeComponent implements OnInit {
+export class TreeNodeComponent {
+
+  @Input()
+  childTemplate: TemplateRef<any>
 
   @Input()
   treeColumns: Array<TreeColumn>
@@ -28,14 +32,19 @@ export class TreeNodeComponent implements OnInit {
   dragIcon = faArrowsAltV
   expandIcon = faAngleDoubleDown
 
-  constructor() {
+  isExpanded;
+
+  constructor(private readonly expandTreeNodeRepository: ExpandTreeNodeRepository<TreeNode>) {
   }
 
-  ngOnInit(): void {
-  }
 
   getContext(index: number): string {
     return this.node.data[this.treeColumns[index].name]
+  }
+
+  expandNode(node: TreeNode) {
+    this.expandTreeNodeRepository.set(node)
+    this.isExpanded = !this.isExpanded
   }
 
 }

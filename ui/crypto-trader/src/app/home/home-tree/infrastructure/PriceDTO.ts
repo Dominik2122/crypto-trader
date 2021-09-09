@@ -1,9 +1,9 @@
 export class PriceDTO {
 
-  change: PriceDTO
+  change: number;
 
   name: string
 
-  price: PriceDTO
+  price: number
 
 }

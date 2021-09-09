@@ -11,11 +11,47 @@ $border: 'border-gray-600 border-opacity-25';
 
   &__children {
     @apply #{$border} border-t;
-    flex: 0 1 100%
+    flex: 0 1 100%;
+    animation: appear 1s linear;
   }
 }
+
+@keyframes appear {
+  0% {max-height: 0;}
+  100% {max-height: 1000px;}
+}
+
+
+
+.spin-up {
+  animation: spin-up 1000 linear;
+}
+
+.spin-down {
+  animation: spin-up 1000 linear;
+}
+
+
+
+
 
 .drag-button, .expand-button {
   @apply mr-1;
   flex: 0 0 10px
+}
+
+@keyframes spin-up {
+  from {
+    transform: rotate(0deg);
+  } to {
+      transform: rotate(180deg);
+    }
+}
+
+@keyframes spin-down {
+  from {
+    transform: rotate(180deg);
+  } to {
+      transform: rotate(0deg);
+    }
 }
