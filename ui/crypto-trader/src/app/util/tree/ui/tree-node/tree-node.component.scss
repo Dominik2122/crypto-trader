@@ -12,15 +12,18 @@ $border: 'border-gray-600 border-opacity-25';
   &__children {
     @apply #{$border} border-t;
     flex: 0 1 100%;
-    animation: appear 3s linear;
+    animation: appear 1s linear;
   }
 }
 
 @keyframes appear {
-  0% {max-height: 0;}
-  100% {max-height: 1000px;}
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 200px;
+  }
 }
-
 
 
 .spin-up {
@@ -32,9 +35,6 @@ $border: 'border-gray-600 border-opacity-25';
 }
 
 
-
-
-
 .drag-button, .expand-button {
   @apply mr-1;
   flex: 0 0 10px
@@ -43,15 +43,17 @@ $border: 'border-gray-600 border-opacity-25';
 @keyframes spin-up {
   from {
     transform: rotate(0deg);
-  } to {
-      transform: rotate(180deg);
-    }
+  }
+  to {
+    transform: rotate(180deg);
+  }
 }
 
 @keyframes spin-down {
   from {
     transform: rotate(180deg);
-  } to {
-      transform: rotate(0deg);
-    }
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }

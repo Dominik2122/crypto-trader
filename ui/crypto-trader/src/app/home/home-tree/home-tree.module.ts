@@ -6,7 +6,6 @@ import {TreeNodeResource} from "src/app/util/tree/infrastructure/tree-node-resou
 import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/home-tree-node-resource";
 import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
 import {UtilModule} from "src/app/util/util.module";
-
 import {EffectsModule} from "@ngrx/effects";
 
 import {HomeTreeNodesEffects} from './store/home-tree-nodes.effects';

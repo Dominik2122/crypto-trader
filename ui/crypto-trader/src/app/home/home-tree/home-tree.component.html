@@ -28,9 +28,7 @@
         </ng-template>
     </app-tree-column>
     <ng-template #child let-node='node'>
-      {{node | json}}
       <app-home-tree-child-component
-
         [data]="node.childData"
       ></app-home-tree-child-component>
     </ng-template>

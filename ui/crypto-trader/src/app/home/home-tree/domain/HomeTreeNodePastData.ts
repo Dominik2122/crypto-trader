@@ -8,14 +8,12 @@ export class HomeTreeNodePastData {
   ) {
   }
 
-
   static fromDTO(dto: HomeTreeNodeDTO): Array<HomeTreeNodePastData> {
     const prices: Array<HomeTreeNodePastData> = []
 
     for (const price of dto.pastData) {
       prices.push(new HomeTreeNodePastData(parseFloat(price.value), new Date(price.date)))
     }
-    console.log(prices)
     return prices
   }
 }
