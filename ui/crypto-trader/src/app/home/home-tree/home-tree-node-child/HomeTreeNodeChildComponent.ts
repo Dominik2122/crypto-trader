@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
+import {Component, Input, SimpleChanges} from '@angular/core';
+import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
 
 
 @Component({
@@ -10,9 +10,16 @@ import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 export class HomeTreeNodeChildComponent {
 
   @Input()
-  treeNode: HomeTreeNode
+  data: HomeTreeNodePastData
 
   constructor() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+    if (changes.data) {
+      console.log(changes.data)
+    }
   }
 
 }

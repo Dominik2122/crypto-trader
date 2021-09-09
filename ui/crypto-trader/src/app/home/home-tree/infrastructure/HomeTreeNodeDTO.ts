@@ -1,6 +1,7 @@
 import {PriceDTO} from "src/app/home/home-tree/infrastructure/PriceDTO";
+import {PastDataDTO} from "src/app/home/home-tree/infrastructure/PastDataDTO";
 
-export class TreeNodeDTO {
+export class HomeTreeNodeDTO {
 
   id: number;
 
@@ -10,7 +11,7 @@ export class TreeNodeDTO {
 
   price: PriceDTO;
 
-  children?: Array<PriceDTO>
+  pastData: Array<PastDataDTO>
 
 
 }

@@ -12,7 +12,7 @@ $border: 'border-gray-600 border-opacity-25';
   &__children {
     @apply #{$border} border-t;
     flex: 0 1 100%;
-    animation: appear 1s linear;
+    animation: appear 3s linear;
   }
 }
 

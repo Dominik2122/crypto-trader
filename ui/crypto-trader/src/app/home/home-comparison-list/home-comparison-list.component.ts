@@ -21,12 +21,8 @@ export class HomeComparisonListComponent implements OnInit {
     this.treeNodeService.selectTreeNodes().pipe(
       filter(x => !!x)
     ).subscribe(x => {
-      console.log(x)
       this.main = HomeCrypto.fromTreeNode(x[3])
       this.secondaries = x.map((x) => HomeCrypto.fromTreeNode(x))
-      console.log(this.secondaries)
-
-
     })
   }
 }

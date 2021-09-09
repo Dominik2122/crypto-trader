@@ -1,6 +1,6 @@
 export class PriceDTO {
 
-  change: number;
+  change?: number;
 
   name: string
 

@@ -46,7 +46,6 @@ export class TreeComponent implements AfterContentInit {
   ngAfterContentInit() {
     this.setViewStrategy();
     this.initColumnTemplates()
-    console.log(this.treeChildTemplate.elementRef.nativeElement)
   }
 
   private setViewStrategy(): void {

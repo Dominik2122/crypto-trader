@@ -1,8 +1,7 @@
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
-import {TreeNodeDTO} from "src/app/home/home-tree/infrastructure/TreeNodeDTO";
 import {HomeTreeNodeData} from "src/app/home/home-tree/domain/HomeTreeNodeData";
-import {HomeTreeNodeChildComponent} from "src/app/home/home-tree/home-tree-node-child/HomeTreeNodeChildComponent";
-import {HomeTreeNodeHistoryPrice} from "src/app/home/home-tree/domain/HomeTreeNodeHistoryPrice";
+import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
+import {HomeTreeNodeDTO} from "src/app/home/home-tree/infrastructure/HomeTreeNodeDTO";
 
 export class HomeTreeNode implements TreeNode {
 
@@ -12,22 +11,22 @@ export class HomeTreeNode implements TreeNode {
   readonly level: number,
   public expanded: boolean,
   public position: number,
-  public child?: Array<HomeTreeNodeHistoryPrice>,
+  public childData?: Array<HomeTreeNodePastData>,
   readonly parent?: TreeNode) {}
 
-  static fromDTO(dto: TreeNodeDTO): HomeTreeNode {
+  static fromDTO(dto: HomeTreeNodeDTO): HomeTreeNode {
     return new HomeTreeNode(
       'HOME-' + dto.id,
       HomeTreeNodeData.fromDTO(dto),
       0,
       false,
       null,
-      HomeTreeNodeHistoryPrice.fromDTO(dto)
+      HomeTreeNodePastData.fromDTO(dto)
     )
   }
 
-  static fromArrayDTO(arrayDTO: Array<TreeNodeDTO>): Array<HomeTreeNode> {
-    return arrayDTO.map((dto: TreeNodeDTO, index: number) => HomeTreeNode.fromDTO(dto).withPosition(index))
+  static fromArrayDTO(arrayDTO: Array<HomeTreeNodeDTO>): Array<HomeTreeNode> {
+    return arrayDTO.map((dto: HomeTreeNodeDTO, index: number) => HomeTreeNode.fromDTO(dto).withPosition(index))
   }
 
   withPosition(position: number): HomeTreeNode {

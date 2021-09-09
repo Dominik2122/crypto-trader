@@ -14,7 +14,6 @@ export class HomeRootComponent implements OnInit {
 
   ngOnInit(): void {
     this.expandTreeNodeRepository.observe().subscribe((x: HomeTreeNode) => {
-      console.log(x.data.currentPrice)
     })
   }
 
