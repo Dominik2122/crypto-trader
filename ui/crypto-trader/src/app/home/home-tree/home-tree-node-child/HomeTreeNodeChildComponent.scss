@@ -2,11 +2,8 @@
   @apply mx-auto;
   width: 95%;
   background: rgba(0,0,0,0.05);
-  animation: appear linear 1s;
-;
 
   .chart {
-    height: 400px;
-    max-height: 400px;
+    max-height: 300px;
   }
 }
