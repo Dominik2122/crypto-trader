@@ -3,36 +3,38 @@
     [nodes]="nodes"
     [columns]="homeTreeColumns"
     [viewStrategy]="viewStrategy">
-      <app-tree-column>
-        <ng-template let-node='node'>
-          <p style="flex: 0 1 90%">{{node.data.name}}</p>
-        </ng-template>
-      </app-tree-column>
-      <app-tree-column>
-        <ng-template let-node='node'>
-          <p>{{node.data.currentPrice | price }}$</p>
-        </ng-template>
-      </app-tree-column>
-      <app-tree-column>
-        <ng-template let-node='node'>
-          <app-text-badge [color]="node.data.netChange > 0 ? 'green' : 'red'">
-            {{node.data.netChange | price}}$
-          </app-text-badge>
-        </ng-template>
-      </app-tree-column>
     <app-tree-column>
-        <ng-template let-node='node'>
-          <app-text-badge [color]="node.data.percentageNetChange > 0 ? 'green' : 'red'" subtle="true">
-            {{node.data.percentageNetChange | price}}%
-          </app-text-badge>
-        </ng-template>
+      <ng-template let-node='node'>
+        <p style="flex: 0 1 90%">{{node.data.name}}</p>
+      </ng-template>
+    </app-tree-column>
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <p>{{node.data.currentPrice | price }}$</p>
+      </ng-template>
+    </app-tree-column>
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <app-text-badge [color]="node.data.netChange > 0 ? 'green' : 'red'">
+          {{node.data.netChange | price}}$
+        </app-text-badge>
+      </ng-template>
+    </app-tree-column>
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <app-text-badge [color]="node.data.percentageNetChange > 0 ? 'green' : 'red'" subtle="true">
+          {{node.data.percentageNetChange | price}}%
+        </app-text-badge>
+      </ng-template>
     </app-tree-column>
     <ng-template #child let-node='node'>
-      <app-home-tree-child-component
-        [data]="node.childData"
-        [id]="node.id"
-        [name]="node.data.name"
-      ></app-home-tree-child-component>
+      <div class="home-tree-child__container">
+        <app-home-tree-child-component
+          [data]="node.childData"
+          [id]="node.id"
+          [name]="node.data.name"
+        ></app-home-tree-child-component>
+      </div>
     </ng-template>
   </app-tree>
 </div>

@@ -26,14 +26,7 @@ export class ChartComponent implements AfterViewInit {
 
   chart: Chart
 
-  constructor() {
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-  }
-
   ngAfterViewInit() {
-    console.log(this.chartData)
     // @ts-ignore
     this.chart = new Chart(this.id, {
       ...this.chartConfig.build(),
@@ -41,7 +34,6 @@ export class ChartComponent implements AfterViewInit {
     )
 
   }
-
 
 }
 

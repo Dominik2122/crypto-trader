@@ -12,16 +12,29 @@ $border: 'border-gray-600 border-opacity-25';
   &__children {
     @apply #{$border} border-t;
     flex: 0 1 100%;
-    animation: appear 1s linear;
+    animation: appear__phone 1s linear;
+
+    @media screen and (min-width: 800px) {
+      animation: appear__desktop 2s linear;
+    }
   }
 }
 
-@keyframes appear {
+@keyframes appear__phone {
   0% {
     max-height: 0;
   }
   100% {
     max-height: 200px;
+  }
+}
+
+@keyframes appear__desktop {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 900px;
   }
 }
 
