@@ -30,6 +30,8 @@
     <ng-template #child let-node='node'>
       <app-home-tree-child-component
         [data]="node.childData"
+        [id]="node.id"
+        [name]="node.data.name"
       ></app-home-tree-child-component>
     </ng-template>
   </app-tree>

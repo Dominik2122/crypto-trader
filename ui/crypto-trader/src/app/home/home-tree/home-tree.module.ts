@@ -14,6 +14,7 @@ import {homeTreeNodesFeatureKey, reducer} from "src/app/home/home-tree/store/hom
 import {HomeTreeNodeCommandDispatcher} from "src/app/home/home-tree/store/home-tree-node-command-dispatcher";
 import {HomeTreeNodeService} from "src/app/home/home-tree/domain/service/home-tree-node.service";
 import {HomeTreeNodeChildComponent} from "src/app/home/home-tree/home-tree-node-child/HomeTreeNodeChildComponent";
+import {ChartModule} from "src/app/util/chart/chart.module";
 
 
 @NgModule({
@@ -21,14 +22,15 @@ import {HomeTreeNodeChildComponent} from "src/app/home/home-tree/home-tree-node-
     HomeTreeComponent,
     HomeTreeNodeChildComponent
   ],
-  imports: [
-    CommonModule,
-    TreeModule,
-    TextBadgeModule,
-    UtilModule,
-    StoreModule.forFeature(homeTreeNodesFeatureKey, reducer),
-    EffectsModule.forFeature([HomeTreeNodesEffects])
-  ],
+	imports: [
+		CommonModule,
+		TreeModule,
+		TextBadgeModule,
+		UtilModule,
+		StoreModule.forFeature(homeTreeNodesFeatureKey, reducer),
+		EffectsModule.forFeature([HomeTreeNodesEffects]),
+		ChartModule
+	],
   exports: [
     HomeTreeComponent
   ],

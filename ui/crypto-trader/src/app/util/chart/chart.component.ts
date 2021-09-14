@@ -1,76 +1,48 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, SimpleChange, SimpleChanges} from '@angular/core';
 import Chart from "chart.js/auto";
-import {ChartData} from "src/app/util/chart/domain/ChartData";
+import {ChartData} from "chart.js";
+import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
+import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
+
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent implements AfterViewInit {
 
   @Input()
-  data: Array<ChartData>
+  data: Array<any>
 
   @Input()
-  xAxis: string
+  id: string
 
   @Input()
-  yAxis: string
+  chartConfig: ChartOptionsConfig
 
+  @Input()
+  chartData: ChartDataConfig
 
   chart: Chart
 
-  constructor() { }
+  constructor() {
+  }
 
+  ngOnChanges(changes: SimpleChanges) {
+  }
 
-
-  ngOnInit(): void {
-
-
-    this.chart = new Chart('myChart', {
-      type: 'line',
-      data: {
-        labels: this.data.map(data => data[this.yAxis]),
-        datasets: [{
-          label: '# of Votes',
-          data: this.data.map(data => data[this.xAxis]),
-          backgroundColor: 'rgb(96,238,21)',
-          borderColor: 'rgb(51,151,8)',
-          borderWidth: 2,
-        }]
-      },
-      options: {
-        plugins: {
-          title: {
-            text: 'Chart.js Time Scale',
-            display: true
-          }
-        },
-        scales: {
-          x: {
-            type: 'timeseries',
-            time: {
-              parser: 'DD T',
-            },
-            title: {
-              display: true,
-              text: 'Date'
-            },
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'value'
-            }}
-        }
-      }});
-
-
+  ngAfterViewInit() {
+    console.log(this.chartData)
+    // @ts-ignore
+    this.chart = new Chart(this.id, {
+      ...this.chartConfig.build(),
+      ...this.chartData.addData()}
+    )
 
   }
 
 
-
-
 }
+
+
