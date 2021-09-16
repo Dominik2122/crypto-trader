@@ -40,6 +40,15 @@ class CryptoWithCurrentPriceSerializer(serializers.ModelSerializer):
 class CryptoWithPriceChangeSerializer(serializers.ModelSerializer):
     price = serializers.SerializerMethodField('get_current_price')
     change = serializers.SerializerMethodField('get_price_change')
+    pastData = serializers.SerializerMethodField('get_pastData')
+
+    def get_pastData(self, crypto):
+        today = datetime.date.today()
+        two_weeks_ago = today - datetime.timedelta(days=14)
+        print(two_weeks_ago)
+        two_weeks_ago_prices = crypto.price.filter(date__gte = two_weeks_ago)
+        serializer = PriceWithoutCryptoSerializer(two_weeks_ago_prices, many=True)
+        return serializer.data
 
     def get_current_price(self, crypto):
         price = crypto.price.latest('date')
@@ -55,5 +64,5 @@ class CryptoWithPriceChangeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cryptocurrency
-        fields = [ 'id', 'name', 'price', 'change']
+        fields = [ 'id', 'name', 'price', 'change', 'pastData']
 
