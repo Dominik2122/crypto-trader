@@ -17,7 +17,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.createGroup();
-    this.form.controls.name.valueChanges.subscribe((x) => console.log(x))
   }
 
   createGroup() {

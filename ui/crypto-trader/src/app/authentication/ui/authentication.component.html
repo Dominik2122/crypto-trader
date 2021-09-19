@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="form">
+    <ng-container *ngIf="isLoginPage; else signUpPage">
+      <app-login></app-login>
+      <div class="flex justify-center">
+        <div class="flex">
+          <p>Don't have an account yet?</p>
+          <a class="ml-2">Sign up</a>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #signUpPage>
+      <app-sign-up></app-sign-up>
+    </ng-template>
+  </div>
+</div>
+
+<div class="bottom-bubbles"></div>
+<div class="bottom-bubbles"></div>

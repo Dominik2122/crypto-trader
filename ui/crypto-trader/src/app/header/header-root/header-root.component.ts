@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {faSignInAlt} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-header-root',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderRootComponent implements OnInit {
 
+
+
   constructor() { }
+
+  faSignInAlt = faSignInAlt
+
 
   ngOnInit(): void {
     const btn = document.querySelector(".mobile-menu-button");

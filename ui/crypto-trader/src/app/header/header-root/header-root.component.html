@@ -1,6 +1,8 @@
 <div class="relative md:hidden mobile">
   <div class="bg-blue-800 text-gray-100 flex justify-between md:hidden items-center">
-    <h1 class="text-2xl ml-2 inline-block font-medium text-white">Crypto</h1>
+    <a routerLink=''>
+      <h1 class="text-2xl ml-2 inline-block font-medium text-white cursor-pointer">Crypto</h1>
+    </a>
     <button class="mobile-menu-button p-4 focus:outline-none focus:bg-blue-500">
       <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -9,14 +11,16 @@
   </div>
 
   <div class="sidebar mobile__sidebar transform -translate-x-full z-50">
-    <a href="#" class="text-white flex items-center space-x-2 px-4">
+    <a routerLink='' class="text-white flex items-center space-x-2 px-4">
       <span class="text-2xl font-extrabold">Crypto</span>
     </a>
     <nav>
       <a href="#" class="mobile__tabs">Home</a>
       <a href="" class="mobile__tabs">About</a>
       <a href="" class="mobile__tabs">Features</a>
-      <a href="" class="mobile__tabs">Pricing&</a>
+      <a class="mobile__tabs" routerLink='auth'>
+        <fa-icon [icon]="faSignInAlt" class="flex-1"></fa-icon> Sign in
+      </a>
     </nav>
   </div>
 </div>
@@ -24,7 +28,9 @@
 
 <nav class="desktop">
   <div class="flex items-center mx-5 md:py-0">
-    <h1 class="text-2xl ml-2 inline-block font-medium text-white">Crypto</h1>
+    <a routerLink=''>
+      <h1 class="text-2xl ml-2 inline-block font-medium text-white cursor-pointer">Crypto</h1>
+    </a>
   </div>
   <div class="md:flex md:flex-grow bg-blue-800">
     <ul class="text-lg md:flex md:ml-auto ">
@@ -32,11 +38,9 @@
       <li><a class="desktop__tabs" href="">About</a></li>
       <li><a class="desktop__tabs" href="">Projects</a></li>
       <li><a class="desktop__tabs" href="">Blog</a></li>
-      <li><a class="desktop__tabs" href="">Contact</a></li>
+      <li><a class="desktop__tabs" routerLink='auth'>
+        <fa-icon [icon]="faSignInAlt" class="flex-1"></fa-icon> Sign in
+      </a></li>
     </ul>
   </div>
 </nav>
-
-
-
-<app-authentication></app-authentication>

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderRootComponent } from './header-root/header-root.component';
-import {AuthenticationModule} from "src/app/header/authentication/authentication.module";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -12,9 +13,10 @@ import {AuthenticationModule} from "src/app/header/authentication/authentication
 	exports: [
 		HeaderRootComponent
 	],
-	imports: [
-		CommonModule,
-		AuthenticationModule
-	]
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    RouterModule
+  ]
 })
 export class HeaderModule { }

@@ -1,8 +1,11 @@
 <div
-  class="dynamic-field form-select"
+  class="flex flex-col w-full max-w-xs"
   [formGroup]="group">
-  <label>{{ config.label }}</label>
-  <select [formControlName]="config.name">
+  <label class="text-gray-700 font-bold py-2">{{ config.label }}</label>
+  <select [formControlName]="config.name"
+          class="text-gray-700
+  shadow border rounded
+  border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3">
     <option value="">{{ config.placeholder }}</option>
     <option *ngFor="let option of config.options">
       {{ option }}

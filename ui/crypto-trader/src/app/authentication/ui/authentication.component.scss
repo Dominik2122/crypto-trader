@@ -1,0 +1,12 @@
+.container {
+  @apply mx-auto;
+  margin-top: 25vh
+}
+.bottom-bubbles {
+  @apply mx-auto bg-blue-800 rounded-full h-72 w-72 absolute -bottom-36 -right-4;
+
+  &:nth-of-type(2) {
+    @apply -right-36 -bottom-16;
+  }
+
+}
