@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormInput} from "src/app/util/form/domain/FormInput";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-sign-up',
@@ -7,6 +8,11 @@ import {FormInput} from "src/app/util/form/domain/FormInput";
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+
+  form: FormGroup;
+  private login: string;
+  private password: string;
+  private email: string;
 
   config = [
     {
@@ -33,5 +39,14 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  observeForm(form: FormGroup) {
+    this.form = form;
+    this.form.valueChanges.subscribe(value => {
+      this.login = value.login;
+      this.password = value.password;
+    })
+  }
+
 
 }

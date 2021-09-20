@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormType} from "src/app/authentication/ui/FormType";
 
 
 @Component({
@@ -10,9 +11,21 @@ export class AuthenticationComponent implements OnInit {
 
   isLoginPage: boolean = true;
 
-  constructor() { }
+  FormType = FormType
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  changeForm(formType: FormType) {
+    if (formType === FormType.SIGNUP) {
+      this.isLoginPage = false
+    } else {
+      this.isLoginPage = true
+    }
+
   }
 
 }

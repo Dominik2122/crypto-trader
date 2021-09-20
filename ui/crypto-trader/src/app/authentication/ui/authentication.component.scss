@@ -1,12 +1,33 @@
+app-authentication {
+  background: black;
+}
+
 .container {
+  @apply mx-auto;
+}
+
+.form {
   @apply mx-auto;
   margin-top: 25vh
 }
-.bottom-bubbles {
-  @apply mx-auto bg-blue-800 rounded-full h-72 w-72 absolute -bottom-36 -right-4;
 
-  &:nth-of-type(2) {
-    @apply -right-36 -bottom-16;
-  }
-
-}
+//.container {
+//  @apply max-h-screen;
+//}
+//.top-bubbles {
+//  @apply bg-blue-800 rounded-full h-72 w-72 relative -top-36 -left-4;
+//
+//  &:nth-of-type(2) {
+//    @apply -left-36 -top-16;
+//  }
+//
+//}
+//
+//.bottom-bubbles {
+//  @apply bg-blue-800 rounded-full h-72 w-72 relative -bottom-36 -right-4;
+//
+//  &:nth-of-type(4) {
+//    @apply -right-36 -bottom-16;
+//  }
+//
+//}

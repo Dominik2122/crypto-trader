@@ -1,20 +1,39 @@
 <div class="container">
+  <div class="top-bubbles"></div>
+  <div class="top-bubbles"></div>
   <div class="form">
     <ng-container *ngIf="isLoginPage; else signUpPage">
-      <app-login></app-login>
+      <app-login>
+        <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Login
+        </button>
+      </app-login>
       <div class="flex justify-center">
         <div class="flex">
           <p>Don't have an account yet?</p>
-          <a class="ml-2">Sign up</a>
+          <a class="ml-2" (click)="changeForm(FormType.SIGNUP)">Sign up</a>
         </div>
       </div>
+
     </ng-container>
 
     <ng-template #signUpPage>
-      <app-sign-up></app-sign-up>
+      <app-sign-up>
+        <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Sign up
+        </button>
+      </app-sign-up>
+      <div class="flex justify-center">
+        <div class="flex">
+          <p>Have an account?</p>
+          <a class="ml-2" (click)="changeForm(FormType.LOGIN)">Login!</a>
+        </div>
+      </div>
     </ng-template>
   </div>
+
+  <div class="bottom-bubbles"></div>
+  <div class="bottom-bubbles"></div>
 </div>
 
-<div class="bottom-bubbles"></div>
-<div class="bottom-bubbles"></div>
+
