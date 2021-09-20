@@ -3,8 +3,9 @@
   <div class="top-bubbles"></div>
   <div class="form">
     <ng-container *ngIf="isLoginPage; else signUpPage">
-      <app-login>
-        <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <app-login (email)="observeEmail($event)" (password)="observePassword($event)">
+        <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        (click)="submit()">
           Login
         </button>
       </app-login>
@@ -14,6 +15,8 @@
           <a class="ml-2" (click)="changeForm(FormType.SIGNUP)">Sign up</a>
         </div>
       </div>
+
+
 
     </ng-container>
 

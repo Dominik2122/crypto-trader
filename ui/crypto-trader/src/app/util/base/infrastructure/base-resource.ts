@@ -17,4 +17,8 @@ export class BaseResource {
     return of(true)
   }
 
+  post<T>(url: string, data, params?:{[key:string] : string}): Observable<T> {
+    return this.http.post<T>(url, data)
+  }
+
 }

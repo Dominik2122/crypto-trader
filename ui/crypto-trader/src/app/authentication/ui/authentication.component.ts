@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormType} from "src/app/authentication/ui/FormType";
+import {AuthService} from "src/app/authentication/domain/AuthService";
 
 
 @Component({
@@ -7,16 +8,16 @@ import {FormType} from "src/app/authentication/ui/FormType";
   templateUrl: './authentication.component.html',
   styleUrls: ['./authentication.component.scss']
 })
-export class AuthenticationComponent implements OnInit {
+export class AuthenticationComponent {
 
   isLoginPage: boolean = true;
 
   FormType = FormType
 
-  constructor() {
-  }
+  private email: string
+  private password: string
 
-  ngOnInit(): void {
+  constructor(private readonly authService: AuthService) {
   }
 
   changeForm(formType: FormType) {
@@ -25,7 +26,24 @@ export class AuthenticationComponent implements OnInit {
     } else {
       this.isLoginPage = true
     }
-
   }
+
+  observeEmail(email: string) {
+    this.email = email
+  }
+
+  observePassword(password: string) {
+    this.password = password
+  }
+
+
+  submit() {
+    if (this.isLoginPage) {
+      this.authService.login(this.email, this.password).subscribe()
+    } else {
+
+    }
+  }
+
 
 }
