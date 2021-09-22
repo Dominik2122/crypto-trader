@@ -30,7 +30,11 @@ export class HeaderRootComponent implements OnInit {
 
   }
 
-  private observeUser() {
+  logout(): void {
+    this.permissionService.setUser(null)
+  }
+
+  private observeUser(): void {
     this.permissionService.selectUser().subscribe((user: User) => this.user = user)
   }
 

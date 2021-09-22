@@ -29,7 +29,7 @@
           <fa-icon [icon]="faUserAlt" class="flex-1"></fa-icon>
           {{user.getUserLogin()}}
         </a>
-        <a class="mobile__tabs" routerLink=''>
+        <a class="mobile__tabs" routerLink='' (click)="logout()">
           <fa-icon [icon]="faSignOutAlt" class="flex-1"></fa-icon>
           Logout
         </a>
@@ -52,6 +52,7 @@
       <li><a class="desktop__tabs" href="">About</a></li>
       <li><a class="desktop__tabs" href="">Projects</a></li>
       <li><a class="desktop__tabs" href="">Blog</a></li>
+      <app-dropdown></app-dropdown>
 
       <ng-container *ngIf="!user; else signOutDesktop">
         <li><a class="desktop__tabs" routerLink='auth'>
@@ -64,7 +65,7 @@
           <fa-icon [icon]="faUserAlt" class="flex-1"></fa-icon>
           {{user.getUserLogin()}}
         </a></li>
-        <li><a class="desktop__tabs" routerLink='auth'>
+        <li><a class="desktop__tabs" routerLink='' (click)="logout()">
           <fa-icon [icon]="faSignOutAlt" class="flex-1"></fa-icon>
           Logout
         </a></li>
