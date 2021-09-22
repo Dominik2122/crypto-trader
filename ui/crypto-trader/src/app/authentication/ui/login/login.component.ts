@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormInput} from "src/app/util/form/domain/FormInput";
 import {FormGroup} from "@angular/forms";
-import {UserLoginRequest} from "src/app/authentication/domain/UserLoginRequest";
+
 
 @Component({
   selector: 'app-login',

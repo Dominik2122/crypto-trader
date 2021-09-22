@@ -12,7 +12,6 @@ export class PermissionService {
     const userRaw = JSON.parse(localStorage.getItem('user'))
     console.log(userRaw)
     userRaw && this.setUser(new User(userRaw.login,
-      userRaw.password,
       userRaw.email,
       userRaw.token,
       userRaw.isAdmin))

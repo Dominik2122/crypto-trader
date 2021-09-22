@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormInput} from "src/app/util/form/domain/FormInput";
 import {FormGroup} from "@angular/forms";
 
@@ -9,10 +9,17 @@ import {FormGroup} from "@angular/forms";
 })
 export class SignUpComponent implements OnInit {
 
+  @Output()
+  readonly email: EventEmitter<string> = new EventEmitter<string>()
+
+  @Output()
+  readonly password: EventEmitter<string> = new EventEmitter<string>()
+
+  @Output()
+  readonly login: EventEmitter<string> = new EventEmitter<string>()
+
   form: FormGroup;
-  private login: string;
-  private password: string;
-  private email: string;
+
 
   config = [
     {
@@ -43,8 +50,9 @@ export class SignUpComponent implements OnInit {
   observeForm(form: FormGroup) {
     this.form = form;
     this.form.valueChanges.subscribe(value => {
-      this.login = value.login;
-      this.password = value.password;
+      this.email.emit(value.email);
+      this.login.emit(value.login);
+      this.password.emit(value.password);
     })
   }
 

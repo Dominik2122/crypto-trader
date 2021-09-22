@@ -5,6 +5,8 @@ import {UserLoginRequest} from "src/app/authentication/domain/UserLoginRequest";
 import {tap} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {User} from "src/app/authentication/domain/User";
+import {ValidatedUser} from "src/app/authentication/domain/ValidatedUser";
+import {UserSignUpRequest} from "src/app/authentication/domain/UserSignUpRequest";
 
 @Injectable()
 export class AuthResource extends BaseResource {
@@ -14,15 +16,17 @@ export class AuthResource extends BaseResource {
   ) {super(http)}
 
 
-  login(request: UserLoginRequest): Observable<string> {
-    return this.post<string>('http://127.0.0.1:8000/api/user/token/', request).pipe(
+  login(request: UserLoginRequest): Observable<ValidatedUser> {
+    return this.post<ValidatedUser>('http://127.0.0.1:8000/api/user/token/', request).pipe(
       tap((x) => console.log(x))
     )
   }
 
 
-  signUp() {
-    return this.post('http://127.0.0.1:8000/api/user/create/', {})
+  signUp(request: UserSignUpRequest): Observable<ValidatedUser> {
+    return this.post<ValidatedUser>('http://127.0.0.1:8000/api/user/create/', request).pipe(
+      tap((x) => console.log(x))
+    )
   }
 
 

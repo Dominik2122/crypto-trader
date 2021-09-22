@@ -6,6 +6,7 @@ import {AuthResource} from "src/app/authentication/infrastructure/AuthResource";
 import {Observable} from "rxjs";
 import {User} from "src/app/authentication/domain/User";
 import {map} from "rxjs/operators";
+import {ValidatedUser} from "src/app/authentication/domain/ValidatedUser";
 
 @Injectable()
 export class AuthService {
@@ -20,15 +21,21 @@ export class AuthService {
   login(email: string, password: string): Observable<void> {
     const request: UserLoginRequest = new UserLoginRequest(email, password)
     return this.authResource.login(request).pipe(
-      map((token: string) => {
-        const user: User = new User(email, password, email, token)
+      map((response: ValidatedUser) => {
+        const user: User = new User(response.userLogin,  email, response.token, response.isAdmin)
         this.permissionService.setUser(user)
       })
     )
   }
 
-  signUp(request: UserSignUpRequest) {
-
+  signUp(login: string, email: string, password: string) {
+    const request: UserSignUpRequest = new UserSignUpRequest(login, email, password)
+    return this.authResource.signUp(request).pipe(
+      map((response: ValidatedUser) => {
+        const user: User = new User(login,  email, response.token, response.isAdmin)
+        this.permissionService.setUser(user)
+      })
+    )
   }
 
   logout(): void {

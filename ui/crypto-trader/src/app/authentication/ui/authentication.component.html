@@ -15,14 +15,11 @@
           <a class="ml-2" (click)="changeForm(FormType.SIGNUP)">Sign up</a>
         </div>
       </div>
-
-
-
     </ng-container>
 
     <ng-template #signUpPage>
-      <app-sign-up>
-        <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <app-sign-up (email)="observeEmail($event)" (login)="observeLogin($event)" (password)="observePassword($event)" >
+        <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  (click)="submit()">
           Sign up
         </button>
       </app-sign-up>

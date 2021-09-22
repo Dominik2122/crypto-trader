@@ -16,6 +16,7 @@ export class AuthenticationComponent {
 
   private email: string
   private password: string
+  private login: string
 
   constructor(private readonly authService: AuthService) {
   }
@@ -32,6 +33,10 @@ export class AuthenticationComponent {
     this.email = email
   }
 
+  observeLogin(email: string) {
+    this.login = email
+  }
+
   observePassword(password: string) {
     this.password = password
   }
@@ -41,7 +46,7 @@ export class AuthenticationComponent {
     if (this.isLoginPage) {
       this.authService.login(this.email, this.password).subscribe()
     } else {
-
+      this.authService.signUp(this.login, this.email, this.password).subscribe()
     }
   }
 
