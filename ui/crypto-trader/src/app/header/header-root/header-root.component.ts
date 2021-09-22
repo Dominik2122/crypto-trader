@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {faSignInAlt} from "@fortawesome/free-solid-svg-icons";
+import {Component, OnInit} from '@angular/core';
+import {faSignInAlt, faSignOutAlt, faUserAlt} from "@fortawesome/free-solid-svg-icons";
+import {PermissionService} from "src/app/authentication/domain/PermissionService";
+import {User} from "src/app/authentication/domain/User";
 
 @Component({
   selector: 'app-header-root',
@@ -8,14 +10,18 @@ import {faSignInAlt} from "@fortawesome/free-solid-svg-icons";
 })
 export class HeaderRootComponent implements OnInit {
 
+  user: User
 
-
-  constructor() { }
+  constructor(private readonly permissionService: PermissionService) {
+  }
 
   faSignInAlt = faSignInAlt
+  faSignOutAlt = faSignOutAlt
+  faUserAlt = faUserAlt
 
 
   ngOnInit(): void {
+    this.observeUser()
     const btn = document.querySelector(".mobile-menu-button");
     const sidebar = document.querySelector(".sidebar");
     btn.addEventListener("click", () => {
@@ -23,5 +29,10 @@ export class HeaderRootComponent implements OnInit {
     });
 
   }
+
+  private observeUser() {
+    this.permissionService.selectUser().subscribe((user: User) => this.user = user)
+  }
+
 
 }

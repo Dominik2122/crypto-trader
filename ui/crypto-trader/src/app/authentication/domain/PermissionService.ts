@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {User} from "src/app/authentication/domain/User";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable()
 export class PermissionService {
@@ -26,8 +26,8 @@ export class PermissionService {
     return this.user
   }
 
-  isAuthenticated() {
-    return !!this.user
+  selectUser(): Observable<User> {
+    return this.user$
   }
 
 }
