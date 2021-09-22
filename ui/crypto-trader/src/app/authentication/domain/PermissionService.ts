@@ -10,7 +10,6 @@ export class PermissionService {
 
   checkIfUserExists() {
     const userRaw = JSON.parse(localStorage.getItem('user'))
-    console.log(userRaw)
     userRaw && this.setUser(new User(userRaw.login,
       userRaw.email,
       userRaw.token,

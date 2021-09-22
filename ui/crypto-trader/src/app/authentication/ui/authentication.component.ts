@@ -22,11 +22,7 @@ export class AuthenticationComponent {
   }
 
   changeForm(formType: FormType) {
-    if (formType === FormType.SIGNUP) {
-      this.isLoginPage = false
-    } else {
-      this.isLoginPage = true
-    }
+    this.isLoginPage = formType === FormType.LOGIN
   }
 
   observeEmail(email: string) {

@@ -17,16 +17,13 @@ export class AuthResource extends BaseResource {
 
 
   login(request: UserLoginRequest): Observable<ValidatedUser> {
-    return this.post<ValidatedUser>('http://127.0.0.1:8000/api/user/token/', request).pipe(
-      tap((x) => console.log(x))
-    )
+    return this.post<ValidatedUser>('http://127.0.0.1:8000/api/user/token/', request)
+
   }
 
 
   signUp(request: UserSignUpRequest): Observable<ValidatedUser> {
-    return this.post<ValidatedUser>('http://127.0.0.1:8000/api/user/create/', request).pipe(
-      tap((x) => console.log(x))
-    )
+    return this.post<ValidatedUser>('http://127.0.0.1:8000/api/user/create/', request)
   }
 
 
