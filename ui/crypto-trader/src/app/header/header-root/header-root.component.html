@@ -52,7 +52,6 @@
       <li><a class="desktop__tabs" href="">About</a></li>
       <li><a class="desktop__tabs" href="">Projects</a></li>
       <li><a class="desktop__tabs" href="">Blog</a></li>
-      <app-dropdown></app-dropdown>
 
       <ng-container *ngIf="!user; else signOutDesktop">
         <li><a class="desktop__tabs" routerLink='auth'>
@@ -74,3 +73,4 @@
     </ul>
   </div>
 </nav>
+<app-dropdown></app-dropdown>

@@ -8,8 +8,14 @@ import {createPopper} from "@popperjs/core";
 })
 export class DropdownComponent implements AfterViewInit {
 
+  button = document.querySelector('#button');
+  tooltip = document.querySelector('#tooltip');
+
+
   dropdownPopoverShow = false;
-  @ViewChild("btnDropdownRef", {static: false}) btnDropdownRef: ElementRef;
+  @ViewChild("btnDropdownRef", {static: false})
+  btnDropdownRef: ElementRef;
+
   @ViewChild("popoverDropdownRef", {static: false})
   popoverDropdownRef: ElementRef;
 
@@ -18,9 +24,21 @@ export class DropdownComponent implements AfterViewInit {
       this.btnDropdownRef.nativeElement,
       this.popoverDropdownRef.nativeElement,
       {
-        placement: "bottom-start",
+        placement: "bottom",
+        strategy: "fixed",
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [10, 20],
+            },
+          },
+        ],
       }
     );
+    createPopper(this.button, this.tooltip as HTMLElement, {
+      placement: 'right',
+    });
   }
 
   toggleDropdown(event) {
