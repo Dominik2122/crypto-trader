@@ -10,10 +10,6 @@ import {HomeTreeNodeDTO} from "src/app/home/home-tree/infrastructure/HomeTreeNod
 @Injectable()
 export class HomeTreeNodeResource extends BaseResource implements TreeNodeResource {
 
-  constructor(http: HttpClient) {
-    super(http)
-  }
-
   getTreeNodes(): Observable<Array<HomeTreeNode>> {
     return this.get<Array<HomeTreeNodeDTO>>('http://127.0.0.1:8000/api/crypto/home/').pipe(
       map((dto: Array<HomeTreeNodeDTO>) => HomeTreeNode.fromArrayDTO(dto))

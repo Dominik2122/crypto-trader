@@ -7,6 +7,7 @@ import {DropdownModule} from "src/app/util/dropdown/dropdown.module";
 import {DialogWindowModule} from "src/app/util/dialog-window/dialog-window.module";
 import { HeaderAccountInfoDialogComponent } from 'src/app/header/header-root/header-account-info-dialog/header-account-info-dialog.component';
 import {NgxSpinnerModule} from "ngx-spinner";
+import {HeaderAccountResource} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountResource";
 
 
 
@@ -25,6 +26,9 @@ import {NgxSpinnerModule} from "ngx-spinner";
     DropdownModule,
     DialogWindowModule,
     NgxSpinnerModule
+  ],
+  providers: [
+    HeaderAccountResource
   ]
 })
 export class HeaderModule { }
