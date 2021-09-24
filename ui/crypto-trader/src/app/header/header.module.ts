@@ -8,6 +8,8 @@ import {DialogWindowModule} from "src/app/util/dialog-window/dialog-window.modul
 import { HeaderAccountInfoDialogComponent } from 'src/app/header/header-root/header-account-info-dialog/header-account-info-dialog.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {HeaderAccountResource} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountResource";
+import {HeaderAccountService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountService";
+import {HeaderAccountStorageService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountStorageService";
 
 
 
@@ -28,7 +30,9 @@ import {HeaderAccountResource} from "src/app/header/header-root/header-account-i
     NgxSpinnerModule
   ],
   providers: [
-    HeaderAccountResource
+    HeaderAccountResource,
+    HeaderAccountService,
+    HeaderAccountStorageService
   ]
 })
 export class HeaderModule { }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgxSpinnerService} from "ngx-spinner";
-import {HeaderAccountResource} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountResource";
+import {HeaderAccountService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountService";
+import {HeaderAccount} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccount";
 
 @Component({
   selector: 'app-header-account-info-dialog',
@@ -9,20 +10,27 @@ import {HeaderAccountResource} from "src/app/header/header-root/header-account-i
 })
 export class HeaderAccountInfoDialogComponent implements OnInit {
 
-  isLoading: boolean = true;
+  headerAccountData: HeaderAccount;
 
   constructor(private spinner: NgxSpinnerService,
-              private headerAccountResource: HeaderAccountResource) {}
+              private headerAccountService: HeaderAccountService) {
+  }
 
 
   ngOnInit(): void {
-    this.headerAccountResource.getAccount().subscribe((x) => console.log(x))
-    this.spinner.show();
-    setTimeout(() => this.spinner.hide(), 3000)
+    this.fetchAndObserveAccountData()
   }
 
-  private fetchAccountData(): void {
-
+  private fetchAndObserveAccountData(): void {
+    this.spinner.show();
+    this.headerAccountService.fetchHeaderAccount()
+    this.headerAccountService.selectHeaderAccount().subscribe((account: HeaderAccount) => {
+      if (!!account) {
+        console.log(account)
+        this.spinner.hide()
+      }
+      this.headerAccountData = account
+    })
   }
 
 }
