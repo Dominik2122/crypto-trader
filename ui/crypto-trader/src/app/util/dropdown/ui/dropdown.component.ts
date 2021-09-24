@@ -1,49 +1,21 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {createPopper} from "@popperjs/core";
+import {Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
+
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements AfterViewInit {
+export class DropdownComponent {
 
-  button = document.querySelector('#button');
-  tooltip = document.querySelector('#tooltip');
+  @Input()
+  name: string;
 
+  @Input()
+  dropdownOptions: Array<DropdownOption>;
 
-  dropdownPopoverShow = false;
-  @ViewChild("btnDropdownRef", {static: false})
-  btnDropdownRef: ElementRef;
-
-  @ViewChild("popoverDropdownRef", {static: false})
-  popoverDropdownRef: ElementRef;
-
-  ngAfterViewInit() {
-    createPopper(
-      this.btnDropdownRef.nativeElement,
-      this.popoverDropdownRef.nativeElement,
-      {
-        placement: "bottom",
-        strategy: "fixed",
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [10, 20],
-            },
-          },
-        ],
-      }
-    );
-    createPopper(this.button, this.tooltip as HTMLElement, {
-      placement: 'right',
-    });
-  }
-
-  toggleDropdown(event) {
-    event.preventDefault();
-    this.dropdownPopoverShow = !this.dropdownPopoverShow
-  }
+  @ContentChild('dropdown')
+  dropdownConfig: TemplateRef<any>
 
 }

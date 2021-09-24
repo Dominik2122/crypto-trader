@@ -12,6 +12,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "src/environments/environment";
 import {PermissionService} from "src/app/authentication/domain/PermissionService";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {PermissionService} from "src/app/authentication/domain/PermissionService
   imports: [
     HttpClientModule,
     BrowserModule,
+    NgxSpinnerModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HeaderModule,

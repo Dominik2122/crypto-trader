@@ -1,0 +1,11 @@
+$root: 'header-account-info';
+
+.#{$root} {
+
+  &__container {
+    width: 15rem;
+    height: 15rem;
+    background: white;
+  }
+
+}

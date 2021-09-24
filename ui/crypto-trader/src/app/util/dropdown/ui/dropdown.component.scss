@@ -1,5 +1,9 @@
-.box {
-  width: 100px;
-  height: 100px;
-  background: black;
+.dropdown-options-group {
+  @apply bg-white block text-base list-none text-left mt-1;
+  min-width: 7rem;
+
+  .dropdown-option {
+    @apply text-sm font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 mb-1;
+  }
+
 }

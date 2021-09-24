@@ -1,12 +1,21 @@
-<style>
-  #tooltip {
-    background-color: #333;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 13px;
-  }
-</style>
+<popper-content #dropDownOptions>
+  <div class="dropdown-options-group">
+    <a *ngFor="let option of dropdownOptions" [routerLink]="option.link"
+       class="dropdown-option">
+      {{option.title}}
+    </a>
+  </div>
+</popper-content>
+<div [popper]="dropDownOptions"
+     [popperShowOnStart]="false"
+     popperTrigger="click"
+     popperPlacement="bottom">
+  <li *ngIf="!dropdownConfig; else elementRef">
+    <a>{{name}}</a>
+  </li>
+</div>
 
-<button id="button" aria-describedby="tooltip">I'm a button</button>
-<div id="tooltip" role="tooltip">I'm a tooltip</div>
+
+<ng-template #elementRef>
+  <ng-content></ng-content>
+</ng-template>

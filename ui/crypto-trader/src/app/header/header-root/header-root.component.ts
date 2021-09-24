@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {faSignInAlt, faSignOutAlt, faUserAlt} from "@fortawesome/free-solid-svg-icons";
 import {PermissionService} from "src/app/authentication/domain/PermissionService";
 import {User} from "src/app/authentication/domain/User";
+import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
 
 @Component({
   selector: 'app-header-root',
@@ -12,6 +13,8 @@ export class HeaderRootComponent implements OnInit {
 
   user: User
 
+  dropdownOptions: Array<DropdownOption>;
+
   constructor(private readonly permissionService: PermissionService) {
   }
 
@@ -21,6 +24,7 @@ export class HeaderRootComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.createDropdownOptions()
     this.observeUser()
     const btn = document.querySelector(".mobile-menu-button");
     const sidebar = document.querySelector(".sidebar");
@@ -32,6 +36,16 @@ export class HeaderRootComponent implements OnInit {
 
   logout(): void {
     this.permissionService.setUser(null)
+  }
+
+  private createDropdownOptions() {
+    this.dropdownOptions = [
+      new DropdownOption('zupa', 'zebowa'),
+      new DropdownOption('zadsadasdasdasdasdupa', 'zebowddda'),
+      new DropdownOption('zadadaDASDAsdasdaupa', 'zebowddda'),
+      new DropdownOption('zupDadada', 'fgfff'),
+
+    ]
   }
 
   private observeUser(): void {

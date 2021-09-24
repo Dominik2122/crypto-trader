@@ -59,18 +59,32 @@
           Sign in
         </a></li>
       </ng-container>
+
+
       <ng-template #signOutDesktop>
-        <li><a class="desktop__tabs" routerLink='auth'>
-          <fa-icon [icon]="faUserAlt" class="flex-1"></fa-icon>
-          {{user.getUserLogin()}}
-        </a></li>
+
+        <app-dialog-window
+          class="desktop__tabs">
+          <ng-container dialogWindowButton>
+            <fa-icon [icon]="faUserAlt" class="flex-1 h-full">
+            </fa-icon>
+            {{user.getUserLogin()}}
+          </ng-container>
+          <ng-container dialogWindow>
+            <app-header-account-info-dialog></app-header-account-info-dialog>
+          </ng-container>
+        </app-dialog-window>
+
+
         <li><a class="desktop__tabs" routerLink='' (click)="logout()">
           <fa-icon [icon]="faSignOutAlt" class="flex-1"></fa-icon>
           Logout
         </a></li>
+
+
       </ng-template>
 
     </ul>
   </div>
 </nav>
-<app-dropdown></app-dropdown>
+
