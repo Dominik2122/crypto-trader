@@ -12,6 +12,8 @@ export class HeaderAccountInfoDialogComponent implements OnInit {
 
   headerAccountData: HeaderAccount;
 
+  isLoaded: boolean = false;
+
   constructor(private spinner: NgxSpinnerService,
               private headerAccountService: HeaderAccountService) {
   }
@@ -26,7 +28,7 @@ export class HeaderAccountInfoDialogComponent implements OnInit {
     this.headerAccountService.fetchHeaderAccount()
     this.headerAccountService.selectHeaderAccount().subscribe((account: HeaderAccount) => {
       if (!!account) {
-        console.log(account)
+        this.isLoaded = true
         this.spinner.hide()
       }
       this.headerAccountData = account
