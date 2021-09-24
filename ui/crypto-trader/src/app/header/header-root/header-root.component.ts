@@ -15,6 +15,8 @@ export class HeaderRootComponent implements OnInit {
 
   dropdownOptions: Array<DropdownOption>;
 
+  renderDialogWindow: boolean = false;
+
   constructor(private readonly permissionService: PermissionService) {
   }
 
@@ -36,6 +38,10 @@ export class HeaderRootComponent implements OnInit {
 
   logout(): void {
     this.permissionService.setUser(null)
+  }
+
+  dialogWindowOnClick() {
+    this.renderDialogWindow = !this.renderDialogWindow
   }
 
   private createDropdownOptions() {

@@ -10,6 +10,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import {HeaderAccountResource} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountResource";
 import {HeaderAccountService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountService";
 import {HeaderAccountStorageService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountStorageService";
+import {ChartModule} from "src/app/util/chart/chart.module";
 
 
 
@@ -27,7 +28,8 @@ import {HeaderAccountStorageService} from "src/app/header/header-root/header-acc
     RouterModule,
     DropdownModule,
     DialogWindowModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartModule
   ],
   providers: [
     HeaderAccountResource,

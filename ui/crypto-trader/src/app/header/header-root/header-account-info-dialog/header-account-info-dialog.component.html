@@ -5,7 +5,16 @@
   <ng-container *ngIf="isLoaded">
     <h3>Account balance: </h3>
     <h2>{{ headerAccountData.currentBalance }} $ </h2>
+
+    <app-chart
+      id="header-account-info-dialog"
+      [chartConfig]="chartConfig"
+      [chartData]="chartData"
+
+    ></app-chart>
   </ng-container>
+
+
 
   <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
     <a routerLink="auth">
