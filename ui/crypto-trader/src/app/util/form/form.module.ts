@@ -9,6 +9,8 @@ import { PasswordInputComponent } from './ui/form-inputs/password-input/password
 import { EmailInputComponent } from './ui/form-inputs/email-input/email-input.component';
 import { TextAreaComponent } from './ui/form-inputs/text-area/text-area.component';
 import { NumberInputComponent } from './ui/form-inputs/number-input/number-input.component';
+import {RangeInputComponent} from "src/app/util/form/ui/form-inputs/range/range-input.component";
+import {NgxSliderModule} from "@angular-slider/ngx-slider";
 
 
 
@@ -21,14 +23,16 @@ import { NumberInputComponent } from './ui/form-inputs/number-input/number-input
     PasswordInputComponent,
     EmailInputComponent,
     TextAreaComponent,
-    NumberInputComponent
+    NumberInputComponent,
+    RangeInputComponent
   ],
   exports: [
     FormComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSliderModule
   ],
   entryComponents: [
     SelectFieldComponent,

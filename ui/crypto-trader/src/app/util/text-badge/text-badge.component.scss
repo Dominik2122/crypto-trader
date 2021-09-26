@@ -1,5 +1,6 @@
 .badge {
-  @apply rounded-2xl w-min px-1 font-bold cursor-default;
+  @apply rounded-2xl px-1 font-bold cursor-default;
+  width: fit-content;
 }
 
 .subtle {

@@ -1,12 +1,12 @@
-import {ChangeDetectorRef, Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Input, SimpleChanges} from '@angular/core';
 import {NgxSpinnerService} from "ngx-spinner";
 import {HeaderAccountService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountService";
 import {HeaderAccount} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccount";
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
 import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
-import {faSignInAlt, faSignOutAlt, faUserAlt} from "@fortawesome/free-solid-svg-icons";
-import {User} from "src/app/authentication/domain/User";
+import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { User } from "src/app/authentication/domain/User";
 
 @Component({
   selector: 'app-header-account-info-dialog',
@@ -33,23 +33,29 @@ export class HeaderAccountInfoDialogComponent {
   faUserAlt = faUserAlt
 
   constructor(private spinner: NgxSpinnerService,
-              private headerAccountService: HeaderAccountService,
-              private changeDetector: ChangeDetectorRef) {
+              private headerAccountService: HeaderAccountService) {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.showDialog) {
-      console.log(this.showDialog)
-      this.changeDetector.detectChanges()
-      this.fetchAndObserveAccountData()
+
+  ngOnInit(): void {
+    this.fetchAndObserveAccountData()
+    this.spinner.show();
+  }
+
+
+  onUserClick() {
+    this.showDialog = !this.showDialog
+    this.initChart();
+  }
+
+  private initChart() {
+    if (!!this.headerAccountData) {
+      this.createChartConfig()
+      this.isLoaded = true
+      this.spinner.hide()
     }
   }
 
-  ngOnInit(): void {
-
-    this.spinner.show();
-
-  }
 
   private createChartConfig(): void {
     this.chartConfig = new ChartOptionsConfig()
@@ -70,17 +76,10 @@ export class HeaderAccountInfoDialogComponent {
       )])
   }
 
-
   private fetchAndObserveAccountData(): void {
     this.headerAccountService.fetchHeaderAccount()
     this.headerAccountService.selectHeaderAccount().subscribe((account: HeaderAccount) => {
       this.headerAccountData = account
-      if (!!account) {
-        this.createChartConfig()
-        this.isLoaded = true
-        this.spinner.hide()
-      }
-
     })
   }
 

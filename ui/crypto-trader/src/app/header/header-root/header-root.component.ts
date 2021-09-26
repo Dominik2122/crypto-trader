@@ -39,12 +39,6 @@ export class HeaderRootComponent implements OnInit {
     this.permissionService.setUser(null)
   }
 
-  dialogWindowOnClick() {
-    this.renderDialogWindow = !this.renderDialogWindow
-    console.log('click')
-  }
-
-
   private observeUser(): void {
     this.permissionService.selectUser().subscribe((user: User) => this.user = user)
   }

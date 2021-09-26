@@ -12,6 +12,9 @@ import {HeaderAccountService} from "src/app/header/header-root/header-account-in
 import {HeaderAccountStorageService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountStorageService";
 import {ChartModule} from "src/app/util/chart/chart.module";
 import {NgxPopperjsModule} from "ngx-popperjs";
+import {ButtonModule} from "src/app/util/button/button.module";
+import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
+import {UtilModule} from "src/app/util/util.module";
 
 
 
@@ -23,16 +26,19 @@ import {NgxPopperjsModule} from "ngx-popperjs";
 	exports: [
 		HeaderRootComponent
 	],
-	imports: [
-		CommonModule,
-		FontAwesomeModule,
-		RouterModule,
-		DropdownModule,
-		DialogWindowModule,
-		NgxSpinnerModule,
-		ChartModule,
-		NgxPopperjsModule
-	],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    RouterModule,
+    DropdownModule,
+    DialogWindowModule,
+    NgxSpinnerModule,
+    ChartModule,
+    NgxPopperjsModule,
+    ButtonModule,
+    TextBadgeModule,
+    UtilModule
+  ],
   providers: [
     HeaderAccountResource,
     HeaderAccountService,

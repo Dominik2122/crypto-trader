@@ -1,0 +1,9 @@
+<app-form
+  [config]="formConfig"
+  (formOutput)="observeForm($event)"
+></app-form>
+<app-chart
+  id="headerAccount"
+  [chartConfig]="chartConfig"
+  [chartData]="chartData"
+></app-chart>

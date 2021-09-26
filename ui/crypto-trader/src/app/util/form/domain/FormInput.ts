@@ -4,6 +4,7 @@ import {EmailInputComponent} from "src/app/util/form/ui/form-inputs/email-input/
 import {TextAreaComponent} from "src/app/util/form/ui/form-inputs/text-area/text-area.component";
 import {NumberInputComponent} from "src/app/util/form/ui/form-inputs/number-input/number-input.component";
 import {PasswordInputComponent} from "src/app/util/form/ui/form-inputs/password-input/password-input.component";
+import {RangeInputComponent} from "src/app/util/form/ui/form-inputs/range/range-input.component";
 
 
 
@@ -14,6 +15,7 @@ export enum FormInput {
   EMAIL = 'email',
   NUMBER = 'number',
   TEXTAREA = 'textArea',
+  RANGE = 'range'
 }
 
 
@@ -25,4 +27,5 @@ export const formInput = {
   email: EmailInputComponent,
   number: NumberInputComponent,
   textArea: TextAreaComponent,
+  range: RangeInputComponent,
 }
