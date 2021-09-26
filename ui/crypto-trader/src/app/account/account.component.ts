@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
-import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
+import {AccountDataService} from "src/app/account/domain/AccountDataService";
 
 @Component({
   selector: 'app-account',
@@ -10,9 +9,13 @@ import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
 export class AccountComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private readonly accountDataService: AccountDataService) { }
 
   ngOnInit(): void {
+    this.accountDataService.fetchAccountData(1)
+    this.accountDataService.selectAccountBalance().subscribe((x) => {
+      console.log(x)
+    })
   }
 
 }

@@ -15,7 +15,7 @@ export class RangeInputComponent implements FieldComponent {
 
   options: Options
 
-  value: number = 100;
+  value: number;
 
   ngOnInit() {
     this.options = {

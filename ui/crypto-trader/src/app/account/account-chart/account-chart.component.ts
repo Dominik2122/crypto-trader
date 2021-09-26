@@ -3,6 +3,7 @@ import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
 import {FormInput} from "src/app/util/form/domain/FormInput";
 import {AccountChartDateRange} from "src/app/account/account-chart/AccountChartDateRange";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-account-chart',
@@ -18,15 +19,17 @@ export class AccountChartComponent implements OnInit {
       name: 'range',
       showTicks: true,
       stepsArray: [
-        { value: AccountChartDateRange.DAY, legend: "Yesterday" },
-        { value: AccountChartDateRange.WEEK, legend: "Week"  },
-        { value: AccountChartDateRange.TWO_WEEKS, legend: "2 weeks"  },
-        { value: AccountChartDateRange.MONTH, legend: "Month"  }
+        { value: 1, legend: "Yesterday" },
+        { value: 2, legend: "Week"  },
+        { value: 3, legend: "2 weeks"  },
+        { value: 4, legend: "Month"  }
       ]
     },
   ];
 
+  form: FormGroup;
 
+  range: number
 
   chartConfig: ChartOptionsConfig
 
@@ -37,8 +40,12 @@ export class AccountChartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  observeForm(event): void {
-    console.log(event)
+  observeForm(form: FormGroup): void {
+    this.form = form;
+    this.form.valueChanges.subscribe(value => {
+      console.log(value)
+      this.range = value.range;
+    })
   }
 
 }
