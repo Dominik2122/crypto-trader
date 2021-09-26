@@ -1,27 +1,65 @@
-<div class="header-account-info__container">
-  <ngx-spinner type="cog" size="medium">
-  </ngx-spinner>
-
-  <ng-container *ngIf="isLoaded">
-    <h3>Account balance: </h3>
-    <h2>{{ headerAccountData.currentBalance }} $ </h2>
-
-    <app-chart
-      id="header-account-info-dialog"
-      [chartConfig]="chartConfig"
-      [chartData]="chartData"
-
-    ></app-chart>
-  </ng-container>
-
-
-
-  <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-    <a routerLink="auth">
-      Details
-    </a>
-  </button>
-
-
+<div [popper]="popperContent"
+     [popperShowOnStart]="false"
+     popperTrigger="click"
+     popperPlacement="bottom">
+  <fa-icon [icon]="faUserAlt" class="flex-1 h-full"></fa-icon>
+  {{user?.getUserLogin()}}
 
 </div>
+
+
+<popper-content #popperContent>
+  <div class="header-account-info__container">
+
+
+    <div *ngIf="isLoaded">
+      <h3>Account balance: </h3>
+      <h2>{{ headerAccountData?.currentBalance }} $ </h2>
+      <app-chart
+        id="headerAccount"
+        [chartConfig]="chartConfig"
+        [chartData]="chartData"
+      ></app-chart>
+    </div>
+
+    <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <a routerLink="auth">
+        Details
+      </a>
+    </button>
+  </div>
+</popper-content>
+
+
+<!--<app-dialog-window-->
+<!--  class="desktop__tabs"-->
+<!--  (click)="dialogWindowOnClick()">-->
+<!--  <ng-container dialogWindowButton>-->
+
+<!--  </ng-container>-->
+<!--  <ng-container dialogWindow>-->
+<!--    <app-header-account-info-dialog></app-header-account-info-dialog>-->
+<!--  </ng-container>-->
+<!--</app-dialog-window>-->
+
+
+<!--<div class="header-account-info__container">-->
+<!--  <ngx-spinner type="cog" size="medium">-->
+<!--  </ngx-spinner>-->
+<!--{{showDialog}}-->
+<!--  <h3>Account balance: </h3>-->
+<!--  <h2>{{ headerAccountData?.currentBalance }} $ </h2>-->
+<!--<div class="" *ngIf="isLoaded">-->
+<!--    <h3>Account balance: </h3>-->
+<!--    <h2>{{ headerAccountData?.currentBalance }} $ </h2>-->
+
+<!--  <app-chart-->
+<!--    id="headerAccount"-->
+<!--    [chartConfig]="chartConfig"-->
+<!--    [chartData]="chartData"-->
+
+<!--  ></app-chart>-->
+<!--</div>-->
+
+
+<!--</div>-->

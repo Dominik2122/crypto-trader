@@ -4,6 +4,7 @@ import {ChartXAxis} from "src/app/util/chart/domain/ChartXAxis";
 export class ChartOptionsConfig {
 
   xAxis: ChartXAxis
+  yAxisTick: boolean = true
 
   type: ChartType
 
@@ -11,6 +12,11 @@ export class ChartOptionsConfig {
 
   withXAxis(xAxis: ChartXAxis): ChartOptionsConfig {
     this.xAxis = xAxis
+    return this
+  }
+
+  withDisabledYAxisTicks(): ChartOptionsConfig {
+    this.yAxisTick
     return this
   }
 

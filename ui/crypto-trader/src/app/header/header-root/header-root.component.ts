@@ -22,11 +22,10 @@ export class HeaderRootComponent implements OnInit {
 
   faSignInAlt = faSignInAlt
   faSignOutAlt = faSignOutAlt
-  faUserAlt = faUserAlt
+
 
 
   ngOnInit(): void {
-    this.createDropdownOptions()
     this.observeUser()
     const btn = document.querySelector(".mobile-menu-button");
     const sidebar = document.querySelector(".sidebar");
@@ -42,17 +41,9 @@ export class HeaderRootComponent implements OnInit {
 
   dialogWindowOnClick() {
     this.renderDialogWindow = !this.renderDialogWindow
+    console.log('click')
   }
 
-  private createDropdownOptions() {
-    this.dropdownOptions = [
-      new DropdownOption('zupa', 'zebowa'),
-      new DropdownOption('zadsadasdasdasdasdupa', 'zebowddda'),
-      new DropdownOption('zadadaDASDAsdasdaupa', 'zebowddda'),
-      new DropdownOption('zupDadada', 'fgfff'),
-
-    ]
-  }
 
   private observeUser(): void {
     this.permissionService.selectUser().subscribe((user: User) => this.user = user)

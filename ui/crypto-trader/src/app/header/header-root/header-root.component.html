@@ -28,14 +28,16 @@
 
       <ng-template #signOut>
         <app-dialog-window
-          class="desktop__tabs">
+          class="desktop__tabs"
+          [template]=""
+          (clicked)="dialogWindowOnClick()">
           <ng-container dialogWindowButton>
             <fa-icon [icon]="faUserAlt" class="flex-1 h-full ml-2">
             </fa-icon>
             {{user.getUserLogin()}}
           </ng-container>
           <ng-container dialogWindow>
-            <app-header-account-info-dialog></app-header-account-info-dialog>
+            <app-header-account-info-dialog [showDialog]="renderDialogWindow" ></app-header-account-info-dialog>
           </ng-container>
         </app-dialog-window>
 
@@ -72,20 +74,11 @@
 
 
       <ng-template #signOutDesktop>
-
-        <app-dialog-window
-          class="desktop__tabs"
-          (click)="dialogWindowOnClick()">
-          <ng-container dialogWindowButton>
-            <fa-icon [icon]="faUserAlt" class="flex-1 h-full">
-            </fa-icon>
-            {{user.getUserLogin()}}
-          </ng-container>
-          <ng-container dialogWindow *ngIf="renderDialogWindow">
-            <app-header-account-info-dialog></app-header-account-info-dialog>
-          </ng-container>
-        </app-dialog-window>
-
+        <app-header-account-info-dialog
+          [user]="user"
+          [showDialog]="renderDialogWindow"
+          class="mt-2"
+        ></app-header-account-info-dialog>
         <li><a class="desktop__tabs" routerLink='' (click)="logout()">
           <fa-icon [icon]="faSignOutAlt" class="flex-1"></fa-icon>
           Logout

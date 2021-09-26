@@ -1,10 +1,13 @@
-<popper-content #dropDownOptions>
-  <ng-content select="[dialogWindow]"></ng-content>
+<popper-content #popperContent>
+  <div class="" (click)="onClickPopper(popperContent)">YOLO</div>
+    <ng-content select="[dialogWindow]"></ng-content>
 </popper-content>
-<div [popper]="dropDownOptions"
+<div [popper]="popperContent"
      [popperShowOnStart]="false"
      popperTrigger="click"
      popperPlacement="bottom"
-     (click)="onClick()">
+     (click)="onClick()"
+
+     (popperOnUpdate)="popperOnUpdate()">
   <ng-content select="[dialogWindowButton]"></ng-content>
 </div>

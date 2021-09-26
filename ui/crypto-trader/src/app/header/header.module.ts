@@ -11,6 +11,7 @@ import {HeaderAccountResource} from "src/app/header/header-root/header-account-i
 import {HeaderAccountService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountService";
 import {HeaderAccountStorageService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountStorageService";
 import {ChartModule} from "src/app/util/chart/chart.module";
+import {NgxPopperjsModule} from "ngx-popperjs";
 
 
 
@@ -22,15 +23,16 @@ import {ChartModule} from "src/app/util/chart/chart.module";
 	exports: [
 		HeaderRootComponent
 	],
-  imports: [
-    CommonModule,
-    FontAwesomeModule,
-    RouterModule,
-    DropdownModule,
-    DialogWindowModule,
-    NgxSpinnerModule,
-    ChartModule
-  ],
+	imports: [
+		CommonModule,
+		FontAwesomeModule,
+		RouterModule,
+		DropdownModule,
+		DialogWindowModule,
+		NgxSpinnerModule,
+		ChartModule,
+		NgxPopperjsModule
+	],
   providers: [
     HeaderAccountResource,
     HeaderAccountService,
