@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
 import {FormInput} from "src/app/util/form/domain/FormInput";
-import {AccountChartDateRange} from "src/app/account/account-chart/AccountChartDateRange";
 import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-account-chart',
-  templateUrl: './account-chart.component.html',
-  styleUrls: ['./account-chart.component.scss']
+  templateUrl: './account-date-range-form.component.html',
+  styleUrls: ['./account-date-range-form.component.scss']
 })
-export class AccountChartComponent implements OnInit {
+export class AccountDateRangeFormComponent implements OnInit {
 
   formConfig = [
     {
