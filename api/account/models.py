@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 from django.contrib.auth import get_user_model
 from cryptocurrency.models import Cryptocurrency, Price
 from django.db.models.signals import post_save
@@ -26,7 +27,7 @@ class TransactionManager(models.Manager):
         cryptocurrency = Cryptocurrency.objects.get(name=crypto)
         price = Price.objects.filter(cryptocurrency=cryptocurrency).latest('date')
         account = Account.objects.get(owner=user)
-        value = amount * price.value
+        value = -1 * amount * price.value
         transaction = self.create(price=price, account=account, crypto=cryptocurrency, owner=user, amount=amount, value=value)
         return transaction
 
@@ -38,8 +39,16 @@ class Transaction(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transactions')
     amount = models.DecimalField(decimal_places=3, max_digits=9, default=0)
     value = models.DecimalField(decimal_places=2, max_digits=9, default=0)
+    date = models.DateTimeField( auto_now_add=True , blank=True, null=True)
 
     objects = TransactionManager()
 
     def __str__(self):
         return self.crypto.name + ' ' + str(self.amount) + ' ' + self.owner.login
+
+
+@receiver(post_save, sender=Transaction)
+def update_account(sender, instance, created, **kwargs):
+    if created:
+        instance.account.balance += instance.value
+        instance.account.save()

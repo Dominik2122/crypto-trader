@@ -1,13 +1,26 @@
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
-from datetime import date
+from datetime import date, datetime, timedelta
+from rest_framework.authtoken.models import Token
 
 
 class UserSerializer(serializers.ModelSerializer):
+    token = serializers.SerializerMethodField('get_token')
+    isAdmin = serializers.SerializerMethodField('get_is_admin')
+
+    def get_token(self, user):
+        return Token.objects.get_or_create(user=user)[0].key
+
+    def get_is_admin(self, user):
+        return user.is_superuser
+
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password', 'login')
-        extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
+        fields = ('email', 'password', 'login', 'token', 'isAdmin')
+        extra_kwargs = {'password': {'write_only': True, 'min_length': 5},
+                        'token': {'read_only': True},
+                        'isAdmin': {'read_only': True}
+                        }
 
     def create(self, validated_data):
         return get_user_model().objects.create_user(**validated_data)
@@ -34,7 +47,6 @@ class AuthTokenSerializer(serializers.Serializer):
         password = attrs.get('password')
 
         user = authenticate(
-            request=self.context.get('request'),
             username=email,
             password=password
             )
@@ -42,9 +54,8 @@ class AuthTokenSerializer(serializers.Serializer):
         if not user:
             raise serializers.ValidationError('unable to authenticate', code='authentication')
         attrs['user'] = user
-        if date() - user.last_login >= 1:
-            user.account.balance += 500
-        user.last_login = date()
+        if datetime.today().replace(tzinfo=None) - user.last_login.replace(tzinfo=None) >= timedelta(days=1):
+            user.account.first().balance += 500
+        user.last_login = date.today()
         user.save()
-
-        return attrs
+        return user

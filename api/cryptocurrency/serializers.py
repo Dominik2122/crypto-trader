@@ -3,13 +3,11 @@ import datetime
 from rest_framework import serializers
 from .models import Cryptocurrency, Price
 
+
 class CryptocurrencySerializer(serializers.ModelSerializer):
     class Meta:
         model = Cryptocurrency
         fields = '__all__'
-
-
-
 
 
 class PriceSerializer(serializers.ModelSerializer):
@@ -45,7 +43,6 @@ class CryptoWithPriceChangeSerializer(serializers.ModelSerializer):
     def get_pastData(self, crypto):
         today = datetime.date.today()
         two_weeks_ago = today - datetime.timedelta(days=14)
-        print(two_weeks_ago)
         two_weeks_ago_prices = crypto.price.filter(date__gte = two_weeks_ago)
         serializer = PriceWithoutCryptoSerializer(two_weeks_ago_prices, many=True)
         return serializer.data
