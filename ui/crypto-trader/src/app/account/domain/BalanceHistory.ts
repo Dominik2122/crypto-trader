@@ -1,13 +1,13 @@
-import {HeaderAccountPastDataDTO} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountPastDataDTO";
+import {AccountPastDataDTO} from "src/app/account/inftrastructure/AccountPastDataDTO";
 
-export class HeaderBalanceHistoryNode {
+export class BalanceHistory {
   constructor(readonly date: Date,
               readonly balance: number) {
 
   }
 
-  static fromArrayDTO(arrayDTO: Array<HeaderAccountPastDataDTO>): Array<HeaderBalanceHistoryNode> {
-    return arrayDTO.map(dto => new HeaderBalanceHistoryNode(new Date(dto.date), dto.balance))
+  static fromArrayDTO(arrayDTO: Array<AccountPastDataDTO>): Array<BalanceHistory> {
+    return arrayDTO.map(dto => new BalanceHistory(new Date(dto.date), dto.balance))
   }
 
 

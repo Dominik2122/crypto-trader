@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import {Account} from "src/app/account/domain/Account";
 
 export const fetchAccountData = createAction(
   '[AccountData] Fetch AccountData',
@@ -7,7 +8,7 @@ export const fetchAccountData = createAction(
 
 export const fetchAccountDataSuccess = createAction(
   '[AccountData] Fetch AccountData Success',
-  props<{ data: any }>()
+  props<{ data: Account }>()
 );
 
 export const fetchAccountDataFailure = createAction(

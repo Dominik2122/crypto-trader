@@ -66,10 +66,10 @@ export class HeaderAccountInfoDialogComponent {
       .withType('line')
 
     this.chartData = new ChartDataConfig()
-      .withLabels(this.headerAccountData.balanceHistory.map(data => data.date))
+      .withLabels(this.headerAccountData.pastData.map(data => data.date))
       .withDatasets([new ChartDataset(
         'Balance',
-        this.headerAccountData.balanceHistory.map(data => data.balance),
+        this.headerAccountData.pastData.map(data => data.balance),
         'green',
         'black',
         0.1

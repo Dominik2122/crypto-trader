@@ -37,7 +37,7 @@ export class ChartComponent implements AfterViewInit {
   chart: Chart
 
   ngAfterViewInit() {
-    console.log(this.chartData)
+
 
     // @ts-ignore
     this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {

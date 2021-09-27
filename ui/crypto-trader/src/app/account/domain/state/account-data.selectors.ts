@@ -10,3 +10,13 @@ export const selectAccountBalance = createSelector(
   selectAccountDataState,
   (state: State) => state.balance
 );
+
+export const selectAccountTransactions = createSelector(
+  selectAccountDataState,
+  (state: State) => state.transactions
+);
+
+export const selectAccountPastData = createSelector(
+  selectAccountDataState,
+  (state: State) => state.pastData
+);

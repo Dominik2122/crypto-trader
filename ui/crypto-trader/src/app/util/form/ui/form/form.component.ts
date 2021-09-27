@@ -25,7 +25,6 @@ export class FormComponent implements OnInit {
   createGroup() {
     const group = this.fb.group({});
     this.config.forEach(control => group.addControl(control.name, this.fb.control('')));
-    console.log(group)
     this.formOutput.emit(group)
     return group;
   }

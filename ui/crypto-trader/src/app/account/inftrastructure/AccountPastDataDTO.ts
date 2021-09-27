@@ -1,4 +1,4 @@
-export class HeaderAccountPastDataDTO {
+export class AccountPastDataDTO {
   constructor(readonly date: string,
               readonly balance: number) {
   }

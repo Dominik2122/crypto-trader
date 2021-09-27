@@ -1,10 +1,12 @@
 import {HeaderAccountPastDataDTO} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountPastDataDTO";
+import {TransactionDTO} from "src/app/account/inftrastructure/TransactionDTO";
 
-export class HeaderAccountDTO {
+export class AccountDTO {
 
   constructor(
     readonly balance: number,
-    readonly pastData: Array<HeaderAccountPastDataDTO>
+    readonly pastData: Array<HeaderAccountPastDataDTO>,
+    readonly transactions: Array<TransactionDTO>
   ) {}
 
 }

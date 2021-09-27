@@ -2,5 +2,7 @@
   class="flex flex-col w-full max-w-xs"
   [formGroup]="group">
   <label class="text-gray-700 font-bold py-2">{{ config.label }}</label>
+  <div class="custom-slider">
   <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+  </div>
 </div>

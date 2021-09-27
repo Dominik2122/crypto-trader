@@ -26,17 +26,4 @@ export class DialogWindowComponent {
     this.clicked.emit()
   }
 
-  popperOnUpdate() {
-    console.log('abc')
-  }
-
-  onClickPopper(popperContent) {
-    console.log(this.popperContento.elRef)
-    setTimeout(() => {
-      console.log('it should be updated')
-      console.log(popperContent.popperInstance)
-      popperContent.createPopper()
-    }, 5000)
-  }
-
 }

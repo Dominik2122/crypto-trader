@@ -5,7 +5,7 @@ import {FormInput} from "src/app/util/form/domain/FormInput";
 import {FormGroup} from "@angular/forms";
 
 @Component({
-  selector: 'app-account-chart',
+  selector: 'app-account-date-range-form',
   templateUrl: './account-date-range-form.component.html',
   styleUrls: ['./account-date-range-form.component.scss']
 })
@@ -42,7 +42,6 @@ export class AccountDateRangeFormComponent implements OnInit {
   observeForm(form: FormGroup): void {
     this.form = form;
     this.form.valueChanges.subscribe(value => {
-      console.log(value)
       this.range = value.range;
     })
   }

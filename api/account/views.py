@@ -52,6 +52,11 @@ class AccountInfoViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
         context["days"] = self.request.query_params.get('days')
         return context
 
+    def list(self, request, *args, **kwargs):
+        user = request.user
+        serializer = self.get_serializer(Account.objects.get(owner=user))
+        return Response(serializer.data)
+
 
 class HomeAccountInfo(viewsets.GenericViewSet, mixins.ListModelMixin):
     authentication_classes = (TokenAuthentication,)

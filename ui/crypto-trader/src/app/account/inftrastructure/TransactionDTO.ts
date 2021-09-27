@@ -1,13 +1,11 @@
-export class Transaction {
-  constructor(id: number,
-              date: Date,
-              price: number,
-              value: number,
-              amount: number,
-              crypto: string) {
+
+export class TransactionDTO {
+  constructor(readonly id: number,
+              readonly price: number,
+              readonly date: string,
+              readonly value: string,
+              readonly amount: string,
+              readonly crypto: string) {
   }
 
-  fromDTO(dto: Array<>): Array<Transaction> {
-
-  }
 }

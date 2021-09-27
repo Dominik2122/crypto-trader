@@ -1,13 +1,10 @@
 <popper-content #popperContent>
-  <div class="" (click)="onClickPopper(popperContent)">YOLO</div>
     <ng-content select="[dialogWindow]"></ng-content>
 </popper-content>
 <div [popper]="popperContent"
      [popperShowOnStart]="false"
      popperTrigger="click"
      popperPlacement="bottom"
-     (click)="onClick()"
-
-     (popperOnUpdate)="popperOnUpdate()">
+     (click)="onClick()">
   <ng-content select="[dialogWindowButton]"></ng-content>
 </div>

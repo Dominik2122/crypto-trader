@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 
 import {Observable, of} from "rxjs";
 import {Injectable} from '@angular/core';
@@ -14,11 +14,12 @@ export class BaseResource {
               private readonly permissionService: PermissionService) {
   }
 
-  get<T>(url: string, params?: { [key: string]: string }): Observable<T> {
+  get<T>(url: string, params?: HttpParams): Observable<T> {
     const user: User = this.permissionService.getUser()
     const token: string = user && user.getToken()
     return this.http.get<T>(url, {
-      headers: {'Authorization': 'Token '+ token }
+      headers: {'Authorization': 'Token '+ token },
+      params
     })
   }
 

@@ -10,10 +10,12 @@ class AccountSerializer(serializers.ModelSerializer):
 
 
 class TransactionSerializer(serializers.ModelSerializer):
+    crypto = serializers.ReadOnlyField(source='crypto.name')
+    price = serializers.ReadOnlyField(source='price.value')
 
     class Meta:
         model = Transaction
-        fields = '__all__'
+        fields = ('crypto', 'id', 'date', 'price', 'amount', 'value')
 
 
 class TransactionCreateSerializer(serializers.ModelSerializer):
@@ -36,6 +38,7 @@ class TransactionCreateSerializer(serializers.ModelSerializer):
 
 class AccountInfoSerializer(serializers.ModelSerializer):
     pastData = serializers.SerializerMethodField('get_pastData')
+    transactions = serializers.SerializerMethodField('get_transactions')
 
     def get_pastData(self, account):
         today = datetime.date.today()
@@ -53,14 +56,27 @@ class AccountInfoSerializer(serializers.ModelSerializer):
                 serializer = TransactionSerializer(transaction)
                 two_weeks_ago_balances.append({
                     'balance': balance,
-                    'date': serializer.data['date']
+                    'date': serializer.data['date'],
+                    'transactionId': serializer.data['id']
                 })
                 balance -= transaction.value
         return two_weeks_ago_balances
 
+    def get_transactions(self, account):
+        today = datetime.date.today()
+        days = self.context.get('days')
+        if not days:
+            days = 14
+        else:
+            days = int(days)
+        day = today - datetime.timedelta(days=days)
+        transactions = account.transactions.filter(date__gte=day).order_by('-date')
+        serializer = TransactionSerializer(transactions, many=True)
+        return serializer.data
+
     class Meta:
-        model = Account
-        fields = ['balance', 'pastData']
+            model = Account
+            fields = ['balance', 'pastData', 'transactions']
 
 
 class HomeAccountInfoSerializer(serializers.ModelSerializer):
