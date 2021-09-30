@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
 import {FormInput} from "src/app/util/form/domain/FormInput";
@@ -7,7 +7,8 @@ import {FormGroup} from "@angular/forms";
 @Component({
   selector: 'app-account-date-range-form',
   templateUrl: './account-date-range-form.component.html',
-  styleUrls: ['./account-date-range-form.component.scss']
+  styleUrls: ['./account-date-range-form.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AccountDateRangeFormComponent implements OnInit {
 

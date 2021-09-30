@@ -38,7 +38,10 @@ export class AccountChartComponent implements OnInit {
       .withXAxis(new ChartXAxis(
         'timeseries',
         {display: false, text: null},
-        {parser: xAxisTime.DaysAndMonth}))
+        {
+          parser: xAxisTime.DaysAndMonth
+        }
+      ))
       .withType('line')
 
     this.chartData = new ChartDataConfig()

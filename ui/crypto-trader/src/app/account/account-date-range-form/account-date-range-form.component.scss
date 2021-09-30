@@ -4,3 +4,25 @@ ngx-slider::ng-deep {
   }
 }
 
+app-account-date-range-form {
+  form {
+    &.shadow-lg {
+      box-shadow: unset;
+    }
+  }
+
+  app-select-field {
+    label {
+      text-align: center;
+      padding: 0;
+    }
+  }
+
+
+  .ngx-slider-inner-tooltip {
+    display: none;
+    height: 0;
+  }
+
+
+}

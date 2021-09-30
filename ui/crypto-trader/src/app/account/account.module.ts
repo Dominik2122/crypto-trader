@@ -14,6 +14,9 @@ import {AccountDataRepository} from "src/app/account/domain/state/AccountDataRep
 import {AccountResource} from "src/app/account/inftrastructure/AccountResource";
 import { AccountChartComponent } from './account-chart/account-chart.component';
 import { AccountTreeComponent } from './account-tree/account-tree.component';
+import {TreeModule} from "src/app/util/tree/tree.module";
+import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
+import {UtilModule} from "src/app/util/util.module";
 
 
 
@@ -24,14 +27,17 @@ import { AccountTreeComponent } from './account-tree/account-tree.component';
     AccountChartComponent,
     AccountTreeComponent
   ],
-  imports: [
-    AccountRoutingModule,
-    CommonModule,
-    ChartModule,
-    FormModule,
-    StoreModule.forFeature(accountDataFeatureKey, reducer),
-    EffectsModule.forFeature([AccountDataEffects])
-  ],
+	imports: [
+		AccountRoutingModule,
+		CommonModule,
+		ChartModule,
+		FormModule,
+		StoreModule.forFeature(accountDataFeatureKey, reducer),
+		EffectsModule.forFeature([AccountDataEffects]),
+		TreeModule,
+		TextBadgeModule,
+		UtilModule
+	],
   providers: [
     AccountDataService,
     AccountDataRepository,

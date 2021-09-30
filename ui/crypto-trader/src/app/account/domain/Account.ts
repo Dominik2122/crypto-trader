@@ -7,7 +7,7 @@ export class Account {
   constructor(
     readonly currentBalance: number,
     readonly pastData: Array<BalanceHistory>,
-    readonly transaction: Array<Transaction>
+    readonly transactions: Array<Transaction>
   ) {
   }
 

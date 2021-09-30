@@ -16,7 +16,7 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.accountDataService.fetchAccountData(5)
+    this.accountDataService.fetchAccountData(10)
     this.accountDataService.selectAccountPastData().subscribe((balanceHistory) => {
       this.balanceHistory = balanceHistory
     })

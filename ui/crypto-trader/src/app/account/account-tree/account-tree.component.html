@@ -1,1 +1,37 @@
-<p>account-tree works!</p>
+
+<h2 class="ml-10">Your recent transactions</h2>
+
+<div *ngIf="initTree" class="text-sm">
+  <app-tree
+    [nodes]="nodes"
+    [columns]="accountTreeColumns"
+    [viewStrategy]="viewStrategy">
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <p>{{node.data.date}}</p>
+      </ng-template>
+    </app-tree-column>
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <p>{{node.data.price | price }}$</p>
+      </ng-template>
+    </app-tree-column>
+    <app-tree-column>
+      <ng-template let-node='node'>
+        {{node.data.value }}$
+      </ng-template>
+    </app-tree-column>
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <app-text-badge [color]="node.data.amount < 0 ? 'green' : 'red'" subtle="true">
+          {{node.data.amount }}
+        </app-text-badge>
+      </ng-template>
+    </app-tree-column>
+    <app-tree-column>
+      <ng-template let-node='node'>
+      <p>{{node.data.crypto }}</p>
+      </ng-template>
+    </app-tree-column>
+  </app-tree>
+</div>

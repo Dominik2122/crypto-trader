@@ -1,23 +1,23 @@
 import {TreeNodeData} from "src/app/util/tree/ui/models/tree-node-data.model";
+import {Transaction} from "src/app/account/domain/Transaction";
 
-export class HomeTreeNodeData implements TreeNodeData {
+export class AccountTransactionTreeNodeData implements TreeNodeData {
 
   constructor(
-  readonly name: string,
-  readonly currentPrice: number,
-  readonly netChange: number,
-  readonly percentageNetChange: number) {}
+  readonly date: string,
+  readonly price: number,
+  readonly value: number,
+  readonly amount: number,
+  readonly crypto: string
+  ) {}
 
-  static fromDTO(dto): HomeTreeNodeData {
-    const currentPrice: number = dto.price.value
-    const netChange: number = +dto.price.value - +dto.change.value
-    const percentageNetChange: number = netChange / currentPrice * 100
-    return new HomeTreeNodeData(
-      dto.name,
-      currentPrice,
-      netChange,
-      percentageNetChange
-    )
+  static fromDomain(domain: Transaction): AccountTransactionTreeNodeData {
+    return new AccountTransactionTreeNodeData(
+      `${domain.date.getDate()}/${domain.date.getMonth()+1}/${domain.date.getFullYear()-2000}`,
+      domain.price,
+      domain.value,
+      domain.amount,
+      domain.crypto)
   }
 
 }

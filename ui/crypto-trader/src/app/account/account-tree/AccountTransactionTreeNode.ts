@@ -3,34 +3,33 @@ import {HomeTreeNodeData} from "src/app/home/home-tree/domain/HomeTreeNodeData";
 import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
 import {HomeTreeNodeDTO} from "src/app/home/home-tree/infrastructure/HomeTreeNodeDTO";
 import {Transaction} from "src/app/account/domain/Transaction";
+import {AccountTransactionTreeNodeData} from "src/app/account/account-tree/AccountTransactionTreeNodeData";
 
-export class AccountTreeNode implements TreeNode {
+export class AccountTransactionTreeNode implements TreeNode {
 
   constructor(
     readonly id: string,
-    readonly data: HomeTreeNodeData,
+    readonly data: AccountTransactionTreeNodeData,
     readonly level: number,
     public expanded: boolean,
-    public position: number,
-    public childData?: Array<HomeTreeNodePastData>,
-    readonly parent?: TreeNode) {}
+    public position: number
+  ) {}
 
-  static fromDomain(domain: Transaction): AccountTreeNode {
-    return new AccountTreeNode(
+  static fromDomain(domain: Transaction): AccountTransactionTreeNode {
+    return new AccountTransactionTreeNode(
       'HOME-' + domain.id,
-      HomeTreeNodeData.fromDTO(domain),
+      AccountTransactionTreeNodeData.fromDomain(domain),
       0,
       false,
       null,
-      HomeTreeNodePastData.fromDTO(dto)
     )
   }
 
-  static fromArrayDomain(arrayDomain: Array<HomeTreeNodeDTO>): Array<HomeTreeNode> {
-    return arrayDTO.map((dto: HomeTreeNodeDTO, index: number) => HomeTreeNode.fromDTO(dto).withPosition(index))
+  static fromArrayDomain(arrayDomain: Array<Transaction>): Array<AccountTransactionTreeNode> {
+    return arrayDomain.map((domain: Transaction, index: number) => AccountTransactionTreeNode.fromDomain(domain).withPosition(index))
   }
 
-  withPosition(position: number): HomeTreeNode {
+  withPosition(position: number): AccountTransactionTreeNode {
     this.position = position
     return this
   }

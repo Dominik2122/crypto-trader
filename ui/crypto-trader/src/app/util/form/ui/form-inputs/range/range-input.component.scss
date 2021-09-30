@@ -43,4 +43,7 @@
   .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
     background: orange;
   }
+  .custom-slider .ngx-slider .ngx-slider-tick-legend {
+    white-space: nowrap;
+  }
 }

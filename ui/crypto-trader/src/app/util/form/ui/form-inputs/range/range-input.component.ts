@@ -6,7 +6,7 @@ import {Options} from '@angular-slider/ngx-slider';
 @Component({
   selector: 'app-select-field',
   templateUrl: './range-input.component.html',
-  styleUrls: ['./range-input.component.scss']
+  styleUrls: ['./range-input.component.scss'],
 })
 export class RangeInputComponent implements FieldComponent {
 
