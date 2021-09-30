@@ -6,6 +6,7 @@ import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 import {AccountDataService} from "src/app/account/domain/AccountDataService";
 import {Transaction} from "src/app/account/domain/Transaction";
 import {AccountTransactionTreeNode} from "src/app/account/account-tree/AccountTransactionTreeNode";
+import {AccountPaginationService} from "src/app/account/account-tree/AccountPaginationService";
 
 @Component({
   selector: 'app-account-tree',
@@ -29,11 +30,13 @@ export class AccountTreeComponent implements OnInit {
 
   viewStrategy: TreeViewStrategy = TreeViewStrategy.TEMPLATE
 
-  constructor(private readonly accountDataService: AccountDataService) {
+  constructor(private readonly accountDataService: AccountDataService,
+              private readonly accountPaginationService: AccountPaginationService) {
   }
 
   ngOnInit(): void {
-    this.accountDataService.selectAccountTransactions().subscribe((transactions) => {
+    this.accountPaginationService.transactionsToShow().subscribe((transactions) => {
+      console.log(transactions)
       this.transactions = transactions
       transactions && this.toNodes(transactions)
       this.initTree = transactions && transactions.length > 0
@@ -44,17 +47,12 @@ export class AccountTreeComponent implements OnInit {
     this.nodes = AccountTransactionTreeNode.fromArrayDomain(transactions)
   }
 
-  private nodesToShow() {
-
-  }
-
   private createPaginationTable() {
 
   }
 
-  private currentPaginationPage() {
 
-  }
+
 }
 
 

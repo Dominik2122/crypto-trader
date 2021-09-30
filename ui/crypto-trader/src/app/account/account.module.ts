@@ -17,6 +17,7 @@ import { AccountTreeComponent } from './account-tree/account-tree.component';
 import {TreeModule} from "src/app/util/tree/tree.module";
 import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
 import {UtilModule} from "src/app/util/util.module";
+import {AccountPaginationService} from "src/app/account/account-tree/AccountPaginationService";
 
 
 
@@ -41,7 +42,8 @@ import {UtilModule} from "src/app/util/util.module";
   providers: [
     AccountDataService,
     AccountDataRepository,
-    AccountResource
+    AccountResource,
+    AccountPaginationService
   ]
 })
 export class AccountModule { }
