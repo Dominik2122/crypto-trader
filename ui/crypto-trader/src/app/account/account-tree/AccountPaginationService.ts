@@ -26,23 +26,48 @@ export class AccountPaginationService {
   transactionsToShow(): Observable<Array<Transaction>> {
     return combineLatest(
       [this.transactions$,
-      this.paginationPage$.asObservable()] )
+        this.paginationPage$.asObservable()])
       .pipe(
-      map(([transactions, page]:[Array<Transaction>, number]) => {
-        console.log(transactions)
-        return transactions && transactions.filter((transaction, index) =>
-          page * this.NODES_PER_PAGE <= index && (page * this.NODES_PER_PAGE + this.NODES_PER_PAGE) > index)
-      })
-    )
+        map(([transactions, page]: [Array<Transaction>, number]) => {
+          this.transactionsNumber = transactions && transactions.length
+          return transactions && transactions.filter((transaction, index) =>
+            page * this.NODES_PER_PAGE <= index && (page * this.NODES_PER_PAGE + this.NODES_PER_PAGE) > index)
+        })
+      )
   }
 
-  setPaginationPage(page: number): void {
+  clickPaginationPage(page: number): void {
     this.paginationPage = page
     this.paginationPage$.next(page)
   }
 
-  currentPaginationPage(): number {
-    return this.paginationPage
+  currentPaginationPages(): Observable<Array<number>> {
+    return this.paginationPage$.asObservable().pipe(
+      map((page: number) => {
+        console.log(page)
+        console.log(this.transactionsNumber/1)
+        if  (page < 2) {
+          return [...Array(5).keys()]
+        }
+        else if (page > this.transactionsNumber/10 - 2) {
+          const pages: Array<number> = []
+          for (let i = Math.floor(this.transactionsNumber/10 + 1) - 5;
+               i < Math.floor(this.transactionsNumber/10 + 1);
+               i++ ) {
+              pages.push(i)
+          }
+          console.log(pages)
+          return pages
+        }
+        else {
+          const pages: Array<number> = []
+          for (let i = page - 2; i <= page + 2; i++ ) {
+            pages.push(i)
+          }
+          return pages
+        }
+      })
+    )
   }
 
   private getNodes() {

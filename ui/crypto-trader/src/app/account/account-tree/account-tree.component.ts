@@ -23,6 +23,9 @@ export class AccountTreeComponent implements OnInit {
 
   initTree: boolean = false
 
+  currentPaginationPages: Array<number>
+  currentPaginationPage:number = 0
+
   accountTreeColumns: Array<TreeColumn> = new TreeColumn.Builder()
     .withHeaders(['Date', 'Price', 'Value', 'Amount', 'Crypto'])
     .withFlex(['0 1 17%', '0 1 20%', '0 1 20%', '0 1 15%', '0 1 28%'])
@@ -35,22 +38,32 @@ export class AccountTreeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.accountPaginationService.transactionsToShow().subscribe((transactions) => {
-      console.log(transactions)
-      this.transactions = transactions
-      transactions && this.toNodes(transactions)
-      this.initTree = transactions && transactions.length > 0
-    })
+    this.createNodes()
+    this.createPaginationTable()
+  }
+
+  clickPage(page: number): void {
+    this.currentPaginationPage = page
+    return this.accountPaginationService.clickPaginationPage(page)
   }
 
   private toNodes(transactions: Array<Transaction>): void {
     this.nodes = AccountTransactionTreeNode.fromArrayDomain(transactions)
   }
 
-  private createPaginationTable() {
-
+  private createNodes() {
+    this.accountPaginationService.transactionsToShow().subscribe((transactions) => {
+      this.transactions = transactions
+      transactions && this.toNodes(transactions)
+      this.initTree = transactions && transactions.length > 0
+    })
   }
 
+  private createPaginationTable() {
+    this.accountPaginationService.currentPaginationPages().subscribe((pages: Array<number>) => {
+      this.currentPaginationPages = pages
+    })
+  }
 
 
 }
