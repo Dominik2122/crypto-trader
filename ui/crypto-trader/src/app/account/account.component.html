@@ -1,5 +1,7 @@
 <div class="w-11/12 md:w-3/4 mx-auto mt-4">
-<app-account-date-range-form></app-account-date-range-form>
+<app-account-date-range-form
+  (days)="onDaysChanges($event)"
+></app-account-date-range-form>
 <app-account-chart [balanceHistory]="balanceHistory"></app-account-chart>
 <app-account-tree></app-account-tree>
 </div>

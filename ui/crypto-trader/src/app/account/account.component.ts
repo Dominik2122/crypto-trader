@@ -11,15 +11,22 @@ export class AccountComponent implements OnInit {
 
   balanceHistory: Array<BalanceHistory>
 
+  days: number = 1
+
 
   constructor(private readonly accountDataService: AccountDataService) {
   }
 
   ngOnInit(): void {
-    this.accountDataService.fetchAccountData(10)
+    this.accountDataService.fetchAccountData(this.days)
     this.accountDataService.selectAccountPastData().subscribe((balanceHistory) => {
       this.balanceHistory = balanceHistory
     })
+  }
+
+  onDaysChanges(days: number) {
+    this.days = days
+    this.accountDataService.fetchAccountData(this.days)
   }
 
 }

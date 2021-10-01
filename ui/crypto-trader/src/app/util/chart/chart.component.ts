@@ -23,9 +23,6 @@ export class ChartComponent implements AfterViewInit {
   @ViewChild('canvas') canvas: ElementRef;
 
   @Input()
-  data: Array<any>
-
-  @Input()
   id: string
 
   @Input()
@@ -36,9 +33,18 @@ export class ChartComponent implements AfterViewInit {
 
   chart: Chart
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.chartConfig || changes.chartData) {
+        this.chart.data = this.chartData.addData().data
+        this.chart && this.chart.update()
+    }
+  }
+
   ngAfterViewInit() {
+    this.reloadChart()
+  }
 
-
+  private reloadChart() {
     // @ts-ignore
     this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {
         ...this.chartConfig.build(),

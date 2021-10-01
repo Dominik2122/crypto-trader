@@ -31,4 +31,8 @@ export class RangeInputComponent implements FieldComponent {
 
   }
 
+  onChange($event) {
+    this.group.controls[this.config.name].setValue($event)
+  }
+
 }

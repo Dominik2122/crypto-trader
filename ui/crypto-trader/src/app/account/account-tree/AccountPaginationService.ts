@@ -44,8 +44,6 @@ export class AccountPaginationService {
   currentPaginationPages(): Observable<Array<number>> {
     return this.paginationPage$.asObservable().pipe(
       map((page: number) => {
-        console.log(page)
-        console.log(this.transactionsNumber/1)
         if  (page < 2) {
           return [...Array(5).keys()]
         }
@@ -56,7 +54,6 @@ export class AccountPaginationService {
                i++ ) {
               pages.push(i)
           }
-          console.log(pages)
           return pages
         }
         else {
