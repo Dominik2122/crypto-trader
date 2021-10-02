@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {AccountDataService} from "src/app/account/domain/AccountDataService";
 import {Transaction} from "src/app/account/domain/Transaction";
 import {BehaviorSubject, combineLatest, Observable, Subject} from "rxjs";
-import {filter, map} from "rxjs/operators";
+import {filter, map, tap} from "rxjs/operators";
 
 @Injectable()
 export class AccountPaginationService {
@@ -25,11 +25,14 @@ export class AccountPaginationService {
 
   transactionsToShow(): Observable<Array<Transaction>> {
     return combineLatest(
-      [this.transactions$,
+      [this.transactions$.pipe(
+        tap((transactions) => this.transactionsNumber = transactions && transactions.length
+        ),
+        tap(() => this.paginationPage$.next(this.paginationPage))
+      ),
         this.paginationPage$.asObservable()])
       .pipe(
         map(([transactions, page]: [Array<Transaction>, number]) => {
-          this.transactionsNumber = transactions && transactions.length
           return transactions && transactions.filter((transaction, index) =>
             page * this.NODES_PER_PAGE <= index && (page * this.NODES_PER_PAGE + this.NODES_PER_PAGE) > index)
         })
@@ -44,21 +47,25 @@ export class AccountPaginationService {
   currentPaginationPages(): Observable<Array<number>> {
     return this.paginationPage$.asObservable().pipe(
       map((page: number) => {
-        if  (page < 2) {
-          return [...Array(5).keys()]
+        if (this.transactionsNumber < 10) {
+          return [];
         }
-        else if (page > this.transactionsNumber/10 - 2) {
+        if (page < 2) {
+          if (Math.floor(this.transactionsNumber / 10 + 1) < 5) {
+            return [...Array(this.transactionsNumber / 10).keys()]
+          }
+          return [...Array(5).keys()]
+        } else if (page > this.transactionsNumber / 10 - 2) {
           const pages: Array<number> = []
-          for (let i = Math.floor(this.transactionsNumber/10 + 1) - 5;
-               i < Math.floor(this.transactionsNumber/10 + 1);
-               i++ ) {
-              pages.push(i)
+          for (let i = Math.floor(this.transactionsNumber / 10 + 1) - 5;
+               i < Math.floor(this.transactionsNumber / 10 + 1);
+               i++) {
+            pages.push(i)
           }
           return pages
-        }
-        else {
+        } else {
           const pages: Array<number> = []
-          for (let i = page - 2; i <= page + 2; i++ ) {
+          for (let i = page - 2; i <= page + 2; i++) {
             pages.push(i)
           }
           return pages

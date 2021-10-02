@@ -24,8 +24,12 @@ export class AccountChartComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.balanceHistory && this.balanceHistory) {
-      this.isLoaded = true
-      this.createChartConfig()
+      if (!this.balanceHistory || this.balanceHistory.length < 2 ) {
+        this.isLoaded = false
+      } else {
+        this.isLoaded = true
+        this.createChartConfig()
+      }
     }
   }
 
@@ -36,7 +40,7 @@ export class AccountChartComponent implements OnInit {
   private createChartConfig(): void {
     this.chartConfig = new ChartOptionsConfig()
       .withXAxis(new ChartXAxis(
-        'timeseries',
+        'time',
         {display: false, text: null},
         {
           parser: xAxisTime.DaysAndMonth
@@ -51,7 +55,7 @@ export class AccountChartComponent implements OnInit {
         this.balanceHistory.map(data => data.balance),
         'green',
         'black',
-        0.1
+        1
       )])
   }
 

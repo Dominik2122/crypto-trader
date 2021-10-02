@@ -1,7 +1,7 @@
 
-<h2 class="ml-10">Your recent transactions</h2>
+<h2>Your recent transactions:</h2>
 
-<div *ngIf="initTree" class="text-sm">
+<div *ngIf="initTree && transactions.length !== 0; else noData" class="text-sm">
   <app-tree
     [nodes]="nodes"
     [columns]="accountTreeColumns"
@@ -41,4 +41,8 @@
       <a (click)="clickPage(page)" [class.active]="page===currentPaginationPage">{{page + 1}}</a></li>
   </ul>
 </div>
-
+<ng-template #noData>
+  <div class="no-data">
+    <h4>No transactions in this period of time, change settings!</h4>
+  </div>
+</ng-template>

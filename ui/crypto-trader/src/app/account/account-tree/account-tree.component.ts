@@ -61,6 +61,7 @@ export class AccountTreeComponent implements OnInit {
 
   private createPaginationTable() {
     this.accountPaginationService.currentPaginationPages().subscribe((pages: Array<number>) => {
+      console.log(pages)
       this.currentPaginationPages = pages
     })
   }
