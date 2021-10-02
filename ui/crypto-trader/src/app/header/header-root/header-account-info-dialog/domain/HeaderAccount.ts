@@ -1,6 +1,6 @@
 import {HeaderBalanceHistoryNode} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderBalanceHistoryNode";
 import {HeaderAccountDTO} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountDTO";
-import {Account} from "src/app/account/domain/Account";
+import {Account} from "src/app/account/account/domain/Account";
 
 export class HeaderAccount extends Account {
 

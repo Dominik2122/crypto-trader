@@ -1,9 +1,0 @@
-<app-chart *ngIf="isLoaded; else notEnough"
-  id="headerAccount"
-  [chartConfig]="chartConfig"
-  [chartData]="chartData"
-></app-chart>
-<ng-template  #notEnough>
-  <h2 class="my-2">Not enough data to create chart. Buy or sell!</h2>
-</ng-template>
-

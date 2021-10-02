@@ -34,8 +34,8 @@ export class ChartComponent implements AfterViewInit {
   chart: Chart
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.chartConfig || changes.chartData) {
-        this.chart.data = this.chartData.addData().data
+    if ((changes.chartConfig || changes.chartData) && this.chart) {
+        this.chart.data = this.chartData.addData() && this.chartData.addData().data
         this.chart && this.chart.update()
     }
   }

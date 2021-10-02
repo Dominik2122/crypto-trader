@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
+    loadChildren: () => import('src/app/account/account-root.module').then(m => m.AccountRootModule)
   }
 ];
 
