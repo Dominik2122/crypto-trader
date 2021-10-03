@@ -1,4 +1,9 @@
 <div class="bg-white text-sm rounded-b p-4">
+  <div class="flex items-center">
+    <h2 class="mr-1">You have currently </h2>
+    <app-text-badge class='text-lg' color="green">{{ balance$ | async | price }}$</app-text-badge>
+    <h2 class="ml-1">allocated in cryptos.</h2>
+  </div>
   <app-user-crypto-chart></app-user-crypto-chart>
   <app-user-crypto-tree></app-user-crypto-tree>
 </div>

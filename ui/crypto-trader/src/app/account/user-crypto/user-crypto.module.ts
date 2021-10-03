@@ -9,6 +9,7 @@ import {ChartModule} from "src/app/util/chart/chart.module";
 import {UserCryptoTreeComponent} from "src/app/account/user-crypto/user-crypto-tree/user-crypto-tree.component";
 import {TreeModule} from "src/app/util/tree/tree.module";
 import {UtilModule} from "src/app/util/util.module";
+import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
 
 
 
@@ -25,7 +26,8 @@ import {UtilModule} from "src/app/util/util.module";
     AccountRootModule,
     ChartModule,
     TreeModule,
-    UtilModule
+    UtilModule,
+    TextBadgeModule
   ]
 })
 export class UserCryptoModule { }
