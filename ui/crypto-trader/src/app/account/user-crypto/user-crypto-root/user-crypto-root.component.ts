@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OwnedCryptoService} from "src/app/account/user-crypto/domain/OwnedCryptoService";
 
 @Component({
   selector: 'app-user-crypto-root',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCryptoRootComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly ownedCryptoService: OwnedCryptoService
+  ) { }
 
   ngOnInit(): void {
+    this.ownedCryptoService.fetchOwnedCrypto().subscribe()
   }
-
 }

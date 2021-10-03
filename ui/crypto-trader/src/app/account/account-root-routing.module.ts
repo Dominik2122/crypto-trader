@@ -11,12 +11,12 @@ const routes: Routes = [
     component: AccountRootComponent,
     children: [
       {
-        path: '',
-        loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
-      },
-      {
         path: 'crypto',
         loadChildren: () => import('./user-crypto/user-crypto.module').then(m => m.UserCryptoModule)
+      },
+      {
+        path: '',
+        loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
       }
     ]
   }
