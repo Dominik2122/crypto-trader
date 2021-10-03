@@ -17,6 +17,7 @@ export class ChartXAxis {
 
   constructor(public type: string,
               public title: xAxisTitle,
-              public time?: xAxisTimeOption
+              public time?: xAxisTimeOption,
+              public display?: boolean
               ) { }
 }

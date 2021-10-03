@@ -5,8 +5,9 @@ import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 import {AccountDataService} from "src/app/account/account/domain/AccountDataService";
 import {Transaction} from "src/app/account/account/domain/Transaction";
-import {AccountTransactionTreeNode} from "src/app/account/account/account-tree/AccountTransactionTreeNode";
+import {OwnedCryptoTreeNode} from "src/app/account/user-crypto/user-crypto-tree/OwnedCryptoTreeNode";
 import {AccountPaginationService} from "src/app/account/account/account-tree/AccountPaginationService";
+import {AccountTransactionTreeNode} from "src/app/account/account/account-tree/AccountTransactionTreeNode";
 
 @Component({
   selector: 'app-account-tree',

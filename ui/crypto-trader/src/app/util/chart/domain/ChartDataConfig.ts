@@ -2,8 +2,8 @@ export class ChartDataset {
   constructor(
     public label: string,
     public data: Array<any>,
-    public backgroundColor: string,
-    public borderColor: string,
+    public backgroundColor: string | Array<string>,
+    public borderColor: string | Array<string>,
     public borderWidth: number) {
   }
 

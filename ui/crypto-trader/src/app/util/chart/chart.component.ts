@@ -6,7 +6,7 @@ import {
   OnInit,
   SimpleChange,
   SimpleChanges,
-  ViewChild
+  ViewChild, ViewEncapsulation
 } from '@angular/core';
 import Chart from "chart.js/auto";
 import {ChartData} from "chart.js";
@@ -17,7 +17,8 @@ import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss']
+  styleUrls: ['./chart.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ChartComponent implements AfterViewInit {
   @ViewChild('canvas') canvas: ElementRef;
@@ -35,8 +36,8 @@ export class ChartComponent implements AfterViewInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if ((changes.chartConfig || changes.chartData) && this.chart) {
-        this.chart.data = this.chartData.addData() && this.chartData.addData().data
-        this.chart && this.chart.update()
+      this.chart.data = this.chartData.addData() && this.chartData.addData().data
+      this.chart && this.chart.update()
     }
   }
 

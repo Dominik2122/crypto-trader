@@ -1,0 +1,15 @@
+app-user-crypto-chart {
+  .pie {
+    .chart-container {
+      @apply mx-auto;
+      height: 400px;
+      width: 400px;
+
+      @media only screen and (max-width: 600px) {
+        height: 280px;
+        width: 280px;
+      }
+    }
+  }
+}
+

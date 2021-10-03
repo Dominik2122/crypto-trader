@@ -4,11 +4,11 @@ import {Transaction} from "src/app/account/account/domain/Transaction";
 export class AccountTransactionTreeNodeData implements TreeNodeData {
 
   constructor(
-  readonly date: string,
-  readonly price: number,
-  readonly value: number,
-  readonly amount: number,
-  readonly crypto: string
+    readonly date: string,
+    readonly price: number,
+    readonly value: number,
+    readonly amount: number,
+    readonly crypto: string
   ) {}
 
   static fromDomain(domain: Transaction): AccountTransactionTreeNodeData {

@@ -9,6 +9,7 @@ export class ChartOptionsConfig {
   type: ChartType
 
   title: string
+  displayLegend: boolean = true
 
   withXAxis(xAxis: ChartXAxis): ChartOptionsConfig {
     this.xAxis = xAxis
@@ -30,12 +31,20 @@ export class ChartOptionsConfig {
     return this
   }
 
+  withoutLegend(): ChartOptionsConfig {
+    this.displayLegend = false
+    return this
+  }
+
 
   build() {
     return {
       type: this.type,
       options: {
         plugins: {
+          legend: {
+            display: this.displayLegend
+          },
           title: {
             text: this.title,
             display: !!this.title

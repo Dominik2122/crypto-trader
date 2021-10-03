@@ -1,1 +1,35 @@
-<p>user-crypto-tree works!</p>
+
+<h2>Your Cryptos:</h2>
+
+<div *ngIf="initTree" class="text-sm">
+  <app-tree
+    [nodes]="nodes"
+    [columns]="accountTreeColumns"
+    [viewStrategy]="viewStrategy">
+
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <p>{{node.data.crypto }}</p>
+      </ng-template>
+    </app-tree-column>
+
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <p>{{node.data.price | price }}$</p>
+      </ng-template>
+    </app-tree-column>
+
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <p>{{node.data.amount }}</p>
+      </ng-template>
+    </app-tree-column>
+
+    <app-tree-column>
+      <ng-template let-node='node'>
+        <p>{{node.data.value }}$</p>
+      </ng-template>
+    </app-tree-column>
+
+  </app-tree>
+</div>

@@ -1,1 +1,18 @@
-<p>user-crypto-chart works!</p>
+<div class="flex items-center justify-content-center">
+  <fa-icon [icon]="faChevronLeft" *ngIf="!showValues" (click)="toggleChart()" class="text-gray-700 text-3xl"></fa-icon>
+  <app-chart *ngIf="chartCreated && showValues"
+             id="userCryptoValue"
+             [chartConfig]="chartConfig"
+             [chartData]="chartData"
+             class="flex-1 pie"
+  ></app-chart>
+  <app-chart *ngIf="chartCreated && !showValues"
+             id="userCryptoAmount"
+             [chartConfig]="amountChartConfig"
+             [chartData]="amountChartData"
+             class="flex-1"
+  ></app-chart>
+  <fa-icon [icon]="faChevronRight" *ngIf="showValues" (click)="toggleChart()" class="text-gray-700 text-3xl"></fa-icon>
+</div>
+
+
