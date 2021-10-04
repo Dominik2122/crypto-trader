@@ -25,7 +25,6 @@ export class TreeNodeCollectionComponent implements OnInit {
   @Input()
   viewStrategy: TreeViewStrategy = TreeViewStrategy.DEFAULT
 
-
   constructor() { }
 
   ngOnInit(): void {

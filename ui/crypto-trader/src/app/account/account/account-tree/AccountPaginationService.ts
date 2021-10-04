@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
 import {AccountDataService} from "src/app/account/account/domain/AccountDataService";
-import {Transaction} from "src/app/account/account/domain/Transaction";
+
 import {BehaviorSubject, combineLatest, Observable, Subject} from "rxjs";
 import {filter, map, tap} from "rxjs/operators";
+import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 
 @Injectable()
 export class AccountPaginationService {

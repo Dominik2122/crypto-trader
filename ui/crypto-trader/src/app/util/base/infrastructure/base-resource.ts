@@ -15,20 +15,25 @@ export class BaseResource {
   }
 
   get<T>(url: string, params?: HttpParams): Observable<T> {
-    const user: User = this.permissionService.getUser()
-    const token: string = user && user.getToken()
-    return this.http.get<T>(url, {
-      headers: {'Authorization': 'Token '+ token },
-      params
-    })
+
+    return this.http.get<T>(url, this.getParams(params))
   }
 
   put(url: string, params?: { [key: string]: string }): Observable<any> {
     return of(true)
   }
 
-  post<T>(url: string, data, params?: { [key: string]: string }): Observable<T> {
-    return this.http.post<T>(url, data)
+  post<T>(url: string, data, params?: HttpParams): Observable<T> {
+    return this.http.post<T>(url, data, this.getParams(params))
+  }
+
+  private getParams(params?: HttpParams) {
+    const user: User = this.permissionService.getUser()
+    const token: string = user && user.getToken()
+    return {
+      headers: {'Authorization': 'Token '+ token },
+      params
+    }
   }
 
 }

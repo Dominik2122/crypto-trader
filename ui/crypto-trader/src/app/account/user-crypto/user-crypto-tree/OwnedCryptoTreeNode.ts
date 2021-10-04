@@ -1,8 +1,4 @@
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
-import {HomeTreeNodeData} from "src/app/home/home-tree/domain/HomeTreeNodeData";
-import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
-import {HomeTreeNodeDTO} from "src/app/home/home-tree/infrastructure/HomeTreeNodeDTO";
-import {Transaction} from "src/app/account/account/domain/Transaction";
 import {OwnedCryptoTreeNodeData} from "src/app/account/user-crypto/user-crypto-tree/OwnedCryptoTreeNodeData";
 import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
 

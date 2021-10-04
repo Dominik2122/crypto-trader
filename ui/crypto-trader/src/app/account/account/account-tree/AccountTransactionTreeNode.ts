@@ -2,7 +2,7 @@ import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {HomeTreeNodeData} from "src/app/home/home-tree/domain/HomeTreeNodeData";
 import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
 import {HomeTreeNodeDTO} from "src/app/home/home-tree/infrastructure/HomeTreeNodeDTO";
-import {Transaction} from "src/app/account/account/domain/Transaction";
+import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 import {AccountTransactionTreeNodeData} from "src/app/account/account/account-tree/AccountTransactionTreeNodeData";
 
 export class AccountTransactionTreeNode implements TreeNode {

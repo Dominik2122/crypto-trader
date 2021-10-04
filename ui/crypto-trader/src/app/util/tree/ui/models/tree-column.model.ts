@@ -11,11 +11,16 @@ export class TreeColumn {
     public template?: TemplateRef<TreeColumnComponent>,
     public dragButton?: boolean,
     public expand?: boolean,
+    public popper?: TemplateRef<any>,
   ) {
   }
 
   setTemplate(template: TemplateRef<TreeColumnComponent>): void {
     this.template = template
+  }
+
+  setPoppperContent(popper: TemplateRef<TreeColumnComponent>): void {
+    this.popper = popper
   }
 
   static Builder = class TreeColumnBuilder {

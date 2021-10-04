@@ -1,4 +1,5 @@
-import {TransactionDTO} from "src/app/account/account/inftrastructure/TransactionDTO";
+import {TransactionDTO} from "src/app/shared/transactions/inftrastructure/TransactionDTO";
+
 
 export class Transaction {
   constructor(readonly id: number,

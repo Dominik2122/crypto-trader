@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as AccountDataActions from 'src/app/account/account/domain/state/account-data.actions';
-import {Transaction} from "src/app/account/account/domain/Transaction";
+import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 import {BalanceHistory} from "src/app/account/account/domain/BalanceHistory";
 
 export const accountDataFeatureKey = 'accountData';

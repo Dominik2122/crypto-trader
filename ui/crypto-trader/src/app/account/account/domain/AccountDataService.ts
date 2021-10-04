@@ -2,7 +2,7 @@ import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {AccountDataRepository} from "src/app/account/account/domain/state/AccountDataRepository";
 import {BalanceHistory} from "src/app/account/account/domain/BalanceHistory";
-import {Transaction} from "src/app/account/account/domain/Transaction";
+import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 
 @Injectable()
 export class AccountDataService {

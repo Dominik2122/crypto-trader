@@ -1,5 +1,5 @@
 import {TreeNodeData} from "src/app/util/tree/ui/models/tree-node-data.model";
-import {Transaction} from "src/app/account/account/domain/Transaction";
+import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 
 export class AccountTransactionTreeNodeData implements TreeNodeData {
 

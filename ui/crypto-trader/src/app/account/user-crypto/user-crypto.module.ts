@@ -10,6 +10,9 @@ import {UserCryptoTreeComponent} from "src/app/account/user-crypto/user-crypto-t
 import {TreeModule} from "src/app/util/tree/tree.module";
 import {UtilModule} from "src/app/util/util.module";
 import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
+import {ButtonModule} from "src/app/util/button/button.module";
+import {NgxPopperjsModule} from "ngx-popperjs";
+import {TransactionsModule} from "src/app/shared/transactions/transactions.module";
 
 
 
@@ -27,7 +30,10 @@ import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
     ChartModule,
     TreeModule,
     UtilModule,
-    TextBadgeModule
+    TextBadgeModule,
+    ButtonModule,
+    NgxPopperjsModule,
+    TransactionsModule
   ]
 })
 export class UserCryptoModule { }

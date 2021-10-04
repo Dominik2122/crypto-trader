@@ -10,6 +10,7 @@ import {TreeColumn} from 'src/app/util/tree/ui/models/tree-column.model';
 import {TreeNode} from 'src/app/util/tree/ui/models/tree-node.model';
 import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
+import {NgxPopperjsContentComponent} from "ngx-popperjs/lib/ngx-popperjs-content/ngx-popper-content.component";
 
 
 @Component({
@@ -38,7 +39,7 @@ export class TreeComponent implements AfterContentInit {
   @Input()
   nodes: Array<TreeNode>;
 
-  columnTemplates: Array<TemplateRef<TreeColumnComponent>>;
+
 
   constructor() {
   }
@@ -55,10 +56,12 @@ export class TreeComponent implements AfterContentInit {
 
 
   private initColumnTemplates(): void {
-    const treeColumnTemplates: Array<TemplateRef<TreeColumnComponent>> = []
     this.treeColumnCollection.forEach(
-      (column: TreeColumnComponent, index: number) => this.columns[index].setTemplate(column.template))
-    this.columnTemplates = treeColumnTemplates
+      (column: TreeColumnComponent, index: number) => {
+        this.columns[index].setTemplate(column.template)
+        console.log(column.popperContent)
+        this.columns[index].setPoppperContent(column.popperContent)
+      })
   }
 
 }

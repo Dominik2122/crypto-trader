@@ -8,7 +8,7 @@ import {
   selectAccountPastData,
   selectAccountTransactions
 } from "src/app/account/account/domain/state/account-data.selectors";
-import {Transaction} from "src/app/account/account/domain/Transaction";
+import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 import {BalanceHistory} from "src/app/account/account/domain/BalanceHistory";
 
 

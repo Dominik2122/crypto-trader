@@ -1,4 +1,4 @@
-import {Component, ContentChild, OnInit, TemplateRef} from '@angular/core';
+import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 
 @Component({
@@ -11,6 +11,9 @@ export class TreeColumnComponent implements OnInit {
   set templateFromContentChild(template: TemplateRef<any>) {
     this.template = template
   }
+
+  @Input()
+  popperContent
 
   template: TemplateRef<any>
 

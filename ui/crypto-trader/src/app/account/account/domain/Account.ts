@@ -1,5 +1,5 @@
 import {BalanceHistory} from "src/app/account/account/domain/BalanceHistory";
-import {Transaction} from "src/app/account/account/domain/Transaction";
+import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 import {AccountDTO} from "src/app/account/account/inftrastructure/AccountDTO";
 
 export class Account {
@@ -14,7 +14,7 @@ export class Account {
   static fromDTO(dto: AccountDTO): Account {
     return new Account(dto.balance,
       BalanceHistory.fromArrayDTO(dto.pastData),
-      Transaction.fromDTO(dto.transactions))
+      dto.transactions.map(transaction => Transaction.fromDTO(transaction)))
   }
 
 }

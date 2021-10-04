@@ -1,15 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 import {OwnedCryptoTreeNode} from "src/app/account/user-crypto/user-crypto-tree/OwnedCryptoTreeNode";
 import {OwnedCryptoService} from "src/app/account/user-crypto/domain/OwnedCryptoService";
 import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
+import {ButtonColors} from "src/app/util/button/ButtonColors";
 
 @Component({
   selector: 'app-user-crypto-tree',
   templateUrl: './user-crypto-tree.component.html',
-  styleUrls: ['./user-crypto-tree.component.scss']
+  styleUrls: ['./user-crypto-tree.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UserCryptoTreeComponent implements OnInit {
 
@@ -20,10 +22,13 @@ export class UserCryptoTreeComponent implements OnInit {
   nodes: Array<TreeNode>;
 
   initTree: boolean = false
+  showPopper: boolean = false;
+
+  ButtonColors = ButtonColors
 
   accountTreeColumns: Array<TreeColumn> = new TreeColumn.Builder()
     .withHeaders(['Crypto', 'Price', 'Amount', 'Value'])
-    .withFlex(['0 1 25%', '0 1 25%', '0 1 25%', '0 1 25%'])
+    .withFlex(['0 1 20%', '0 1 20%', '0 1 20%', '0 1 20%', '0 1 20%'])
     .build(this.NUMBER_OF_COLUMNS)
 
   viewStrategy: TreeViewStrategy = TreeViewStrategy.TEMPLATE
@@ -36,7 +41,6 @@ export class UserCryptoTreeComponent implements OnInit {
   ngOnInit(): void {
     this.createNodes()
   }
-
 
   private toNodes(cryptos: Array<OwnedCrypto>): void {
     this.nodes = cryptos.map((crypto) => OwnedCryptoTreeNode.fromDomain(crypto))
