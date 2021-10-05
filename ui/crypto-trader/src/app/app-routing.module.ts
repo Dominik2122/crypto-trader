@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => import('src/app/account/account-root.module').then(m => m.AccountRootModule)
+  },
+  {
+    path: 'trading',
+    loadChildren: () => import('src/app/trading/trading.module').then(m => m.TradingModule)
   }
 ];
 

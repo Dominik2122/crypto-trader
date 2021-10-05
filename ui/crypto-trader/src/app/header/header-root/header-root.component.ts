@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {faSignInAlt, faSignOutAlt, faUserAlt} from "@fortawesome/free-solid-svg-icons";
+import {faSignInAlt, faSignOutAlt, faFunnelDollar, faIgloo} from "@fortawesome/free-solid-svg-icons";
 import {PermissionService} from "src/app/authentication/domain/PermissionService";
 import {User} from "src/app/authentication/domain/User";
 import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
@@ -21,6 +21,8 @@ export class HeaderRootComponent implements OnInit {
   }
 
   faSignInAlt = faSignInAlt
+  faIgloo = faIgloo
+  faFunnelDollar = faFunnelDollar
   faSignOutAlt = faSignOutAlt
 
 

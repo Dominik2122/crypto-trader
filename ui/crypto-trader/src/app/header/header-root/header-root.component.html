@@ -15,9 +15,13 @@
       <span class="text-2xl font-extrabold">Crypto</span>
     </a>
     <nav>
-      <a href="#" class="mobile__tabs">Home</a>
-      <a href="" class="mobile__tabs">About</a>
-      <a href="" class="mobile__tabs">Features</a>
+      <a routerLink='' class="mobile__tabs">
+        <fa-icon [icon]="faIgloo" class="flex-1  mr-2"></fa-icon>Home</a>
+
+      <a class="mobile__tabs" routerLink='trading' *ngIf="user">
+        <fa-icon [icon]="faFunnelDollar" class="flex-1"></fa-icon>
+        Trading</a>
+
 
       <ng-container *ngIf="!user; else signOut">
         <a class="mobile__tabs" routerLink='auth'>
@@ -51,10 +55,15 @@
   </div>
   <div class="md:flex md:flex-grow bg-blue-800">
     <ul class="text-lg md:flex md:ml-auto ">
-      <li><a class="desktop__tabs" href="">Home</a></li>
-      <li><a class="desktop__tabs" href="">About</a></li>
-      <li><a class="desktop__tabs" href="">Projects</a></li>
-      <li><a class="desktop__tabs" href="">Blog</a></li>
+
+
+      <li><a class="desktop__tabs" routerLink=''>
+        <fa-icon [icon]="faIgloo" class="flex-1"></fa-icon>
+        Home</a></li>
+
+      <li><a class="desktop__tabs" routerLink='trading' *ngIf="user">
+        <fa-icon [icon]="faFunnelDollar" class="flex-1"></fa-icon>
+        Trading</a></li>
 
       <ng-container *ngIf="!user; else signOutDesktop">
         <li><a class="desktop__tabs" routerLink='auth'>

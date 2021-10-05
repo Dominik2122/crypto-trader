@@ -4,16 +4,11 @@
     [columns]="homeTreeColumns"
     [viewStrategy]="viewStrategy">
 
-    <app-tree-column
-    [popperContent]="popperContent">
+    <app-tree-column>
       <ng-template let-node='node'>
-        <a [routerLink]="'trading'"><p style="flex: 0 1 90%">{{node.data.name}}</p></a>
+        <p style="flex: 0 1 90%">{{node.data.name}}</p>
       </ng-template>
     </app-tree-column>
-
-    <ng-template #popperContent>
-      <p>Go trading!</p>
-    </ng-template>
 
     <app-tree-column>
       <ng-template let-node='node'>
@@ -21,21 +16,25 @@
       </ng-template>
     </app-tree-column>
 
-    <app-tree-column>
+    <app-tree-column
+    [popperContent]="popper">
       <ng-template let-node='node'>
-        <app-text-badge [color]="node.data.netChange > 0 ? 'green' : 'red'">
-          {{node.data.netChange | price}}$
-        </app-text-badge>
+        <div class="flex">
+          <app-button
+            [color]="ButtonColors.RED"
+            class="sell-button">Sell
+          </app-button>
+          <app-button
+            [color]="ButtonColors.GREEN"
+            (click)="onSold()"
+            class="sell-button">Buy
+          </app-button>
+        </div>
+
       </ng-template>
     </app-tree-column>
 
-    <app-tree-column>
-      <ng-template let-node='node'>
-        <app-text-badge [color]="node.data.percentageNetChange > 0 ? 'green' : 'red'" subtle="true">
-          {{node.data.percentageNetChange | price}}%
-        </app-text-badge>
-      </ng-template>
-    </app-tree-column>
+
 
 
     <ng-template #child let-node='node'>
@@ -49,6 +48,22 @@
     </ng-template>
   </app-tree>
 </div>
+
+
+<ng-template let-node='data' #popperContent>
+  <app-sell
+    [crypto]="node.crypto"
+    [maxAmount]="node.amount"
+    [cryptoPrice]="node.price"
+    (sold)="onSold()"
+  ></app-sell>
+</ng-template>
+
+
+<ng-template let-node='data' #popperContentRRR>
+  <h2>ADSADADSDASD</h2>
+</ng-template>
+
 
 
 

@@ -15,6 +15,10 @@ import {HomeTreeNodeCommandDispatcher} from "src/app/home/home-tree/store/home-t
 import {HomeTreeNodeService} from "src/app/home/home-tree/domain/service/home-tree-node.service";
 import {HomeTreeNodeChildComponent} from "src/app/home/home-tree/home-tree-node-child/HomeTreeNodeChildComponent";
 import {ChartModule} from "src/app/util/chart/chart.module";
+import {TransactionsModule} from "src/app/shared/transactions/transactions.module";
+import {ButtonModule} from "src/app/util/button/button.module";
+import {NgxPopperjsModule} from "ngx-popperjs";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -22,17 +26,22 @@ import {ChartModule} from "src/app/util/chart/chart.module";
     HomeTreeComponent,
     HomeTreeNodeChildComponent
   ],
-	imports: [
-		CommonModule,
-		TreeModule,
-		TextBadgeModule,
-		UtilModule,
-		StoreModule.forFeature(homeTreeNodesFeatureKey, reducer),
-		EffectsModule.forFeature([HomeTreeNodesEffects]),
-		ChartModule
-	],
+  imports: [
+    CommonModule,
+    TreeModule,
+    TextBadgeModule,
+    UtilModule,
+    StoreModule.forFeature(homeTreeNodesFeatureKey, reducer),
+    EffectsModule.forFeature([HomeTreeNodesEffects]),
+    ChartModule,
+    TransactionsModule,
+    ButtonModule,
+    NgxPopperjsModule,
+    RouterModule
+  ],
   exports: [
-    HomeTreeComponent
+    HomeTreeComponent,
+    HomeTreeNodeChildComponent
   ],
   providers: [
     {provide: TreeNodeResource, useClass: HomeTreeNodeResource},

@@ -24,7 +24,7 @@ export class OwnedCryptoService {
 
   getBalance(): Observable<number> {
     return this.ownedCryptoStorageService.observe().pipe(
-      map((account) => parseFloat(account.balance))
+      map((account) => -parseFloat(account.balance))
     )
   }
 

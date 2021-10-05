@@ -1,7 +1,12 @@
 .home-tree-child__container {
   display: block;
   animation: fadeInFromNone 3s linear;
+}
 
+.home-tree {
+  div.ngxp__container {
+    max-width: 500px
+  }
 }
 
 @keyframes fadeInFromNone {
