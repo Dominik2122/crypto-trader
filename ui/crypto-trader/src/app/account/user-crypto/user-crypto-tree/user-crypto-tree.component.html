@@ -45,7 +45,11 @@
 </div>
 
 
-<ng-template let-node='node' #popperContent>
-  <h1>ACD</h1>
-  <h2>{{node.id}}</h2>
+<ng-template let-node='data' #popperContent>
+  <app-sell
+    [crypto]="node.crypto"
+    [maxAmount]="node.amount"
+    [cryptoPrice]="node.price"
+    (sold)="onSold()"
+  ></app-sell>
 </ng-template>

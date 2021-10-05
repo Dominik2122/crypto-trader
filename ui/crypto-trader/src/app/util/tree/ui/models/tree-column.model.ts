@@ -1,5 +1,6 @@
 import {TemplateRef} from "@angular/core";
 import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
+import {NgxPopperjsContentComponent} from "ngx-popperjs/lib/ngx-popperjs-content/ngx-popper-content.component";
 
 export class TreeColumn {
 
@@ -11,7 +12,7 @@ export class TreeColumn {
     public template?: TemplateRef<TreeColumnComponent>,
     public dragButton?: boolean,
     public expand?: boolean,
-    public popper?: TemplateRef<any>,
+    public popper?: TemplateRef<TreeColumnComponent>,
   ) {
   }
 

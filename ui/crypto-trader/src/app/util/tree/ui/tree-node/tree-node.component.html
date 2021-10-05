@@ -24,19 +24,20 @@
     </ng-container>
 
     <ng-template #templateColumnView>
-      <div [popper]="popperContento"
-           [popperDisabled]="!column.popper"
-           popperTrigger="click">
-        <ng-container *ngTemplateOutlet="column.template; context: {'node': node, 'data': node.data}"
-        ></ng-container>
-      </div>
-      <popper-content #popperContento>
-        <ng-container #viewContainer
-                      *ngTemplateOutlet="column.popper; context: {'node': node, 'data': node.data}"></ng-container>
-      </popper-content>
+      <ng-container *ngIf="!column.popper; else templateColumnViewWithPopper">
+        <ng-container *ngTemplateOutlet="column.template; context: {'node': node, 'data': node.data}"></ng-container>
+      </ng-container>
+      <ng-template #templateColumnViewWithPopper>
+        <div [popper]="popperContent"
+             [popperDisabled]="!column.popper"
+             popperTrigger="click">
+          <ng-container *ngTemplateOutlet="column.template; context: {'node': node, 'data': node.data}"></ng-container>
+        </div>
+        <popper-content #popperContent>
+          <ng-container *ngTemplateOutlet="column.popper; context: {'node': node, 'data': node.data}"></ng-container>
+        </popper-content>
+      </ng-template>
     </ng-template>
-
-
   </div>
   <div *ngIf="isExpanded" class="tree-node__children">
     <ng-container *ngTemplateOutlet="childTemplate; context: {'node': node, 'data': node.data} "></ng-container>

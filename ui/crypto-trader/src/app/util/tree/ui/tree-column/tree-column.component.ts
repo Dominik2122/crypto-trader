@@ -8,12 +8,12 @@ import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 export class TreeColumnComponent implements OnInit {
 
   @ContentChild(TemplateRef, {static: true})
-  set templateFromContentChild(template: TemplateRef<any>) {
+  set templateFromContentChild(template: TemplateRef<TreeColumnComponent>) {
     this.template = template
   }
 
   @Input()
-  popperContent
+  popperContent: TemplateRef<TreeColumnComponent>
 
   template: TemplateRef<any>
 

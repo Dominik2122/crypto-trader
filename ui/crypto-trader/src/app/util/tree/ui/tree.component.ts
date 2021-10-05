@@ -59,7 +59,6 @@ export class TreeComponent implements AfterContentInit {
     this.treeColumnCollection.forEach(
       (column: TreeColumnComponent, index: number) => {
         this.columns[index].setTemplate(column.template)
-        console.log(column.popperContent)
         this.columns[index].setPoppperContent(column.popperContent)
       })
   }

@@ -13,6 +13,7 @@ import {TextBadgeModule} from "src/app/util/text-badge/text-badge.module";
 import {ButtonModule} from "src/app/util/button/button.module";
 import {NgxPopperjsModule} from "ngx-popperjs";
 import {TransactionsModule} from "src/app/shared/transactions/transactions.module";
+import {FormModule} from "src/app/util/form/form.module";
 
 
 
@@ -33,7 +34,8 @@ import {TransactionsModule} from "src/app/shared/transactions/transactions.modul
     TextBadgeModule,
     ButtonModule,
     NgxPopperjsModule,
-    TransactionsModule
+    TransactionsModule,
+    FormModule
   ]
 })
 export class UserCryptoModule { }

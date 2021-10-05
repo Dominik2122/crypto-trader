@@ -6,6 +6,7 @@ import {OwnedCryptoTreeNode} from "src/app/account/user-crypto/user-crypto-tree/
 import {OwnedCryptoService} from "src/app/account/user-crypto/domain/OwnedCryptoService";
 import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
 import {ButtonColors} from "src/app/util/button/ButtonColors";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-user-crypto-tree',
@@ -42,6 +43,15 @@ export class UserCryptoTreeComponent implements OnInit {
     this.createNodes()
   }
 
+
+  onSold(): void {
+    this.ownedCryptoService.fetchOwnedCrypto()
+      .pipe(
+        take(1)
+      ).subscribe()
+  }
+
+
   private toNodes(cryptos: Array<OwnedCrypto>): void {
     this.nodes = cryptos.map((crypto) => OwnedCryptoTreeNode.fromDomain(crypto))
   }
@@ -53,5 +63,6 @@ export class UserCryptoTreeComponent implements OnInit {
       this.initTree = ownedCrypto && ownedCrypto.length > 0
     })
   }
+
 
 }

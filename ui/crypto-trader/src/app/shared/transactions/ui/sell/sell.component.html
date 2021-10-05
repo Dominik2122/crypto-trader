@@ -1,1 +1,26 @@
-<p>sell works!</p>
+<div class="container">
+  <h2>How many {{crypto}}s would you like to sell?</h2>
+  <div class="flex justify-content-center items-center">
+    <app-form
+      [config]="config"
+      (formOutput)="observeForm($event)">
+    </app-form>
+    <app-button [color]="ButtonColors.GREEN"
+                [disabled]="!amount || amount > maxAmount"
+                (click)="onSellAmount()">
+      Sell
+    </app-button>
+    <app-button [color]="ButtonColors.RED"
+                class="sell-all-button"
+                (click)="onSellAll()">
+      Sell all
+    </app-button>
+  </div>
+  <ng-container *ngIf="amount && amount < maxAmount">
+    <div class="flex items-center">
+      <h2>You will earn</h2>
+      <app-text-badge color="green" class="ml-2 mt-1"
+      >+{{amount * cryptoPrice | price}}$</app-text-badge>
+    </div>
+  </ng-container>
+</div>

@@ -2,6 +2,9 @@
 ['bg-' + color + '-800',
 'hover:bg-' + color + '-700' ,
 'text-white font-bold py-2' ,
-'px-4 rounded']">
+'px-4 rounded',
+disabled ? 'disabled' : '']"
+[disabled]="disabled"
+>
   <ng-content></ng-content>
 </button>

@@ -11,6 +11,10 @@ export class ButtonComponent implements OnInit {
   @Input()
   color: ButtonColors = ButtonColors.BLUE
 
+
+  @Input()
+  disabled: boolean
+
   constructor() { }
 
   ngOnInit(): void {
