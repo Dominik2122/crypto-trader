@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TradingTreeComponent } from './trading-tree.component';
+import { TradingDashboardComponent } from './trading-dashboard.component';
 
-describe('TradingTreeComponent', () => {
-  let component: TradingTreeComponent;
-  let fixture: ComponentFixture<TradingTreeComponent>;
+describe('TradingDashboardComponent', () => {
+  let component: TradingDashboardComponent;
+  let fixture: ComponentFixture<TradingDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TradingTreeComponent ]
+      declarations: [ TradingDashboardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TradingTreeComponent);
+    fixture = TestBed.createComponent(TradingDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
