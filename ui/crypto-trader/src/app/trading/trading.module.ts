@@ -10,13 +10,20 @@ import {HomeTreeModule} from "src/app/home/home-tree/home-tree.module";
 import {HomeTreeNodeService} from "src/app/home/home-tree/domain/service/home-tree-node.service";
 import {ButtonModule} from "src/app/util/button/button.module";
 import {TransactionsModule} from "src/app/shared/transactions/transactions.module";
+import { TradingCryptoPickerComponent } from './trading-root/trading-crypto-picker/trading-crypto-picker.component';
+import {FormModule} from "src/app/util/form/form.module";
+import {TradingCryptoPickerResolver} from "src/app/trading/trading-root/TradingCryptoPickerResolver";
+import {HeaderAccountResource} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountResource";
+import {OwnedCryptoResource} from "src/app/account/user-crypto/infrastructure/OwnedCryptoResource";
+import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/home-tree-node-resource";
 
 
 
 @NgModule({
   declarations: [
     TradingRootComponent,
-    TradingTreeComponent
+    TradingTreeComponent,
+    TradingCryptoPickerComponent
   ],
   imports: [
     TradingRoutingModule,
@@ -26,10 +33,15 @@ import {TransactionsModule} from "src/app/shared/transactions/transactions.modul
     TextBadgeModule,
     HomeTreeModule,
     ButtonModule,
-    TransactionsModule
+    TransactionsModule,
+    FormModule
   ],
   providers: [
-    HomeTreeNodeService
+    HomeTreeNodeService,
+    TradingCryptoPickerResolver,
+    HeaderAccountResource,
+    OwnedCryptoResource,
+    HomeTreeNodeResource
   ]
 })
 export class TradingModule { }

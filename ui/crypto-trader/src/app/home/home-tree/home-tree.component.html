@@ -7,7 +7,9 @@
     <app-tree-column
     [popperContent]="popperContent">
       <ng-template let-node='node'>
-        <a [routerLink]="'trading'"><p style="flex: 0 1 90%">{{node.data.name}}</p></a>
+        <a [routerLink]="'trading'"
+           [queryParams]="{ crypto: node.data.name }"
+        ><p style="flex: 0 1 90%">{{node.data.name}}</p></a>
       </ng-template>
     </app-tree-column>
 
