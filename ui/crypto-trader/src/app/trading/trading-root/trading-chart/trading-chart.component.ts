@@ -1,17 +1,15 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
-import 'chartjs-adapter-moment';
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
-import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
 import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
-
+import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
 
 @Component({
-  selector: 'app-home-tree-child-component',
-  templateUrl: './HomeTreeNodeChildComponent.html',
-  styleUrls: ['./HomeTreeNodeChildComponent.scss']
+  selector: 'app-trading-chart',
+  templateUrl: './trading-chart.component.html',
+  styleUrls: ['./trading-chart.component.scss']
 })
-export class HomeTreeNodeChildComponent {
+export class TradingChartComponent implements OnInit {
 
   @Input()
   data: Array<HomeTreeNodePastData>
@@ -28,6 +26,17 @@ export class HomeTreeNodeChildComponent {
 
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+    if (changes.data) {
+      this.createChart()
+    }
+  }
+
+
+  private createChart() {
     this.chartConfig = new ChartOptionsConfig()
       .withXAxis(new ChartXAxis(
         'timeseries',
@@ -45,6 +54,4 @@ export class HomeTreeNodeChildComponent {
         2
       )])
   }
-
-
 }

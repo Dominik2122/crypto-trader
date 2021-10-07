@@ -36,7 +36,7 @@ export class TradingCryptoPickerResolver implements Resolve<any> {
         return new TradingInfo(
           account.currentBalance,
           parseFloat(cryptoAccount.balance),
-          ownedCryptoData,
+          ownedCryptoData ? ownedCryptoData : new OwnedCrypto(cryptoName, null, null, 0),
           priceData.data,
           priceData.childData,
           prices.map(price => price.data.name).filter(name => name !== cryptoName)

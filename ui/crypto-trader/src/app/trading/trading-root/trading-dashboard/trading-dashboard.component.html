@@ -1,1 +1,12 @@
-<p>trading-dashboard works!</p>
+<div class="block w-full items-center md:flex">
+  <app-trading-chart *ngIf="data"
+                     [data]="data.pastCryptoData"
+                     [id]="data.cryptoData.name"
+                     class="w-full"></app-trading-chart>
+
+  <app-trading-balance
+    [balance]="data.balance"
+    [ownedCrypto]="data.ownedCrypto"
+    class="trading-balance"
+  ></app-trading-balance>
+</div>

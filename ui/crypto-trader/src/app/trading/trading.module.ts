@@ -16,6 +16,12 @@ import {HeaderAccountResource} from "src/app/header/header-root/header-account-i
 import {OwnedCryptoResource} from "src/app/account/user-crypto/infrastructure/OwnedCryptoResource";
 import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/home-tree-node-resource";
 import { TradingDashboardComponent } from './trading-root/trading-dashboard/trading-dashboard.component';
+import { TradingChartComponent } from './trading-root/trading-chart/trading-chart.component';
+import { TradingSellComponent } from './trading-root/trading-sell/trading-sell.component';
+import { TradingBuyComponent } from './trading-root/trading-buy/trading-buy.component';
+import { TradingBalanceComponent } from './trading-root/trading-balance/trading-balance.component';
+import {ChartModule} from "src/app/util/chart/chart.module";
+import {TradingService} from "src/app/trading/trading-root/TradingService";
 
 
 
@@ -23,22 +29,28 @@ import { TradingDashboardComponent } from './trading-root/trading-dashboard/trad
   declarations: [
     TradingRootComponent,
     TradingCryptoPickerComponent,
-    TradingDashboardComponent
+    TradingDashboardComponent,
+    TradingChartComponent,
+    TradingSellComponent,
+    TradingBuyComponent,
+    TradingBalanceComponent
   ],
-  imports: [
-    TradingRoutingModule,
-    CommonModule,
-    UtilModule,
-    TextBadgeModule,
-    ButtonModule,
-    TransactionsModule,
-    FormModule
-  ],
+	imports: [
+		TradingRoutingModule,
+		CommonModule,
+		UtilModule,
+		TextBadgeModule,
+		ButtonModule,
+		TransactionsModule,
+		FormModule,
+		ChartModule
+	],
   providers: [
     TradingCryptoPickerResolver,
     HeaderAccountResource,
     OwnedCryptoResource,
-    HomeTreeNodeResource
+    HomeTreeNodeResource,
+    TradingService
   ]
 })
 export class TradingModule { }

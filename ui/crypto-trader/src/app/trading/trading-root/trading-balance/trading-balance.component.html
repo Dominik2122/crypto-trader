@@ -1,0 +1,30 @@
+<div class="flex mt-4 md:block md:mt-0">
+  <h3>Balance:</h3>
+  <div class="w-full flex ml-5 md:justify-center md:ml-0 ">
+    <app-text-badge color="green"><h2>{{balance | price}}$</h2></app-text-badge>
+  </div>
+</div>
+
+<div class="flex md:block mt-5 md:mt-0">
+  <h3>Amount of {{ownedCrypto.name}}: </h3>
+  <ng-container *ngIf="priceAdded">
+    <div class="w-full flex justify-center">
+      <app-text-badge color="green" [subtle]="true">
+        {{priceAdded | price}}$
+      </app-text-badge>
+    </div>
+
+  </ng-container>
+  <div class="flex ml-5 md:justify-center md:ml-0 md:w-full ">
+    <app-text-badge color="yellow">
+      <h2 *ngIf="ownedCrypto.amount; else nothing">{{ownedCrypto.amount}}</h2>
+      <ng-template #nothing>
+        <h3>You own none</h3>
+      </ng-template>
+    </app-text-badge>
+  </div>
+</div>
+
+
+
+
