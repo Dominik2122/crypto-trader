@@ -22,7 +22,6 @@ export class TradingDashboardComponent implements OnInit {
       pluck('crypto')
     ).subscribe((data: TradingInfo) => {
       this.data = data
-      console.log(data)
     })
   }
 

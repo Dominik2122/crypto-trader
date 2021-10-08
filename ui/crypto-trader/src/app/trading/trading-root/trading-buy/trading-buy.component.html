@@ -1,1 +1,14 @@
-<p>trading-buy works!</p>
+<div class="trading-buy flex rounded-lg shadow-lg items-center px-5">
+
+  <app-button (click)="increaseValue()"> +</app-button>
+
+  <app-form
+    [config]="config"
+    (formOutput)="observeForm($event)"
+  ></app-form>
+
+  <app-button (click)='decreaseValue()'
+  [disabled]="isMinusDisabled()"> -</app-button>
+
+
+</div>
