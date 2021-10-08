@@ -18,7 +18,7 @@ import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/home-t
 import { TradingDashboardComponent } from './trading-root/trading-dashboard/trading-dashboard.component';
 import { TradingChartComponent } from './trading-root/trading-chart/trading-chart.component';
 import { TradingSellComponent } from './trading-root/trading-sell/trading-sell.component';
-import { TradingBuyComponent } from './trading-root/trading-buy/trading-buy.component';
+import { TradingFormComponent } from 'src/app/trading/trading-root/trading-buy/trading-form.component';
 import { TradingBalanceComponent } from './trading-root/trading-balance/trading-balance.component';
 import {ChartModule} from "src/app/util/chart/chart.module";
 import {TradingService} from "src/app/trading/trading-root/TradingService";
@@ -32,7 +32,7 @@ import {TradingService} from "src/app/trading/trading-root/TradingService";
     TradingDashboardComponent,
     TradingChartComponent,
     TradingSellComponent,
-    TradingBuyComponent,
+    TradingFormComponent,
     TradingBalanceComponent
   ],
 	imports: [

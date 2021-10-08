@@ -6,12 +6,12 @@ import {TradingService} from "src/app/trading/trading-root/TradingService";
 
 
 @Component({
-  selector: 'app-trading-buy',
-  templateUrl: './trading-buy.component.html',
-  styleUrls: ['./trading-buy.component.scss'],
+  selector: 'app-trading-form',
+  templateUrl: './trading-form.component.html',
+  styleUrls: ['./trading-form.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TradingBuyComponent implements OnInit {
+export class TradingFormComponent implements OnInit {
 
   @Input()
   label: string

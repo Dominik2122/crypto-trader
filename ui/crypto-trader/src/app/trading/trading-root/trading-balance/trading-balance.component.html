@@ -1,20 +1,19 @@
 <div class="flex mt-4 md:block md:mt-0 md:text-center">
   <h3>Balance:</h3>
-  <div class="w-full flex ml-5 md:justify-center md:ml-0 ">
+  <div class="w-full flex ml-5 md:justify-center md:items-center md:ml-0 ">
     <app-text-badge color="green"><h2>{{balance | price}}$</h2></app-text-badge>
+    <ng-container *ngIf="priceAdded">
+      <div class="w-full flex justify-center">
+        <app-text-badge [color]="priceAdded > 0 ? 'green' : 'red'" [subtle]="true">
+          {{priceAdded | price}}$
+        </app-text-badge>
+      </div>
+    </ng-container>
   </div>
 </div>
 
-<div class="flex md:block mt-6">
+<div class="flex md:block mt-2">
   <h4>{{ownedCrypto.name}} balance: </h4>
-  <ng-container *ngIf="priceAdded">
-    <div class="w-full flex justify-center">
-      <app-text-badge color="green" [subtle]="true">
-        {{priceAdded | price}}$
-      </app-text-badge>
-    </div>
-
-  </ng-container>
   <div class="flex md:flex-col md:items-center ml-5 md:justify-center md:ml-0 md:w-full ">
     <app-text-badge color="yellow" class="md:mb-2">
       <h2 *ngIf="ownedCrypto.amount; else nothing">{{ownedCrypto.amount}} units</h2>

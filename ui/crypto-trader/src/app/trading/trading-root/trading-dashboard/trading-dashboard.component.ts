@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {pluck} from "rxjs/operators";
 import {TradingInfo} from "src/app/trading/trading-root/trading-crypto-picker/TradingInfo";
 import {ActivatedRoute} from "@angular/router";
+import {TradingService} from "src/app/trading/trading-root/TradingService";
 
 @Component({
   selector: 'app-trading-dashboard',
@@ -13,8 +14,14 @@ export class TradingDashboardComponent implements OnInit {
 
   data: TradingInfo
 
+  sellAvailable: boolean = true
+  buyAvailable: boolean = true
+  tradeAvailable: boolean = false
 
-  constructor(private readonly activatedRoute: ActivatedRoute) {
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly tradingService: TradingService
+  ) {
   }
 
   ngOnInit(): void {
@@ -29,12 +36,32 @@ export class TradingDashboardComponent implements OnInit {
     return Math.floor(this.data.balance * 100 / this.data.cryptoData.currentPrice) / 100
   }
 
-  onSellAmount() {
+  onSellAmount(amount: number): void {
+    if (!!amount) {
+      this.buyAvailable = false
+      this.tradeAvailable = true
+    } else {
+      this.resetDisabled()
+    }
+    this.tradingService.prepareNewTransaction(this.data.cryptoData.name, -amount)
 
   }
 
-  onBuyAmount() {
+  onBuyAmount(amount: number): void {
+    if (!!amount) {
+      this.sellAvailable = false
+      this.tradeAvailable = true
+    } else {
+      this.resetDisabled()
+    }
+    this.tradingService.prepareNewTransaction(this.data.cryptoData.name, amount)
 
+  }
+
+  private resetDisabled() {
+    this.sellAvailable = true
+    this.buyAvailable = true
+    this.tradeAvailable = false
   }
 
 

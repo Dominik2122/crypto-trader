@@ -12,20 +12,23 @@
 </div>
 <div class="flex justify-between items-center">
   <div class="flex w-full justify-center items-center">
-    <app-trading-buy
+    <app-trading-form
       label="Sell"
       [maxAmount]="data.ownedCrypto.amount"
-      [disable]="true"
-      class="mr-4"></app-trading-buy>
+      [disable]="!sellAvailable"
+      (amount$)="onSellAmount($event)"
+      class="mr-4"></app-trading-form>
 
-    <app-trading-buy
+    <app-trading-form
       label="Buy"
       [maxAmount]="getBuyMaxAmount()"
-      class="ml-4"></app-trading-buy>
+      [disable]="!buyAvailable"
+      (amount$)="onBuyAmount($event)"
+      class="ml-4"></app-trading-form>
   </div>
 
   <app-button class="text-4xl mr-8"
-  [disabled]="true">
+              [disabled]="!tradeAvailable">
     Trade!
   </app-button>
 </div>
