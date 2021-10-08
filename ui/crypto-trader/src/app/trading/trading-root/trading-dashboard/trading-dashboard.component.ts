@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {pluck} from "rxjs/operators";
+import {pluck, skip} from "rxjs/operators";
 import {TradingInfo} from "src/app/trading/trading-root/trading-crypto-picker/TradingInfo";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {TradingService} from "src/app/trading/trading-root/TradingService";
 
 @Component({
@@ -17,9 +17,12 @@ export class TradingDashboardComponent implements OnInit {
   sellAvailable: boolean = true
   buyAvailable: boolean = true
   tradeAvailable: boolean = false
+  clearForm: boolean = false
+
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router,
     private readonly tradingService: TradingService
   ) {
   }
@@ -30,6 +33,8 @@ export class TradingDashboardComponent implements OnInit {
     ).subscribe((data: TradingInfo) => {
       this.data = data
     })
+
+    this.observeSold()
   }
 
   getBuyMaxAmount(): number {
@@ -44,7 +49,6 @@ export class TradingDashboardComponent implements OnInit {
       this.resetDisabled()
     }
     this.tradingService.prepareNewTransaction(this.data.cryptoData.name, -amount)
-
   }
 
   onBuyAmount(amount: number): void {
@@ -55,8 +59,20 @@ export class TradingDashboardComponent implements OnInit {
       this.resetDisabled()
     }
     this.tradingService.prepareNewTransaction(this.data.cryptoData.name, amount)
-
   }
+
+  trade() {
+    this.tradingService.finalizeTransaction()
+  }
+
+  private observeSold() {
+    this.tradingService.observeSold().pipe(skip(1)).subscribe(() => {
+      this.resetDisabled()
+      this.clearForm = true
+      this.tradingService.set(null)
+    })
+  }
+
 
   private resetDisabled() {
     this.sellAvailable = true

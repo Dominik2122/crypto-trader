@@ -3,26 +3,35 @@
   <div class="w-full flex ml-5 md:justify-center md:items-center md:ml-0 ">
     <app-text-badge color="green"><h2>{{balance | price}}$</h2></app-text-badge>
     <ng-container *ngIf="priceAdded">
-      <div class="w-full flex justify-center">
+      <div class="ml-2 flex justify-center">
         <app-text-badge [color]="priceAdded > 0 ? 'green' : 'red'" [subtle]="true">
-          {{priceAdded | price}}$
+          {{priceAdded > 0 ? '+' : null}}{{priceAdded | price}}$
         </app-text-badge>
       </div>
     </ng-container>
   </div>
 </div>
 
-<div class="flex md:block mt-2">
-  <h4>{{ownedCrypto.name}} balance: </h4>
+<div class="flex md:block mt-2 text-center">
+  <h4>{{ownedCrypto.name | titlecase }} balance: </h4>
   <div class="flex md:flex-col md:items-center ml-5 md:justify-center md:ml-0 md:w-full ">
-    <app-text-badge color="yellow" class="md:mb-2">
-      <h2 *ngIf="ownedCrypto.amount; else nothing">{{ownedCrypto.amount}} units</h2>
-      <ng-template #nothing>
-        <h3>You own none</h3>
-      </ng-template>
+    <app-text-badge color="yellow" class="md:mb-1">
+      <h2>{{ownedCrypto.amount}} units</h2>
     </app-text-badge>
-    <app-text-badge color="yellow" [subtle]="true" class="block">
-      <h2 *ngIf="ownedCrypto.amount">{{ownedCrypto.price * ownedCrypto.amount | price}}$</h2>
+    <app-text-badge *ngIf="transaction && transaction.amount"
+                    [color]="transaction.amount > 0 ? 'green' : 'red'"
+                    [subtle]="true"
+                    class="md:mb-1">
+      {{transaction.amount > 0 ? '+' : null}}{{transaction.amount}}
+    </app-text-badge>
+    <app-text-badge color="yellow" [subtle]="true" class="block md:mb-1">
+      <h2 *ngIf="ownedCrypto.amount || (transaction && transaction.amount)"
+      >{{ownedCrypto.price * ownedCrypto.amount | price}}$</h2>
+    </app-text-badge>
+    <app-text-badge *ngIf="transaction && transaction.amount"
+                    [color]="transaction.amount > 0 ? 'green' : 'red'"
+                    [subtle]="true">
+      {{priceAdded < 0 ? '+' : null}}{{-priceAdded | price}}$
     </app-text-badge>
   </div>
 </div>

@@ -18,7 +18,7 @@ export class TradingChartComponent implements OnInit {
   id: string
 
   @Input()
-  name: string
+  currentPrice: string
 
   chartConfig: ChartOptionsConfig
 
@@ -29,8 +29,11 @@ export class TradingChartComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
     if (changes.data) {
+      this.createChart()
+    }
+
+    if (changes.currentPrice) {
       this.createChart()
     }
   }
@@ -47,7 +50,7 @@ export class TradingChartComponent implements OnInit {
     this.chartData = new ChartDataConfig()
       .withLabels(this.data.map(data => data.date))
       .withDatasets([new ChartDataset(
-        this.name,
+        'Current price: ' + this.currentPrice + '$',
         this.data.map(data => data.price),
         'green',
         'black',

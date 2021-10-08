@@ -1,15 +1,24 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 import {FormInput} from "src/app/util/form/domain/FormInput";
 import {FormGroup} from "@angular/forms";
-import {ButtonColors} from "src/app/util/button/ButtonColors";
-import {TradingService} from "src/app/trading/trading-root/TradingService";
+import {distinctUntilChanged, map} from "rxjs/operators";
 
 
 @Component({
   selector: 'app-trading-form',
   templateUrl: './trading-form.component.html',
   styleUrls: ['./trading-form.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TradingFormComponent implements OnInit {
 
@@ -21,6 +30,9 @@ export class TradingFormComponent implements OnInit {
 
   @Input()
   disable: boolean = false
+
+  @Input()
+  clear: boolean = false
 
   @Output()
   amount$: EventEmitter<number> = new EventEmitter<number>()
@@ -39,25 +51,33 @@ export class TradingFormComponent implements OnInit {
     if (changes.disable) {
       this.createFormConfig()
     }
+
+    if (changes.clear && changes.clear.currentValue) {
+      this.clearForm()
+      this.clear = false
+    }
   }
 
   observeForm(form: FormGroup) {
     this.form = form;
-    this.form.valueChanges.subscribe(value => {
-      if (value.amount < 0) {
+    this.form.valueChanges.pipe(
+      map(value => value.amount),
+      distinctUntilChanged()
+    ).subscribe(amount => {
+      if (amount < 0) {
         this.setValue(0)
-      } else if (value.amount > this.maxAmount) {
+      } else if (amount > this.maxAmount) {
         this.setValue(this.maxAmount)
       } else {
-        this.amount = value.amount;
-        this.amount$.next(value.amount)
+        this.amount = amount;
+        this.amount$.next(amount)
       }
 
     })
   }
 
   increaseValue() {
-    this.amount = ++this.amount
+    this.amount = this.amount ? ++this.amount : 1
     this.setValue(this.amount)
   }
 
@@ -67,7 +87,7 @@ export class TradingFormComponent implements OnInit {
   }
 
   isMinusDisabled(): boolean {
-    return this.amount <= 0
+    return this.amount <= 0 || !this.amount
   }
 
   isPlusDisabled(): boolean {
@@ -88,5 +108,9 @@ export class TradingFormComponent implements OnInit {
 
   private setValue(value: number) {
     this.form.controls.amount.setValue(value)
+  }
+
+  private clearForm() {
+    this.setValue(undefined)
   }
 }

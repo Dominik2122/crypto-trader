@@ -33,7 +33,11 @@ export class TradingBalanceComponent implements OnInit {
   }
 
   createPriceAdded(): void {
-    this.priceAdded = - this.transaction.amount * this.ownedCrypto.price
+    if (this.transaction) {
+      this.priceAdded = -this.transaction.amount * this.ownedCrypto.price
+    } else {
+      this.priceAdded = null
+    }
   }
 
 }

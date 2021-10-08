@@ -2,6 +2,7 @@
   <app-trading-chart *ngIf="data"
                      [data]="data.pastCryptoData"
                      [id]="data.cryptoData.name"
+                     [currentPrice]="data.cryptoData.currentPrice | price"
                      class="w-full"></app-trading-chart>
 
   <app-trading-balance
@@ -16,6 +17,7 @@
       label="Sell"
       [maxAmount]="data.ownedCrypto.amount"
       [disable]="!sellAvailable"
+      [clear]="clearForm"
       (amount$)="onSellAmount($event)"
       class="mr-4"></app-trading-form>
 
@@ -28,7 +30,8 @@
   </div>
 
   <app-button class="text-4xl mr-8"
-              [disabled]="!tradeAvailable">
+              [disabled]="!tradeAvailable"
+  (click)="trade()">
     Trade!
   </app-button>
 </div>

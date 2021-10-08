@@ -8,6 +8,8 @@ import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/home-t
 import {TradingInfo} from "src/app/trading/trading-root/trading-crypto-picker/TradingInfo";
 import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
+import {TransactionResource} from "src/app/shared/transactions/inftrastructure/TransactionResource";
+import {TradingService} from "src/app/trading/trading-root/TradingService";
 
 @Injectable()
 export class TradingCryptoPickerResolver implements Resolve<any> {
@@ -16,6 +18,7 @@ export class TradingCryptoPickerResolver implements Resolve<any> {
     private readonly headerAccountResource: HeaderAccountResource,
     private readonly ownedCryptoResource: OwnedCryptoResource,
     private readonly homeTreeNodeResource: HomeTreeNodeResource
+
   ) {
   }
 
@@ -25,7 +28,7 @@ export class TradingCryptoPickerResolver implements Resolve<any> {
     return combineLatest([
         this.headerAccountResource.getAccount(),
         this.ownedCryptoResource.fetchOwnedCrypto(),
-        this.homeTreeNodeResource.getTreeNodes()
+        this.homeTreeNodeResource.getTreeNodes(),
       ]
     ).pipe(
       map(([account, cryptoAccount, prices]) => {
