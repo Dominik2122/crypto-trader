@@ -14,14 +14,18 @@
   <div class="flex w-full justify-center items-center">
     <app-trading-buy
       label="Sell"
+      [maxAmount]="data.ownedCrypto.amount"
+      [disable]="true"
       class="mr-4"></app-trading-buy>
 
     <app-trading-buy
       label="Buy"
+      [maxAmount]="getBuyMaxAmount()"
       class="ml-4"></app-trading-buy>
   </div>
 
-  <app-button class="text-4xl mr-8">
+  <app-button class="text-4xl mr-8"
+  [disabled]="true">
     Trade!
   </app-button>
 </div>

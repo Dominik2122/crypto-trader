@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {FieldComponent} from "src/app/util/form/ui/form-inputs/FieldComponent";
 
@@ -13,3 +13,5 @@ export class NumberInputComponent implements FieldComponent {
   group: FormGroup;
 
 }
+
+

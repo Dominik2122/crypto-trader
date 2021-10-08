@@ -1,6 +1,9 @@
-<div class="trading-buy flex rounded-lg shadow-lg items-center px-5">
+<div class="trading-buy flex rounded-lg shadow-lg items-center px-5"
+     [class.trading-window-disabled]="disable">
 
-  <app-button (click)="increaseValue()"> +</app-button>
+  <app-button (click)="increaseValue()"
+              [disabled]="isPlusDisabled() || disable"> +
+  </app-button>
 
   <app-form
     [config]="config"
@@ -8,7 +11,8 @@
   ></app-form>
 
   <app-button (click)='decreaseValue()'
-  [disabled]="isMinusDisabled()"> -</app-button>
+              [disabled]="isMinusDisabled() || disable"> -
+  </app-button>
 
 
 </div>

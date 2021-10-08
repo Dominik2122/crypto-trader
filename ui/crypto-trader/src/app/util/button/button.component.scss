@@ -1,5 +1,5 @@
 .disabled {
+  @apply cursor-not-allowed bg-gray-300;
   border: 1px solid #999999;
-  background-color: #cccccc;
   color: #666666;
 }

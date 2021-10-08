@@ -18,4 +18,22 @@
     -webkit-appearance: none;
     margin: 0;
   }
+
+
+  &.trading-window-disabled {
+    @apply bg-gray-100 cursor-not-allowed;
+
+    input {
+      @apply cursor-not-allowed pointer-events-auto
+    }
+
+    label {
+      @apply cursor-not-allowed
+    }
+
+    form {
+      @apply cursor-not-allowed
+    }
+
+  }
 }

@@ -25,5 +25,17 @@ export class TradingDashboardComponent implements OnInit {
     })
   }
 
+  getBuyMaxAmount(): number {
+    return Math.floor(this.data.balance * 100 / this.data.cryptoData.currentPrice) / 100
+  }
+
+  onSellAmount() {
+
+  }
+
+  onBuyAmount() {
+
+  }
+
 
 }
