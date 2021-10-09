@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from 'src/app/AppRoutingModule';
@@ -13,6 +13,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "src/environments/environment";
 import {PermissionService} from "src/app/authentication/domain/PermissionService";
 import {NgxSpinnerModule} from "ngx-spinner";
+// import {GlobalErrorHandler} from "src/app/util/GlobalErrorHandler";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
     }),
   ],
   providers: [
+    // {provide: ErrorHandler, useClass: GlobalErrorHandler},
     PermissionService
   ],
   bootstrap: [AppComponent]

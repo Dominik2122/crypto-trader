@@ -11,7 +11,7 @@ export class TransactionResource extends BaseResource {
 
   tradeCrypto(request: TransactionRequest): Observable<Transaction> {
     return this.post<TransactionDTO>(
-      'http://127.0.0.1:8000/api/account/transactions/',
+      'api/account/transactions/',
       request
     ).pipe(
       map(transactionDTO => Transaction.fromDTO(transactionDTO))

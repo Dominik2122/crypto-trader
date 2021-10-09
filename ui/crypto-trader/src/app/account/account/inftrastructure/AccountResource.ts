@@ -13,14 +13,14 @@ export class AccountResource extends BaseResource {
 
   fetchData(days?: number): Observable<Account> {
     const queryParams = new HttpParams().append('days', days ? `${days}` : '14')
-    return this.get<AccountDTO>('http://127.0.0.1:8000/api/account/account-info', queryParams).pipe(
+    return this.get<AccountDTO>('api/account/account-info', queryParams).pipe(
       map((account) => Account.fromDTO(account))
     )
   }
 
 
   signUp(request: UserSignUpRequest): Observable<ValidatedUser> {
-    return this.post<ValidatedUser>('http://127.0.0.1:8000/api/user/create/', request)
+    return this.post<ValidatedUser>('api/user/create/', request)
   }
 
 

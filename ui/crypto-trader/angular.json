@@ -20,6 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "deployUrl": "/static/ang/",
             "outputPath": "dist/crypto-trader",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -53,8 +54,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "9mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",

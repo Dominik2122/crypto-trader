@@ -10,11 +10,11 @@ const routes: Routes = [
     children: [
       {
         path: 'crypto',
-        loadChildren: () => import('src/app/account/user-crypto/UserCryptoModule').then(m => m.UserCryptoModule)
+        loadChildren: () => import('./user-crypto/UserCryptoModule').then(m => m.UserCryptoModule)
       },
       {
         path: '',
-        loadChildren: () => import('src/app/account/account/AccountModule').then(m => m.AccountModule)
+        loadChildren: () => import('./account/AccountModule').then(m => m.AccountModule)
       }
     ]
   }
