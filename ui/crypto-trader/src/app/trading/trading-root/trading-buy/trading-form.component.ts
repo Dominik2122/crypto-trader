@@ -11,6 +11,7 @@ import {
 import {FormInput} from "src/app/util/form/domain/FormInput";
 import {FormGroup} from "@angular/forms";
 import {distinctUntilChanged, map} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 
 @Component({
@@ -32,7 +33,7 @@ export class TradingFormComponent implements OnInit {
   disable: boolean = false
 
   @Input()
-  clear: boolean = false
+  clear$: Subject<void>
 
   @Output()
   amount$: EventEmitter<number> = new EventEmitter<number>()
@@ -52,9 +53,10 @@ export class TradingFormComponent implements OnInit {
       this.createFormConfig()
     }
 
-    if (changes.clear && changes.clear.currentValue) {
-      this.clearForm()
-      this.clear = false
+    if (changes.clear$) {
+      this.clear$.asObservable().subscribe(() => {
+        this.clearForm()
+      })
     }
   }
 
@@ -107,7 +109,9 @@ export class TradingFormComponent implements OnInit {
   }
 
   private setValue(value: number) {
-    this.form.controls.amount.setValue(value)
+    if (this.form) {
+      this.form.controls.amount.setValue(value)
+    }
   }
 
   private clearForm() {

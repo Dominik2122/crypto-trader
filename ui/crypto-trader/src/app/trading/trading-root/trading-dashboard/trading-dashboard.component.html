@@ -11,25 +11,26 @@
     class="trading-balance"
   ></app-trading-balance>
 </div>
-<div class="flex justify-between items-center">
+<div class="flex flex-col md:flex-row justify-between items-center">
   <div class="flex w-full justify-center items-center">
     <app-trading-form
       label="Sell"
       [maxAmount]="data.ownedCrypto.amount"
       [disable]="!sellAvailable"
-      [clear]="clearForm"
+      [clear$]="clearForm$"
       (amount$)="onSellAmount($event)"
-      class="mr-4"></app-trading-form>
+      class="md:mr-4"></app-trading-form>
 
     <app-trading-form
       label="Buy"
       [maxAmount]="getBuyMaxAmount()"
       [disable]="!buyAvailable"
+      [clear$]="clearForm$"
       (amount$)="onBuyAmount($event)"
-      class="ml-4"></app-trading-form>
+      class="md:ml-4"></app-trading-form>
   </div>
 
-  <app-button class="text-4xl mr-8"
+  <app-button class="text-4xl mt-4 md:mt-0 mr-8"
               [disabled]="!tradeAvailable"
   (click)="trade()">
     Trade!

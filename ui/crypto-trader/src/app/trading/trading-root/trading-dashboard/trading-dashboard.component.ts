@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {pluck, skip} from "rxjs/operators";
+import {pluck, skip, take} from "rxjs/operators";
 import {TradingInfo} from "src/app/trading/trading-root/trading-crypto-picker/TradingInfo";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TradingService} from "src/app/trading/trading-root/TradingService";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-trading-dashboard',
@@ -17,7 +18,7 @@ export class TradingDashboardComponent implements OnInit {
   sellAvailable: boolean = true
   buyAvailable: boolean = true
   tradeAvailable: boolean = false
-  clearForm: boolean = false
+  clearForm$: Subject<void> = new Subject<void>()
 
 
   constructor(
@@ -32,6 +33,7 @@ export class TradingDashboardComponent implements OnInit {
       pluck('crypto')
     ).subscribe((data: TradingInfo) => {
       this.data = data
+      this.clearForm$.next()
     })
 
     this.observeSold()
@@ -65,11 +67,21 @@ export class TradingDashboardComponent implements OnInit {
     this.tradingService.finalizeTransaction()
   }
 
+  private fetchTradingInfo() {
+    this.tradingService.fetchTradingInfo(this.data.cryptoData.name)
+      .pipe(take(1))
+      .subscribe((tradingInfo: TradingInfo) => {
+          this.data = tradingInfo
+        }
+      )
+  }
+
   private observeSold() {
     this.tradingService.observeSold().pipe(skip(1)).subscribe(() => {
       this.resetDisabled()
-      this.clearForm = true
+      this.clearForm$.next()
       this.tradingService.set(null)
+      this.fetchTradingInfo()
     })
   }
 

@@ -1,6 +1,6 @@
 <div class="flex mt-4 md:block md:mt-0 md:text-center">
   <h3>Balance:</h3>
-  <div class="w-full flex ml-5 md:justify-center md:items-center md:ml-0 ">
+  <div class="w-full items-center flex ml-5 md:justify-center md:items-center md:ml-0 ">
     <app-text-badge color="green"><h2>{{balance | price}}$</h2></app-text-badge>
     <ng-container *ngIf="priceAdded">
       <div class="ml-2 flex justify-center">
@@ -13,26 +13,38 @@
 </div>
 
 <div class="flex md:block mt-2 text-center">
+
   <h4>{{ownedCrypto.name | titlecase }} balance: </h4>
-  <div class="flex md:flex-col md:items-center ml-5 md:justify-center md:ml-0 md:w-full ">
-    <app-text-badge color="yellow" class="md:mb-1">
-      <h2>{{ownedCrypto.amount}} units</h2>
-    </app-text-badge>
-    <app-text-badge *ngIf="transaction && transaction.amount"
-                    [color]="transaction.amount > 0 ? 'green' : 'red'"
-                    [subtle]="true"
-                    class="md:mb-1">
-      {{transaction.amount > 0 ? '+' : null}}{{transaction.amount}}
-    </app-text-badge>
-    <app-text-badge color="yellow" [subtle]="true" class="block md:mb-1">
-      <h2 *ngIf="ownedCrypto.amount || (transaction && transaction.amount)"
-      >{{ownedCrypto.price * ownedCrypto.amount | price}}$</h2>
-    </app-text-badge>
-    <app-text-badge *ngIf="transaction && transaction.amount"
-                    [color]="transaction.amount > 0 ? 'green' : 'red'"
-                    [subtle]="true">
-      {{priceAdded < 0 ? '+' : null}}{{-priceAdded | price}}$
-    </app-text-badge>
+
+  <div class="md:flex md:flex-col md:items-center ml-5 md:justify-center md:ml-0 md:w-full ">
+
+    <div class="flex items-center md:flex-col justify-center">
+
+      <app-text-badge color="yellow" class="md:mb-1 mr-2 md:mr-0">
+        <h2>{{ownedCrypto.amount}} units</h2>
+      </app-text-badge>
+
+      <app-text-badge *ngIf="transaction && transaction.amount"
+                      [color]="transaction.amount > 0 ? 'green' : 'red'"
+                      [subtle]="true"
+                      class="md:mb-1">
+        {{transaction.amount > 0 ? '+' : null}}{{transaction.amount}}
+      </app-text-badge>
+
+    </div>
+<div class="mt-2 flex md:flex-col justify-center items-center">
+  <app-text-badge color="yellow" [subtle]="true" class="block md:mb-1 mr-2 md:mr-0">
+    <h2 *ngIf="ownedCrypto.amount || (transaction && transaction.amount)"
+    >{{ownedCrypto.price * ownedCrypto.amount | price}}$</h2>
+  </app-text-badge>
+
+  <app-text-badge *ngIf="transaction && transaction.amount"
+                  [color]="transaction.amount > 0 ? 'green' : 'red'"
+                  [subtle]="true">
+    {{priceAdded < 0 ? '+' : null}}{{-priceAdded | price}}$
+  </app-text-badge>
+</div>
+
   </div>
 </div>
 
