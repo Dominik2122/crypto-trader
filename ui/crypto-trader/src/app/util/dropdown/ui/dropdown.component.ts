@@ -1,11 +1,13 @@
-import {Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import {ChangeDetectionStrategy, Component, ContentChild, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
 
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent {
 

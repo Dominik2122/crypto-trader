@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {pluck, skip, take} from "rxjs/operators";
 import {TradingInfo} from "src/app/trading/trading-root/trading-crypto-picker/TradingInfo";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -8,10 +8,11 @@ import {Subject} from "rxjs";
 @Component({
   selector: 'app-trading-dashboard',
   templateUrl: './trading-dashboard.component.html',
-  styleUrls: ['./trading-dashboard.component.scss']
+  styleUrls: ['./trading-dashboard.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TradingDashboardComponent implements OnInit {
-
 
   data: TradingInfo
 
@@ -24,7 +25,8 @@ export class TradingDashboardComponent implements OnInit {
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
-    private readonly tradingService: TradingService
+    private readonly tradingService: TradingService,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
@@ -34,6 +36,7 @@ export class TradingDashboardComponent implements OnInit {
     ).subscribe((data: TradingInfo) => {
       this.data = data
       this.clearForm$.next()
+      this.changeDetectorRef.detectChanges()
     })
 
     this.observeSold()
@@ -51,6 +54,7 @@ export class TradingDashboardComponent implements OnInit {
       this.resetDisabled()
     }
     this.tradingService.prepareNewTransaction(this.data.cryptoData.name, -amount)
+    this.changeDetectorRef.detectChanges()
   }
 
   onBuyAmount(amount: number): void {
@@ -61,6 +65,8 @@ export class TradingDashboardComponent implements OnInit {
       this.resetDisabled()
     }
     this.tradingService.prepareNewTransaction(this.data.cryptoData.name, amount)
+    this.changeDetectorRef.detectChanges()
+
   }
 
   trade() {
@@ -72,6 +78,7 @@ export class TradingDashboardComponent implements OnInit {
       .pipe(take(1))
       .subscribe((tradingInfo: TradingInfo) => {
           this.data = tradingInfo
+          this.changeDetectorRef.detectChanges()
         }
       )
   }
@@ -82,6 +89,7 @@ export class TradingDashboardComponent implements OnInit {
       this.clearForm$.next()
       this.tradingService.set(null)
       this.fetchTradingInfo()
+      this.changeDetectorRef.detectChanges()
     })
   }
 

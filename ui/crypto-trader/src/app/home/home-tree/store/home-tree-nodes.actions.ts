@@ -1,4 +1,4 @@
-import { createAction, props } from '@ngrx/store';
+import {createAction, props} from '@ngrx/store';
 import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 
 export const fetchTreeNodesAction = createAction(

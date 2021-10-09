@@ -1,6 +1,4 @@
-import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
-import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
-import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormInput} from "src/app/util/form/domain/FormInput";
 import {FormGroup} from "@angular/forms";
 import {Options} from "src/app/account/account/account-date-range-form/Options";
@@ -10,7 +8,8 @@ import {Options} from "src/app/account/account/account-date-range-form/Options";
   selector: 'app-account-date-range-form',
   templateUrl: './account-date-range-form.component.html',
   styleUrls: ['./account-date-range-form.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountDateRangeFormComponent implements OnInit {
 

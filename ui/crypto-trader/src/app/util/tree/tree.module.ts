@@ -8,11 +8,9 @@ import {TreeNodeCollectionComponent} from './ui/tree-node-collection/tree-node-c
 import {TreeNodeComponent} from './ui/tree-node/tree-node.component';
 import {TreeHeaderComponent} from './ui/tree-header/tree-header.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import { TreeColumnComponent } from './ui/tree-column/tree-column.component';
+import {TreeColumnComponent} from './ui/tree-column/tree-column.component';
 import {ExpandTreeNodeRepository} from "src/app/util/tree/domain/ExpandTreeNodeRepository";
 import {NgxPopperjsModule} from "ngx-popperjs";
-
-
 
 
 @NgModule({

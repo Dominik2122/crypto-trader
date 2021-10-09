@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TextBadgeComponent } from './text-badge.component';
+import {TextBadgeComponent} from './text-badge.component';
 
 describe('TextBadgeComponent', () => {
   let component: TextBadgeComponent;

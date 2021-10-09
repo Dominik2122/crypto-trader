@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TradingRootComponent } from './trading-root.component';
+import {TradingRootComponent} from './trading-root.component';
 
 describe('TradingRootComponent', () => {
   let component: TradingRootComponent;

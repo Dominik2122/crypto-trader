@@ -1,16 +1,17 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {OwnedCryptoService} from "src/app/account/user-crypto/domain/OwnedCryptoService";
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
 import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
-import {faChevronRight, faChevronLeft, faSignOutAlt, faUserAlt} from "@fortawesome/free-solid-svg-icons";
+import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
 
 @Component({
   selector: 'app-user-crypto-chart',
   templateUrl: './user-crypto-chart.component.html',
   styleUrls: ['./user-crypto-chart.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserCryptoChartComponent implements OnInit {
 

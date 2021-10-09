@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ComparisonComponent } from './comparison.component';
+import {ComparisonComponent} from './comparison.component';
 
 describe('ComparisonComponent', () => {
   let component: ComparisonComponent;

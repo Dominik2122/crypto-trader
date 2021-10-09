@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {map, switchMap} from 'rxjs/operators';
 import * as HomeTreeNodesActions from './home-tree-nodes.actions';
 import {TreeNodeResource} from "src/app/util/tree/infrastructure/tree-node-resource";
 import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
-
 
 
 @Injectable()

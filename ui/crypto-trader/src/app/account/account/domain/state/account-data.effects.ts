@@ -1,12 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {catchError, concatMap, map} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 import * as AccountDataActions from 'src/app/account/account/domain/state/account-data.actions';
 import {AccountResource} from "src/app/account/account/inftrastructure/AccountResource";
-
-
 
 
 @Injectable()

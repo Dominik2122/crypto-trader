@@ -1,9 +1,11 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-text-badge',
   templateUrl: './text-badge.component.html',
-  styleUrls: ['./text-badge.component.scss']
+  styleUrls: ['./text-badge.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TextBadgeComponent {
 

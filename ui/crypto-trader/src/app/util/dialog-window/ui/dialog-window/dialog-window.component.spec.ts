@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DialogWindowComponent } from './dialog-window.component';
+import {DialogWindowComponent} from './dialog-window.component';
 
 describe('DialogWindowComponent', () => {
   let component: DialogWindowComponent;

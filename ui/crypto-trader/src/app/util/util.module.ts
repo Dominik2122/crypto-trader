@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PricePipe } from './pipes/price.pipe';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {PricePipe} from './pipes/price.pipe';
 
 
 @NgModule({

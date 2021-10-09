@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
 import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
@@ -7,7 +7,9 @@ import {BalanceHistory} from "src/app/account/account/domain/BalanceHistory";
 @Component({
   selector: 'app-account-chart',
   templateUrl: './account-chart.component.html',
-  styleUrls: ['./account-chart.component.scss']
+  styleUrls: ['./account-chart.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountChartComponent implements OnInit {
 

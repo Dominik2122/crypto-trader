@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store';
+import {createReducer, on} from '@ngrx/store';
 import * as HomeTreeNodesActions from './home-tree-nodes.actions';
 import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 

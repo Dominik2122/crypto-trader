@@ -1,11 +1,10 @@
 import {BaseResource} from "src/app/util/base/infrastructure/base-resource";
 import {Injectable} from "@angular/core";
-import {UserLoginRequest} from "src/app/authentication/domain/UserLoginRequest";
 import {Observable} from "rxjs";
 import {ValidatedUser} from "src/app/authentication/domain/ValidatedUser";
 import {UserSignUpRequest} from "src/app/authentication/domain/UserSignUpRequest";
 import {HttpParams} from "@angular/common/http";
-import {map, tap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {AccountDTO} from "src/app/account/account/inftrastructure/AccountDTO";
 import {Account} from "src/app/account/account/domain/Account";
 

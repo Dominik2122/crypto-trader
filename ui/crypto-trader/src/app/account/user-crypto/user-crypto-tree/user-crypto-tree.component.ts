@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
@@ -12,7 +12,8 @@ import {take} from "rxjs/operators";
   selector: 'app-user-crypto-tree',
   templateUrl: './user-crypto-tree.component.html',
   styleUrls: ['./user-crypto-tree.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserCryptoTreeComponent implements OnInit {
 

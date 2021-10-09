@@ -1,16 +1,16 @@
-import {Component, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {faAngleDoubleDown, faArrowsAltV} from "@fortawesome/free-solid-svg-icons";
-import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 import {ExpandTreeNodeRepository} from "src/app/util/tree/domain/ExpandTreeNodeRepository";
-import {log} from "util";
 
 @Component({
   selector: 'app-tree-node',
   templateUrl: './tree-node.component.html',
-  styleUrls: ['./tree-node.component.scss']
+  styleUrls: ['./tree-node.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TreeNodeComponent {
 

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeaderAccountInfoDialogComponent } from 'src/app/header/header-root/header-account-info-dialog/header-account-info-dialog.component';
+import {HeaderAccountInfoDialogComponent} from 'src/app/header/header-root/header-account-info-dialog/header-account-info-dialog.component';
 
 describe('HeaderAccountInfoDialogComponent', () => {
   let component: HeaderAccountInfoDialogComponent;

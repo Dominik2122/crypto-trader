@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeaderRootComponent } from './header-root.component';
+import {HeaderRootComponent} from './header-root.component';
 
 describe('HeaderRootComponent', () => {
   let component: HeaderRootComponent;

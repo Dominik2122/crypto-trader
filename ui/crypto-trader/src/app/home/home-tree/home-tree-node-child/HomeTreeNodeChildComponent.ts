@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
 import 'chartjs-adapter-moment';
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
@@ -9,7 +9,9 @@ import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartData
 @Component({
   selector: 'app-home-tree-child-component',
   templateUrl: './HomeTreeNodeChildComponent.html',
-  styleUrls: ['./HomeTreeNodeChildComponent.scss']
+  styleUrls: ['./HomeTreeNodeChildComponent.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeTreeNodeChildComponent {
 

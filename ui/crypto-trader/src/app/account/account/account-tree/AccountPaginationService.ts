@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {AccountDataService} from "src/app/account/account/domain/AccountDataService";
 
-import {BehaviorSubject, combineLatest, Observable, Subject} from "rxjs";
-import {filter, map, tap} from "rxjs/operators";
+import {BehaviorSubject, combineLatest, Observable} from "rxjs";
+import {map, tap} from "rxjs/operators";
 import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 
 @Injectable()

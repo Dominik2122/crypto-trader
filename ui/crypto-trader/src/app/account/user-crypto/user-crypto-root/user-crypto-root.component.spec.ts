@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserCryptoRootComponent } from 'src/app/account/user-crypto/user-crypto-root/user-crypto-root.component';
+import {UserCryptoRootComponent} from 'src/app/account/user-crypto/user-crypto-root/user-crypto-root.component';
 
 describe('UserCryptoRootComponent', () => {
   let component: UserCryptoRootComponent;

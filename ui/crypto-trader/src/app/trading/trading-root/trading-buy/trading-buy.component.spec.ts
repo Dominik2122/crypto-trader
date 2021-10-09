@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TradingFormComponent } from 'src/app/trading/trading-root/trading-buy/trading-form.component';
+import {TradingFormComponent} from 'src/app/trading/trading-root/trading-buy/trading-form.component';
 
 describe('TradingBuyComponent', () => {
   let component: TradingFormComponent;

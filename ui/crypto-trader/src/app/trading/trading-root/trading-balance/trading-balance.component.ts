@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
 import {TradingService} from "src/app/trading/trading-root/TradingService";
 import {TransactionRequest} from "src/app/shared/transactions/inftrastructure/TransactionRequest";
@@ -6,7 +6,9 @@ import {TransactionRequest} from "src/app/shared/transactions/inftrastructure/Tr
 @Component({
   selector: 'app-trading-balance',
   templateUrl: './trading-balance.component.html',
-  styleUrls: ['./trading-balance.component.scss']
+  styleUrls: ['./trading-balance.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TradingBalanceComponent implements OnInit {
 
@@ -21,7 +23,8 @@ export class TradingBalanceComponent implements OnInit {
   priceAdded: number
 
   constructor(
-    private readonly tradingService: TradingService
+    private readonly tradingService: TradingService,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
@@ -29,6 +32,7 @@ export class TradingBalanceComponent implements OnInit {
     this.tradingService.observe().subscribe((transaction) => {
       this.transaction = transaction
       this.createPriceAdded()
+      this.changeDetectorRef.detectChanges()
     })
   }
 
@@ -38,6 +42,7 @@ export class TradingBalanceComponent implements OnInit {
     } else {
       this.priceAdded = null
     }
+    this.changeDetectorRef.detectChanges()
   }
 
 }

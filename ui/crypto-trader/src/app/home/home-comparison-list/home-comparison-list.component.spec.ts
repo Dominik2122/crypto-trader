@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HomeComparisonListComponent } from './home-comparison-list.component';
+import {HomeComparisonListComponent} from './home-comparison-list.component';
 
 describe('HomeComparisonListComponent', () => {
   let component: HomeComparisonListComponent;

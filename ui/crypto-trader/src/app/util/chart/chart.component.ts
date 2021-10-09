@@ -1,15 +1,14 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   Input,
-  OnInit,
-  SimpleChange,
   SimpleChanges,
-  ViewChild, ViewEncapsulation
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 import Chart from "chart.js/auto";
-import {ChartData} from "chart.js";
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
 
@@ -18,7 +17,8 @@ import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent implements AfterViewInit {
   @ViewChild('canvas') canvas: ElementRef;

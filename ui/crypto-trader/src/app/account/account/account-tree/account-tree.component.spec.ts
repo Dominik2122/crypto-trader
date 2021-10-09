@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AccountTreeComponent } from 'src/app/account/account/account-tree/account-tree.component';
+import {AccountTreeComponent} from 'src/app/account/account/account-tree/account-tree.component';
 
 describe('AccountTreeComponent', () => {
   let component: AccountTreeComponent;

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TreeHeaderComponent } from 'src/app/util/tree/ui/tree-header/tree-header.component';
+import {TreeHeaderComponent} from 'src/app/util/tree/ui/tree-header/tree-header.component';
 
 describe('TreeHeaderComponent', () => {
   let component: TreeHeaderComponent;

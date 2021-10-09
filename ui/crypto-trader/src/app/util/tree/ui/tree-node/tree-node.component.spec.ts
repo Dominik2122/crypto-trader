@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TreeNodeComponent } from 'src/app/util/tree/ui/tree-node/tree-node.component';
+import {TreeNodeComponent} from 'src/app/util/tree/ui/tree-node/tree-node.component';
 
 describe('TreeNodeComponent', () => {
   let component: TreeNodeComponent;

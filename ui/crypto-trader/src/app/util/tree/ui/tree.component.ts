@@ -1,22 +1,25 @@
 import {
   AfterContentInit,
-  Component, ContentChild,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChild,
   ContentChildren,
   Input,
   QueryList,
-  TemplateRef
+  TemplateRef,
+  ViewEncapsulation
 } from '@angular/core';
 import {TreeColumn} from 'src/app/util/tree/ui/models/tree-column.model';
 import {TreeNode} from 'src/app/util/tree/ui/models/tree-node.model';
 import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
 import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
-import {NgxPopperjsContentComponent} from "ngx-popperjs/lib/ngx-popperjs-content/ngx-popper-content.component";
-
 
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.scss']
+  styleUrls: ['./tree.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TreeComponent implements AfterContentInit {
 

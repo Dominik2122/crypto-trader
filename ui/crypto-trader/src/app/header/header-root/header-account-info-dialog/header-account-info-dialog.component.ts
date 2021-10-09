@@ -1,17 +1,19 @@
-import { Component, Input, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from "ngx-spinner";
 import {HeaderAccountService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountService";
 import {HeaderAccount} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccount";
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
 import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
-import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
-import { User } from "src/app/authentication/domain/User";
+import {faUserAlt} from "@fortawesome/free-solid-svg-icons";
+import {User} from "src/app/authentication/domain/User";
 
 @Component({
   selector: 'app-header-account-info-dialog',
   templateUrl: './header-account-info-dialog.component.html',
-  styleUrls: ['./header-account-info-dialog.component.scss']
+  styleUrls: ['./header-account-info-dialog.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderAccountInfoDialogComponent {
 

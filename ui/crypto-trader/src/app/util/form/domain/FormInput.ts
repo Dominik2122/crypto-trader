@@ -7,7 +7,6 @@ import {PasswordInputComponent} from "src/app/util/form/ui/form-inputs/password-
 import {RangeInputComponent} from "src/app/util/form/ui/form-inputs/range/range-input.component";
 
 
-
 export enum FormInput {
   SELECT = 'selectField',
   TEXT = 'textInput',

@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TextBadgeComponent } from './text-badge.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {TextBadgeComponent} from './text-badge.component';
 
 
 @NgModule({

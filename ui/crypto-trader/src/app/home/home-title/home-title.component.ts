@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-home-title',
   templateUrl: './home-title.component.html',
-  styleUrls: ['./home-title.component.scss']
+  styleUrls: ['./home-title.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeTitleComponent implements OnInit {
 

@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {FormType} from "src/app/authentication/ui/FormType";
 import {AuthService} from "src/app/authentication/domain/AuthService";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {User} from "src/app/authentication/domain/User";
 
 
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss']
+  styleUrls: ['./authentication.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthenticationComponent {
 

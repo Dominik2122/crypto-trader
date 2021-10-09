@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {UserCryptoRootComponent} from "src/app/account/user-crypto/user-crypto-root/user-crypto-root.component";
 import {UserCryptoRootRoutingModule} from "src/app/account/user-crypto/user-crypto-root-routing.module";
 import {AccountRootModule} from "src/app/account/account-root.module";
@@ -14,7 +14,6 @@ import {ButtonModule} from "src/app/util/button/button.module";
 import {NgxPopperjsModule} from "ngx-popperjs";
 import {TransactionsModule} from "src/app/shared/transactions/transactions.module";
 import {FormModule} from "src/app/util/form/form.module";
-
 
 
 @NgModule({

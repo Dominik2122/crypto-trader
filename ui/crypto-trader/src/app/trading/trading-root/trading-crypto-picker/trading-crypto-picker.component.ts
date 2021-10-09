@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormInput} from "src/app/util/form/domain/FormInput";
 import {FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -9,7 +9,8 @@ import {pluck} from "rxjs/operators";
   selector: 'app-trading-crypto-picker',
   templateUrl: './trading-crypto-picker.component.html',
   styleUrls: ['./trading-crypto-picker.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TradingCryptoPickerComponent implements OnInit {
 

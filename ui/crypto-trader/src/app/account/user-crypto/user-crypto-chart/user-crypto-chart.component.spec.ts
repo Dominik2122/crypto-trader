@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserCryptoChartComponent } from 'src/app/account/user-crypto/user-crypto-chart/user-crypto-chart.component';
+import {UserCryptoChartComponent} from 'src/app/account/user-crypto/user-crypto-chart/user-crypto-chart.component';
 
 describe('UserCryptoChartComponent', () => {
   let component: UserCryptoChartComponent;

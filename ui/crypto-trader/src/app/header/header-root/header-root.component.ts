@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {faSignInAlt, faSignOutAlt, faFunnelDollar, faIgloo} from "@fortawesome/free-solid-svg-icons";
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {faFunnelDollar, faIgloo, faSignInAlt, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import {PermissionService} from "src/app/authentication/domain/PermissionService";
 import {User} from "src/app/authentication/domain/User";
 import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
@@ -7,7 +7,9 @@ import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
 @Component({
   selector: 'app-header-root',
   templateUrl: './header-root.component.html',
-  styleUrls: ['./header-root.component.scss']
+  styleUrls: ['./header-root.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderRootComponent implements OnInit {
 

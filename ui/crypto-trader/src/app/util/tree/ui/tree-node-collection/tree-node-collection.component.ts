@@ -1,4 +1,4 @@
-import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
 import {TreeColumn} from "src/app/util/tree/ui/models/tree-column.model";
 import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/tree-column.component";
@@ -6,7 +6,9 @@ import {TreeViewStrategy} from "src/app/util/tree/ui/models/TreeViewStrategy";
 
 @Component({
   selector: 'app-tree-node-collection',
-  templateUrl: './tree-node-collection.component.html'
+  templateUrl: './tree-node-collection.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TreeNodeCollectionComponent implements OnInit {
 

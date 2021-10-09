@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
 import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
 import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
@@ -7,7 +7,9 @@ import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
 @Component({
   selector: 'app-trading-chart',
   templateUrl: './trading-chart.component.html',
-  styleUrls: ['./trading-chart.component.scss']
+  styleUrls: ['./trading-chart.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TradingChartComponent implements OnInit {
 

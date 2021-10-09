@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TradingCryptoPickerComponent } from './trading-crypto-picker.component';
+import {TradingCryptoPickerComponent} from './trading-crypto-picker.component';
 
 describe('TradingCryptoPickerComponent', () => {
   let component: TradingCryptoPickerComponent;

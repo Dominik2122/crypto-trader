@@ -1,11 +1,13 @@
-import {Component, Input, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 import {Crypto} from "src/app/util/comparison/models/Crypto";
 import {faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-comparison',
   templateUrl: './comparison.component.html',
-  styleUrls: ['./comparison.component.scss']
+  styleUrls: ['./comparison.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ComparisonComponent {
 

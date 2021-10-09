@@ -1,4 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import {TransactionResource} from "src/app/shared/transactions/inftrastructure/TransactionResource";
 import {TransactionRequest} from "src/app/shared/transactions/inftrastructure/TransactionRequest";
 import {FormGroup} from "@angular/forms";
@@ -10,7 +18,8 @@ import {take} from "rxjs/operators";
   selector: 'app-sell',
   templateUrl: './sell.component.html',
   styleUrls: ['./sell.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SellComponent implements OnInit {
 

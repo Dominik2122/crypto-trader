@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserCryptoTreeComponent } from 'src/app/account/user-crypto/user-crypto-tree/user-crypto-tree.component';
+import {UserCryptoTreeComponent} from 'src/app/account/user-crypto/user-crypto-tree/user-crypto-tree.component';
 
 describe('UserCryptoTreeComponent', () => {
   let component: UserCryptoTreeComponent;

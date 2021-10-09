@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-
-import {AccountComponent} from "src/app/account/account/account.component";
 import {AccountRootComponent} from "src/app/account/account-root/account-root.component";
 
 

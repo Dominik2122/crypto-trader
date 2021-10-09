@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {FieldComponent} from "src/app/util/form/ui/form-inputs/FieldComponent";
 import {Options} from '@angular-slider/ngx-slider';
@@ -7,6 +7,7 @@ import {Options} from '@angular-slider/ngx-slider';
   selector: 'app-select-field',
   templateUrl: './range-input.component.html',
   styleUrls: ['./range-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RangeInputComponent implements FieldComponent {
 

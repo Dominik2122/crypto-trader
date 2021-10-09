@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EmailInputComponent } from './email-input.component';
+import {EmailInputComponent} from './email-input.component';
 
 describe('EmailInputComponent', () => {
   let component: EmailInputComponent;
