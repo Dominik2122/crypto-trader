@@ -1,4 +1,4 @@
-import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
+import {TreeNode} from "src/app/util/tree/ui/domain/TreeNode";
 import {HomeTreeNodeData} from "src/app/home/home-tree/domain/HomeTreeNodeData";
 import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
 import {HomeTreeNodeDTO} from "src/app/home/home-tree/infrastructure/HomeTreeNodeDTO";

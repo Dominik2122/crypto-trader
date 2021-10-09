@@ -1,4 +1,4 @@
-import {BaseResource} from "src/app/util/base/infrastructure/base-resource";
+import {BaseResource} from "src/app/util/base/infrastructure/BaseResource";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {CryptoAccountDTO} from "src/app/account/user-crypto/infrastructure/CryptoAccountDTO";

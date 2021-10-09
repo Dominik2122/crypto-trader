@@ -1,4 +1,4 @@
-import {Crypto} from "src/app/util/comparison/models/Crypto";
+import {Crypto} from "src/app/util/comparison/domain/Crypto";
 import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 
 

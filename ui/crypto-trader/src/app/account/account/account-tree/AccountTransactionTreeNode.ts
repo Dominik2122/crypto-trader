@@ -1,4 +1,4 @@
-import {TreeNode} from "src/app/util/tree/ui/models/tree-node.model";
+import {TreeNode} from "src/app/util/tree/ui/domain/TreeNode";
 import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 import {AccountTransactionTreeNodeData} from "src/app/account/account/account-tree/AccountTransactionTreeNodeData";
 

@@ -1,13 +1,13 @@
 import {Store} from "@ngrx/store";
-import {State} from "src/app/account/account/domain/state/account-data.reducer";
+import {State} from "src/app/account/account/domain/state/AccountDataReducer";
 import {Injectable} from "@angular/core";
-import {fetchAccountData} from "src/app/account/account/domain/state/account-data.actions";
+import {fetchAccountData} from "src/app/account/account/domain/state/AccountDataActions";
 import {Observable} from "rxjs";
 import {
   selectAccountBalance,
   selectAccountPastData,
   selectAccountTransactions
-} from "src/app/account/account/domain/state/account-data.selectors";
+} from "src/app/account/account/domain/state/AccountDataSelectors";
 import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 import {BalanceHistory} from "src/app/account/account/domain/BalanceHistory";
 

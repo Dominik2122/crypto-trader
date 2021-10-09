@@ -1,4 +1,4 @@
-import {TreeNodeData} from "src/app/util/tree/ui/models/tree-node-data.model";
+import {TreeNodeData} from "src/app/util/tree/ui/domain/TreeNodeData";
 import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
 
 export class OwnedCryptoTreeNodeData implements TreeNodeData {

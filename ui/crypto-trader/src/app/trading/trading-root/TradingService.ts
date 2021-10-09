@@ -1,12 +1,12 @@
 import {Injectable} from "@angular/core";
 import {TransactionRequest} from "src/app/shared/transactions/inftrastructure/TransactionRequest";
-import {Storage} from "src/app/util/base/domain/storage";
+import {Storage} from "src/app/util/base/domain/Storage";
 import {TransactionResource} from "src/app/shared/transactions/inftrastructure/TransactionResource";
 import {map, take} from "rxjs/operators";
 import {BehaviorSubject, combineLatest, Observable} from "rxjs";
 import {HeaderAccountResource} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountResource";
 import {OwnedCryptoResource} from "src/app/account/user-crypto/infrastructure/OwnedCryptoResource";
-import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/home-tree-node-resource";
+import {HomeTreeNodeResource} from "src/app/home/home-tree/infrastructure/HomeTreeNodeResource";
 import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
 import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
 import {TradingInfo} from "src/app/trading/trading-root/trading-crypto-picker/TradingInfo";

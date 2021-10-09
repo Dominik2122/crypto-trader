@@ -1,4 +1,4 @@
-import {BaseResource} from "src/app/util/base/infrastructure/base-resource";
+import {BaseResource} from "src/app/util/base/infrastructure/BaseResource";
 import {HeaderAccount} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccount";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";

@@ -1,10 +1,10 @@
-import {SelectFieldComponent} from "src/app/util/form/ui/form-inputs/select-field/select-field.component";
-import {TextInputComponent} from "src/app/util/form/ui/form-inputs/text-input/text-input.component";
-import {EmailInputComponent} from "src/app/util/form/ui/form-inputs/email-input/email-input.component";
-import {TextAreaComponent} from "src/app/util/form/ui/form-inputs/text-area/text-area.component";
-import {NumberInputComponent} from "src/app/util/form/ui/form-inputs/number-input/number-input.component";
-import {PasswordInputComponent} from "src/app/util/form/ui/form-inputs/password-input/password-input.component";
-import {RangeInputComponent} from "src/app/util/form/ui/form-inputs/range/range-input.component";
+import {SelectFieldComponent} from "src/app/util/form/ui/form-inputs/select-field/SelectFieldComponent";
+import {TextInputComponent} from "src/app/util/form/ui/form-inputs/text-input/TextInputComponent";
+import {EmailInputComponent} from "src/app/util/form/ui/form-inputs/email-input/EmailInputComponent";
+import {TextAreaComponent} from "src/app/util/form/ui/form-inputs/text-area/TextAreaComponent";
+import {NumberInputComponent} from "src/app/util/form/ui/form-inputs/number-input/NumberInputComponent";
+import {PasswordInputComponent} from "src/app/util/form/ui/form-inputs/password-input/PasswordInputComponent";
+import {RangeInputComponent} from "src/app/util/form/ui/form-inputs/range/RangeInputComponent";
 
 
 export enum FormInput {

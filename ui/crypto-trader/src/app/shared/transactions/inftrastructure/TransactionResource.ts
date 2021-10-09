@@ -1,4 +1,4 @@
-import {BaseResource} from "src/app/util/base/infrastructure/base-resource";
+import {BaseResource} from "src/app/util/base/infrastructure/BaseResource";
 import {TransactionDTO} from "src/app/shared/transactions/inftrastructure/TransactionDTO";
 import {Transaction} from "src/app/shared/transactions/domain/Transaction";
 import {TransactionRequest} from "src/app/shared/transactions/inftrastructure/TransactionRequest";

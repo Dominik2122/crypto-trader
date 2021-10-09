@@ -1,4 +1,4 @@
-import {BaseResource} from "src/app/util/base/infrastructure/base-resource";
+import {BaseResource} from "src/app/util/base/infrastructure/BaseResource";
 import {Injectable} from "@angular/core";
 import {UserLoginRequest} from "src/app/authentication/domain/UserLoginRequest";
 import {Observable} from "rxjs";
