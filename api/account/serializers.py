@@ -19,14 +19,13 @@ class TransactionSerializer(serializers.ModelSerializer):
 
 
 class TransactionCreateSerializer(serializers.ModelSerializer):
+    price = serializers.ReadOnlyField(source='price.value')
     crypto = serializers.CharField(max_length=255)
 
     class Meta:
         model = Transaction
         fields = '__all__'
         read_only_fields = ("price", "account", "owner", "value")
-
-    crypto = serializers.CharField(max_length=255)
 
     def create(self, validated_data):
         crypto = validated_data.pop('crypto')
