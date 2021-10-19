@@ -6,6 +6,25 @@ import {PermissionService} from "src/app/authentication/domain/PermissionService
 import {User} from "src/app/authentication/domain/User";
 
 
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+const csrftoken = getCookie('csrftoken');
+
+
 @Injectable()
 export class BaseResource {
 
@@ -31,9 +50,13 @@ export class BaseResource {
     const user: User = this.permissionService.getUser()
     const token: string = user && user.getToken()
     return {
-      headers: {'Authorization': 'Token '+ token },
+      headers: {
+        'Authorization': 'Token ' + token,
+        'X-CSRFToken': csrftoken
+      },
       params
     }
   }
 
 }
+
