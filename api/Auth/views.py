@@ -17,7 +17,7 @@ class CreateTokenView(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class
         user = serializer.validate(self, request.data)
-        token = Token.objects.get(user = user)
+        token, created = Token.objects.get_or_create(user = user)
         response = {
             'token': token.key,
             'userLogin': user.login,

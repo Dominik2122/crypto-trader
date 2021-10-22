@@ -17,7 +17,6 @@ import django_heroku
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -65,7 +64,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL=True
+MIDDLEWARE_CLASSES = ('whitenoise.middleware.WhiteNoiseMiddleware',)
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'crypto_trader.urls'
 
@@ -88,15 +89,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'crypto_trader.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'crypto_DB',
+        'USER': 'postgres',
+        'PASSWORD': 'LiverpoolFC1997&',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
+
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -154,9 +159,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
-
 AUTH_USER_MODEL = 'Auth.User'
-
 
 # CELERY STUFF
 CELERY_BROKER_URL = 'redis://redistogo:f13050dd6f933249957bb94c9866cf09@soapfish.redistogo.com:11622/'

@@ -9,7 +9,6 @@ User = get_user_model()
 from .serializers import CryptoAccountSerializer
 from .models import CryptoAccount, Owned
 
-
 class CryptoAccountViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
@@ -17,5 +16,6 @@ class CryptoAccountViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
 
     def list(self, request, *args, **kwargs):
         user = request.user
-        serializer = self.get_serializer(CryptoAccount.objects.get(owner=user))
+        account, created = CryptoAccount.objects.get_or_create(owner=user)
+        serializer = self.get_serializer(account)
         return Response(serializer.data)

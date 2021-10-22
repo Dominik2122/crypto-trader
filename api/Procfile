@@ -1,1 +1,2 @@
 web: gunicorn crypto_trader.wsgi
+worker celery -A crypto_trader worker -l info -B
