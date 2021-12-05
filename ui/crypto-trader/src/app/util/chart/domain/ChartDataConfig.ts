@@ -12,18 +12,18 @@ export class ChartDataset {
 
 export class ChartDataConfig {
 
-  labels: Array<Date | string>
+  labels: Array<Date | string>;
 
-  datasets: Array<ChartDataset>
+  datasets: Array<ChartDataset>;
 
   withLabels(labels: Array<Date | string>): ChartDataConfig {
-    this.labels = labels
-    return this
+    this.labels = labels;
+    return this;
   }
 
   withDatasets(datasets: Array<ChartDataset>): ChartDataConfig {
-    this.datasets = datasets
-    return this
+    this.datasets = datasets;
+    return this;
   }
 
 
@@ -33,7 +33,7 @@ export class ChartDataConfig {
         labels: this.labels,
         datasets: this.datasets
       },
-    }
+    };
   }
 
 }

@@ -8,6 +8,6 @@ export const selectHomeTreeNodesState = createFeatureSelector<fromHomeTreeNodes.
 );
 
 export const selectHomeTreeNodes = createSelector(selectHomeTreeNodesState,
-  (state: HomeTreeNodesState) => state.treeNodes)
+  (state: HomeTreeNodesState) => state.treeNodes);
 
 

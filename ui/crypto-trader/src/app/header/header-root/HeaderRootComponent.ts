@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {faFunnelDollar, faIgloo, faSignInAlt, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
-import {PermissionService} from "src/app/authentication/domain/PermissionService";
-import {User} from "src/app/authentication/domain/User";
-import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
+import {faFunnelDollar, faIgloo, faSignInAlt, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import {PermissionService} from 'src/app/authentication/domain/PermissionService';
+import {User} from 'src/app/authentication/domain/User';
+import {DropdownOption} from 'src/app/util/dropdown/ui/DropdownOption';
 
 @Component({
   selector: 'app-header-root',
@@ -13,11 +13,11 @@ import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
 })
 export class HeaderRootComponent implements OnInit {
 
-  user: User
+  user: User;
 
   dropdownOptions: Array<DropdownOption>;
 
-  renderDialogWindow: boolean = false;
+  renderDialogWindow = false;
 
   constructor(
     private readonly permissionService: PermissionService,
@@ -25,33 +25,33 @@ export class HeaderRootComponent implements OnInit {
   ) {
   }
 
-  faSignInAlt = faSignInAlt
-  faIgloo = faIgloo
-  faFunnelDollar = faFunnelDollar
-  faSignOutAlt = faSignOutAlt
+  faSignInAlt = faSignInAlt;
+  faIgloo = faIgloo;
+  faFunnelDollar = faFunnelDollar;
+  faSignOutAlt = faSignOutAlt;
 
 
 
   ngOnInit(): void {
-    this.observeUser()
-    const btn = document.querySelector(".mobile-menu-button");
-    const sidebar = document.querySelector(".sidebar");
-    btn.addEventListener("click", () => {
-      sidebar.classList.toggle("-translate-x-full");
+    this.observeUser();
+    const btn = document.querySelector('.mobile-menu-button');
+    const sidebar = document.querySelector('.sidebar');
+    btn.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
     });
 
   }
 
   logout(): void {
-    this.permissionService.setUser(null)
-    this.changeDetectorRef.detectChanges()
+    this.permissionService.setUser(null);
+    this.changeDetectorRef.detectChanges();
   }
 
   private observeUser(): void {
     this.permissionService.selectUser().subscribe((user: User) => {
-      this.user = user
-      this.changeDetectorRef.detectChanges()
-    })
+      this.user = user;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
 

@@ -1,5 +1,5 @@
-import {TemplateRef} from "@angular/core";
-import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/TreeColumnComponent";
+import {TemplateRef} from '@angular/core';
+import {TreeColumnComponent} from 'src/app/util/tree/ui/tree-column/TreeColumnComponent';
 
 export class TreeColumn {
 
@@ -15,29 +15,21 @@ export class TreeColumn {
   ) {
   }
 
-  setTemplate(template: TemplateRef<TreeColumnComponent>): void {
-    this.template = template
-  }
-
-  setPoppperContent(popper: TemplateRef<TreeColumnComponent>): void {
-    this.popper = popper
-  }
-
   static Builder = class TreeColumnBuilder {
 
     columns: Array<TreeColumn>;
 
-    names: Array<string>
+    names: Array<string>;
 
-    cssClasses: Array<string>
+    cssClasses: Array<string>;
 
-    headers: Array<string>
+    headers: Array<string>;
 
-    flex: Array<string>
+    flex: Array<string>;
 
-    dragButton: boolean = false
+    dragButton = false;
 
-    expand: boolean = false
+    expand = false;
 
     templates: Array<TemplateRef<any>>;
 
@@ -45,34 +37,34 @@ export class TreeColumn {
     build(amount: number): Array<TreeColumn> {
       const columns: Array<TreeColumn> = [];
       for (let i = 0; i < amount; i++) {
-        columns.push(this.buildOne(i))
+        columns.push(this.buildOne(i));
       }
-      return columns
+      return columns;
     }
 
     withHeaders(headers: Array<string>) {
-      this.headers = headers
-      return this
+      this.headers = headers;
+      return this;
     }
 
     withNames(names: Array<string>) {
-     this.names = names
-      return this
+     this.names = names;
+     return this;
     }
 
     withFlex(flex: Array<string>) {
-      this.flex = flex
-      return this
+      this.flex = flex;
+      return this;
     }
 
     withDragAndDrop() {
-      this.dragButton = true
-      return this
+      this.dragButton = true;
+      return this;
     }
 
     withExpand() {
-      this.expand = true
-      return this
+      this.expand = true;
+      return this;
     }
 
     private buildOne(index: number): TreeColumn {
@@ -86,6 +78,14 @@ export class TreeColumn {
         index === 0 && this.expand);
     }
 
+  };
+
+  setTemplate(template: TemplateRef<TreeColumnComponent>): void {
+    this.template = template;
+  }
+
+  setPoppperContent(popper: TemplateRef<TreeColumnComponent>): void {
+    this.popper = popper;
   }
 
 

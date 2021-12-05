@@ -1,4 +1,4 @@
-import {HomeTreeNodeDTO} from "src/app/home/home-tree/infrastructure/HomeTreeNodeDTO";
+import {HomeTreeNodeDTO} from 'src/app/home/home-tree/infrastructure/HomeTreeNodeDTO';
 
 export class HomeTreeNodePastData {
 
@@ -9,11 +9,11 @@ export class HomeTreeNodePastData {
   }
 
   static fromDTO(dto: HomeTreeNodeDTO): Array<HomeTreeNodePastData> {
-    const prices: Array<HomeTreeNodePastData> = []
+    const prices: Array<HomeTreeNodePastData> = [];
 
     for (const price of dto.pastData) {
-      prices.push(new HomeTreeNodePastData(parseFloat(price.value), new Date(price.date)))
+      prices.push(new HomeTreeNodePastData(parseFloat(price.value), new Date(price.date)));
     }
-    return prices
+    return prices;
   }
 }

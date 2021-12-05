@@ -9,23 +9,23 @@ import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@an
 })
 export class HomeTitleComponent implements OnInit {
 
-  action: string = ''
-  actions: Array<string> = ['', '', 'Invest in']
+  action = '';
+  actions: Array<string> = ['', '', 'Invest in'];
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.initTitleAction()
+    this.initTitleAction();
   }
 
   initTitleAction(): void {
-    let i: number = 0
+    let i = 0;
     this.action = this.actions[i];
     setInterval(() => {
       i = i == 2 ? 0 : ++i;
       this.action = this.actions[i];
-    }, 5000)
+    }, 5000);
   }
 
 }

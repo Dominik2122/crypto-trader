@@ -1,5 +1,5 @@
-import {PriceDTO} from "src/app/home/home-tree/infrastructure/PriceDTO";
-import {PastDataDTO} from "src/app/home/home-tree/infrastructure/PastDataDTO";
+import {PriceDTO} from 'src/app/home/home-tree/infrastructure/PriceDTO';
+import {PastDataDTO} from 'src/app/home/home-tree/infrastructure/PastDataDTO';
 
 export class HomeTreeNodeDTO {
 
@@ -11,7 +11,7 @@ export class HomeTreeNodeDTO {
 
   price: PriceDTO;
 
-  pastData: Array<PastDataDTO>
+  pastData: Array<PastDataDTO>;
 
 
 }

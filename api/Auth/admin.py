@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-# Register your models here.
 
 from . import models
+
+
+# Register your models here.
 
 
 class UserAdmin(BaseUserAdmin):
@@ -20,7 +22,7 @@ class UserAdmin(BaseUserAdmin):
          {'fields': ('is_staff', 'is_superuser')}
          ),
         ('Important dates',
-        {'fields': ('last_login',)})
+         {'fields': ('last_login',)})
     )
 
     add_fielsets = (

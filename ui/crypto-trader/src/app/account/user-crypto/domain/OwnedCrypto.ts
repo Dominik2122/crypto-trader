@@ -1,4 +1,4 @@
-import {OwnedCryptoDTO} from "src/app/account/user-crypto/infrastructure/OwnedCryptoDTO";
+import {OwnedCryptoDTO} from 'src/app/account/user-crypto/infrastructure/OwnedCryptoDTO';
 
 export class OwnedCrypto {
   constructor(
@@ -16,6 +16,6 @@ export class OwnedCrypto {
       dto.current_price,
       dto.value,
       parseFloat(dto.amount)
-    )
+    );
   }
 }

@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {Account} from "src/app/account/account/domain/Account";
+import {Account} from 'src/app/account/account/domain/Account';
 
 export const fetchAccountData = createAction(
   '[AccountData] Fetch AccountData',

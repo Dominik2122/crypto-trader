@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {TreeColumn} from "src/app/util/tree/ui/domain/TreeColumn";
+import {TreeColumn} from 'src/app/util/tree/ui/domain/TreeColumn';
 
 @Component({
   selector: 'app-tree-header',
@@ -11,7 +11,7 @@ import {TreeColumn} from "src/app/util/tree/ui/domain/TreeColumn";
 export class TreeHeaderComponent implements OnInit {
 
   @Input()
-  treeColumns: Array<TreeColumn>
+  treeColumns: Array<TreeColumn>;
 
   constructor() { }
 

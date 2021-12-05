@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import {TreeColumn} from 'src/app/util/tree/ui/domain/TreeColumn';
 import {TreeNode} from 'src/app/util/tree/ui/domain/TreeNode';
-import {TreeColumnComponent} from "src/app/util/tree/ui/tree-column/TreeColumnComponent";
-import {TreeViewStrategy} from "src/app/util/tree/ui/domain/TreeViewStrategy";
+import {TreeColumnComponent} from 'src/app/util/tree/ui/tree-column/TreeColumnComponent';
+import {TreeViewStrategy} from 'src/app/util/tree/ui/domain/TreeViewStrategy';
 
 @Component({
   selector: 'app-tree',
@@ -24,11 +24,11 @@ import {TreeViewStrategy} from "src/app/util/tree/ui/domain/TreeViewStrategy";
 export class TreeComponent implements AfterContentInit {
 
   @ContentChildren(TreeColumnComponent)
-  treeColumnCollection: QueryList<TreeColumnComponent>
+  treeColumnCollection: QueryList<TreeColumnComponent>;
 
 
   @ContentChild('child')
-  treeChildTemplate: TemplateRef<any>
+  treeChildTemplate: TemplateRef<any>;
 
   @Input()
   columns: Array<TreeColumn>;
@@ -37,7 +37,7 @@ export class TreeComponent implements AfterContentInit {
   cssClass: Array<string>;
 
   @Input()
-  viewStrategy: TreeViewStrategy = TreeViewStrategy.DEFAULT
+  viewStrategy: TreeViewStrategy = TreeViewStrategy.DEFAULT;
 
   @Input()
   nodes: Array<TreeNode>;
@@ -49,7 +49,7 @@ export class TreeComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.setViewStrategy();
-    this.initColumnTemplates()
+    this.initColumnTemplates();
   }
 
   private setViewStrategy(): void {
@@ -61,9 +61,9 @@ export class TreeComponent implements AfterContentInit {
   private initColumnTemplates(): void {
     this.treeColumnCollection.forEach(
       (column: TreeColumnComponent, index: number) => {
-        this.columns[index].setTemplate(column.template)
-        this.columns[index].setPoppperContent(column.popperContent)
-      })
+        this.columns[index].setTemplate(column.template);
+        this.columns[index].setPoppperContent(column.popperContent);
+      });
   }
 
 }

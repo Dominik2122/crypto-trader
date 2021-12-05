@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
-import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
-import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
-import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
-import {BalanceHistory} from "src/app/account/account/domain/BalanceHistory";
+import {ChartOptionsConfig} from 'src/app/util/chart/domain/ChartOptionsConfig';
+import {ChartXAxis, xAxisTime} from 'src/app/util/chart/domain/ChartXAxis';
+import {ChartDataConfig, ChartDataset} from 'src/app/util/chart/domain/ChartDataConfig';
+import {BalanceHistory} from 'src/app/account/account/domain/BalanceHistory';
 
 @Component({
   selector: 'app-account-chart',
@@ -16,21 +16,21 @@ export class AccountChartComponent implements OnInit {
   @Input()
   balanceHistory: Array<BalanceHistory>;
 
-  isLoaded: boolean = false;
+  isLoaded = false;
 
-  chartConfig: ChartOptionsConfig
+  chartConfig: ChartOptionsConfig;
 
-  chartData: ChartDataConfig
+  chartData: ChartDataConfig;
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.balanceHistory && this.balanceHistory) {
       if (!this.balanceHistory || this.balanceHistory.length < 2 ) {
-        this.isLoaded = false
+        this.isLoaded = false;
       } else {
-        this.isLoaded = true
-        this.createChartConfig()
+        this.isLoaded = true;
+        this.createChartConfig();
       }
     }
   }
@@ -48,7 +48,7 @@ export class AccountChartComponent implements OnInit {
           parser: xAxisTime.DaysAndMonth
         }
       ))
-      .withType('line')
+      .withType('line');
 
     this.chartData = new ChartDataConfig()
       .withLabels(this.balanceHistory.map(data => data.date))
@@ -58,7 +58,7 @@ export class AccountChartComponent implements OnInit {
         'green',
         'black',
         1
-      )])
+      )]);
   }
 
 }

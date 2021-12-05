@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormInput} from "src/app/util/form/domain/FormInput";
-import {FormGroup} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {TradingInfo} from "src/app/trading/trading-root/trading-crypto-picker/TradingInfo";
-import {pluck} from "rxjs/operators";
+import {FormInput} from 'src/app/util/form/domain/FormInput';
+import {FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {TradingInfo} from 'src/app/trading/trading-root/trading-crypto-picker/TradingInfo';
+import {pluck} from 'rxjs/operators';
 
 @Component({
   selector: 'app-trading-crypto-picker',
@@ -14,9 +14,9 @@ import {pluck} from "rxjs/operators";
 })
 export class TradingCryptoPickerComponent implements OnInit {
 
-  placeholder: string = 'bitcoin'
+  placeholder = 'bitcoin';
 
-  options: Array<string>
+  options: Array<string>;
 
   formConfig = [
     {
@@ -37,16 +37,16 @@ export class TradingCryptoPickerComponent implements OnInit {
     this.activatedRoute.data.pipe(
       pluck('crypto')
     ).subscribe((data: TradingInfo) => {
-      this.placeholder = data.cryptoData.name
-      this.options = data.otherCryptos
-      this.createForm()
-    })
+      this.placeholder = data.cryptoData.name;
+      this.options = data.otherCryptos;
+      this.createForm();
+    });
   }
 
   observeForm(form: FormGroup) {
     form.valueChanges.subscribe((value) => {
-      this.router.navigate(['trading'], {queryParams: {crypto: value.crypto}})
-    })
+      this.router.navigate(['trading'], {queryParams: {crypto: value.crypto}});
+    });
   }
 
   private createForm() {

@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DropdownComponent} from 'src/app/util/dropdown/ui/DropdownComponent';
-import {NgxPopperjsModule} from "ngx-popperjs";
-import {RouterModule} from "@angular/router";
+import {NgxPopperjsModule} from 'ngx-popperjs';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({

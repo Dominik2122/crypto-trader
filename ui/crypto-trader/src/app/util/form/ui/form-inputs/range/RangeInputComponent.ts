@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {FieldComponent} from "src/app/util/form/ui/form-inputs/FieldComponent";
+import {FormGroup} from '@angular/forms';
+import {FieldComponent} from 'src/app/util/form/ui/form-inputs/FieldComponent';
 import {Options} from '@angular-slider/ngx-slider';
 
 @Component({
@@ -14,7 +14,7 @@ export class RangeInputComponent implements FieldComponent {
   config;
   group: FormGroup;
 
-  options: Options
+  options: Options;
 
   value: number;
 
@@ -24,16 +24,16 @@ export class RangeInputComponent implements FieldComponent {
       ceil: this.config.ceil,
     };
     if (this.config.stepsArray) {
-      this.options.stepsArray = this.config.stepsArray
+      this.options.stepsArray = this.config.stepsArray;
     }
     if (this.config.showTicks) {
-      this.options.showTicksValues = true
+      this.options.showTicksValues = true;
     }
 
   }
 
   onChange($event) {
-    this.group.controls[this.config.name].setValue($event)
+    this.group.controls[this.config.name].setValue($event);
   }
 
 }

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthenticationComponent} from "src/app/authentication/ui/AuthenticationComponent";
+import {AuthenticationComponent} from 'src/app/authentication/ui/AuthenticationComponent';
 
 
 const routes: Routes = [

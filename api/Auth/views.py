@@ -1,9 +1,12 @@
 from rest_framework import generics, authentication, permissions
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.settings import api_settings
 from rest_framework.authtoken.models import Token
-from .serializers import UserSerializer, AuthTokenSerializer
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
+from rest_framework.settings import api_settings
+
+from .serializers import UserSerializer, AuthTokenSerializer
+
+
 # Create your views here.
 
 class CreateUserView(generics.CreateAPIView):
@@ -17,14 +20,13 @@ class CreateTokenView(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class
         user = serializer.validate(self, request.data)
-        token, created = Token.objects.get_or_create(user = user)
+        token, created = Token.objects.get_or_create(user=user)
         response = {
             'token': token.key,
             'userLogin': user.login,
             'isAdmin': user.is_superuser
         }
         return Response(response)
-
 
 
 class ManageUserView(generics.RetrieveUpdateAPIView):

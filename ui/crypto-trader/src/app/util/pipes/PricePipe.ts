@@ -8,11 +8,11 @@ export class PricePipe implements PipeTransform {
   transform(value: number): number {
 
     if (Math.abs(value) > 100) {
-      return Math.round(value)
+      return Math.round(value);
     } else if (value < 10 && value > 0) {
-      return Math.round(value * 100)/100
+      return Math.round(value * 100) / 100;
     } else {
-      return Math.round(value * 10)/10;
+      return Math.round(value * 10) / 10;
     }
   }
 

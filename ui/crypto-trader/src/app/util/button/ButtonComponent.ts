@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {ButtonColors} from "src/app/util/button/ButtonColors";
+import {ButtonColors} from 'src/app/util/button/ButtonColors';
 
 @Component({
   selector: 'app-button',
@@ -11,11 +11,11 @@ import {ButtonColors} from "src/app/util/button/ButtonColors";
 export class ButtonComponent implements OnInit {
 
   @Input()
-  color: ButtonColors = ButtonColors.BLUE
+  color: ButtonColors = ButtonColors.BLUE;
 
 
   @Input()
-  disabled: boolean
+  disabled: boolean;
 
   constructor() { }
 

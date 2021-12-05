@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
-import {TradingService} from "src/app/trading/trading-root/TradingService";
-import {TransactionRequest} from "src/app/shared/transactions/inftrastructure/TransactionRequest";
+import {OwnedCrypto} from 'src/app/account/user-crypto/domain/OwnedCrypto';
+import {TradingService} from 'src/app/trading/trading-root/TradingService';
+import {TransactionRequest} from 'src/app/shared/transactions/inftrastructure/TransactionRequest';
 
 @Component({
   selector: 'app-trading-balance',
@@ -13,14 +13,14 @@ import {TransactionRequest} from "src/app/shared/transactions/inftrastructure/Tr
 export class TradingBalanceComponent implements OnInit {
 
   @Input()
-  balance: number
+  balance: number;
 
   @Input()
-  ownedCrypto: OwnedCrypto
+  ownedCrypto: OwnedCrypto;
 
-  transaction: TransactionRequest
+  transaction: TransactionRequest;
 
-  priceAdded: number
+  priceAdded: number;
 
   constructor(
     private readonly tradingService: TradingService,
@@ -30,19 +30,19 @@ export class TradingBalanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.tradingService.observe().subscribe((transaction) => {
-      this.transaction = transaction
-      this.createPriceAdded()
-      this.changeDetectorRef.detectChanges()
-    })
+      this.transaction = transaction;
+      this.createPriceAdded();
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
   createPriceAdded(): void {
     if (this.transaction) {
-      this.priceAdded = -this.transaction.amount * this.ownedCrypto.price
+      this.priceAdded = -this.transaction.amount * this.ownedCrypto.price;
     } else {
-      this.priceAdded = null
+      this.priceAdded = null;
     }
-    this.changeDetectorRef.detectChanges()
+    this.changeDetectorRef.detectChanges();
   }
 
 }

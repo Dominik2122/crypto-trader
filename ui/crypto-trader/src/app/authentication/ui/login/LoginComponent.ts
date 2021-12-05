@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {FormInput} from "src/app/util/form/domain/FormInput";
-import {FormGroup} from "@angular/forms";
+import {FormInput} from 'src/app/util/form/domain/FormInput';
+import {FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -13,10 +13,10 @@ import {FormGroup} from "@angular/forms";
 export class LoginComponent implements OnInit {
 
   @Output()
-  email: EventEmitter<string> = new EventEmitter<string>()
+  email: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
-  password: EventEmitter<string> = new EventEmitter<string>()
+  password: EventEmitter<string> = new EventEmitter<string>();
 
   form: FormGroup;
 
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.form.valueChanges.subscribe(value => {
       this.email.emit(value.email);
       this.password.emit(value.password);
-    })
+    });
   }
 
 }

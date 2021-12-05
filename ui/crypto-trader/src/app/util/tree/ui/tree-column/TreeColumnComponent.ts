@@ -1,5 +1,5 @@
 import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
-import {TreeColumn} from "src/app/util/tree/ui/domain/TreeColumn";
+import {TreeColumn} from 'src/app/util/tree/ui/domain/TreeColumn';
 
 @Component({
   selector: 'app-tree-column',
@@ -9,15 +9,15 @@ export class TreeColumnComponent implements OnInit {
 
   @ContentChild(TemplateRef, {static: true})
   set templateFromContentChild(template: TemplateRef<TreeColumnComponent>) {
-    this.template = template
+    this.template = template;
   }
 
   @Input()
-  popperContent: TemplateRef<TreeColumnComponent>
+  popperContent: TemplateRef<TreeColumnComponent>;
 
-  template: TemplateRef<any>
+  template: TemplateRef<any>;
 
-  treeColumns: Array<TreeColumn>
+  treeColumns: Array<TreeColumn>;
 
   constructor() { }
 

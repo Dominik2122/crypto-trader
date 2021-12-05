@@ -1,9 +1,11 @@
-from rest_framework import serializers
-from .models import Account, Transaction
 import datetime
 
+from rest_framework import serializers
+
+from .models import Account, Transaction
+
+
 class AccountSerializer(serializers.ModelSerializer):
-    
     class Meta:
         model = Account
         fields = '__all__'
@@ -74,8 +76,8 @@ class AccountInfoSerializer(serializers.ModelSerializer):
         return serializer.data
 
     class Meta:
-            model = Account
-            fields = ['balance', 'pastData', 'transactions']
+        model = Account
+        fields = ['balance', 'pastData', 'transactions']
 
 
 class HomeAccountInfoSerializer(serializers.ModelSerializer):
@@ -100,8 +102,3 @@ class HomeAccountInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = ['balance', 'pastData']
-
-
-
-
-

@@ -1,5 +1,5 @@
-import {TreeNodeData} from "src/app/util/tree/ui/domain/TreeNodeData";
-import {Transaction} from "src/app/shared/transactions/domain/Transaction";
+import {TreeNodeData} from 'src/app/util/tree/ui/domain/TreeNodeData';
+import {Transaction} from 'src/app/shared/transactions/domain/Transaction';
 
 export class AccountTransactionTreeNodeData implements TreeNodeData {
 
@@ -13,11 +13,11 @@ export class AccountTransactionTreeNodeData implements TreeNodeData {
 
   static fromDomain(domain: Transaction): AccountTransactionTreeNodeData {
     return new AccountTransactionTreeNodeData(
-      `${domain.date.getDate()}/${domain.date.getMonth()+1}/${domain.date.getFullYear()-2000}`,
+      `${domain.date.getDate()}/${domain.date.getMonth() + 1}/${domain.date.getFullYear() - 2000}`,
       domain.price,
       domain.value,
       domain.amount,
-      domain.crypto)
+      domain.crypto);
   }
 
 }

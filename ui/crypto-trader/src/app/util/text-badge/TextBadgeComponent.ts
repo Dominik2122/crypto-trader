@@ -9,12 +9,12 @@ import {ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild, ViewEn
 })
 export class TextBadgeComponent {
 
-  @ViewChild('templateRef') element: ElementRef
+  @ViewChild('templateRef') element: ElementRef;
 
   @Input()
   color: string;
 
   @Input()
-  subtle: boolean = false
+  subtle = false;
 
 }

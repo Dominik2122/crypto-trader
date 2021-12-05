@@ -1,4 +1,4 @@
-import {TreeNodeData} from "src/app/util/tree/ui/domain/TreeNodeData";
+import {TreeNodeData} from 'src/app/util/tree/ui/domain/TreeNodeData';
 
 export class TreeNode {
 

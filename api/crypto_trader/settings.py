@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+
 import dj_database_url
 import django_heroku
 
@@ -95,11 +96,11 @@ WSGI_APPLICATION = 'crypto_trader.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'crypto_DB',
-        'USER': 'postgres',
-        'PASSWORD': 'LiverpoolFC1997&',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432,
     }
 
 }

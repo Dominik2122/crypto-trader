@@ -1,4 +1,4 @@
-import {Observable, ReplaySubject} from "rxjs";
+import {Observable, ReplaySubject} from 'rxjs';
 
 export class Storage<T> {
   value: T;
@@ -7,15 +7,15 @@ export class Storage<T> {
 
   set(value: T): void {
     this.value = value;
-    this.value$.next(value)
+    this.value$.next(value);
   }
 
   get(): T {
-    return this.value
+    return this.value;
   }
 
   observe(): Observable<T> {
-    return this.value$.asObservable()
+    return this.value$.asObservable();
   }
 
 }

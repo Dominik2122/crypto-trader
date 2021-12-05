@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('cryptocurrency', '0012_merge_0003_auto_20210728_2117_0011_alter_price_date'),
     ]

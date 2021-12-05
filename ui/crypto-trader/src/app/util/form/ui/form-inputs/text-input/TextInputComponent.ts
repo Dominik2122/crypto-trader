@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {FieldComponent} from "src/app/util/form/ui/form-inputs/FieldComponent";
+import {FormGroup} from '@angular/forms';
+import {FieldComponent} from 'src/app/util/form/ui/form-inputs/FieldComponent';
 
 @Component({
   selector: 'app-text-input',

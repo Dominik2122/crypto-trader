@@ -1,6 +1,7 @@
-from rest_framework import serializers
-from .models import CryptoAccount, Owned
 from cryptocurrency.models import Price
+from rest_framework import serializers
+
+from .models import CryptoAccount, Owned
 
 
 class OwnedSerializer(serializers.ModelSerializer):
@@ -19,10 +20,9 @@ class OwnedSerializer(serializers.ModelSerializer):
         amount = owned.amount
         return price * amount
 
-
     class Meta:
-            model = Owned
-            exclude = ('account', 'crypto', 'id')
+        model = Owned
+        exclude = ('account', 'crypto', 'id')
 
 
 class CryptoAccountSerializer(serializers.ModelSerializer):
