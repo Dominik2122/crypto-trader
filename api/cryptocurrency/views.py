@@ -1,11 +1,8 @@
 from rest_framework import viewsets, mixins
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 
 from .models import Cryptocurrency
-from .serializers import CryptocurrencySerializer, CryptoWithCurrentPriceSerializer\
+from .serializers import CryptoWithCurrentPriceSerializer \
     , CryptoWithPriceChangeSerializer
-
 
 
 class CryptocurrencyViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):

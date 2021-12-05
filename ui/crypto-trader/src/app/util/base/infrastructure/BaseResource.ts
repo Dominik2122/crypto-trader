@@ -1,9 +1,9 @@
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams} from '@angular/common/http';
 
-import {Observable, of} from "rxjs";
+import {Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {PermissionService} from "src/app/authentication/domain/PermissionService";
-import {User} from "src/app/authentication/domain/User";
+import {PermissionService} from 'src/app/authentication/domain/PermissionService';
+import {User} from 'src/app/authentication/domain/User';
 
 
 function getCookie(name) {
@@ -35,27 +35,27 @@ export class BaseResource {
 
   protected get<T>(url: string, params?: HttpParams): Observable<T> {
 
-    return this.http.get<T>(url, this.getParams(params))
+    return this.http.get<T>(url, this.getParams(params));
   }
 
   protected put(url: string, params?: { [key: string]: string }): Observable<any> {
-    return of(true)
+    return of(true);
   }
 
   protected post<T>(url: string, data, params?: HttpParams): Observable<T> {
-    return this.http.post<T>(url, data, this.getParams(params))
+    return this.http.post<T>(url, data, this.getParams(params));
   }
 
   private getParams(params?: HttpParams) {
-    const user: User = this.permissionService.getUser()
-    const token: string = user && user.getToken()
+    const user: User = this.permissionService.getUser();
+    const token: string = user && user.getToken();
     return {
       headers: {
-        'Authorization': 'Token ' + token,
+        Authorization: 'Token ' + token,
         'X-CSRFToken': csrftoken
       },
       params
-    }
+    };
   }
 
 }

@@ -7,14 +7,14 @@ export class User {
   ) {}
 
   getUserLogin(): string {
-    return this.login
+    return this.login;
   }
 
   getUserEmail(): string {
-    return this.email
+    return this.email;
   }
 
   getToken(): string {
-    return this.token
+    return this.token;
   }
 }

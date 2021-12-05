@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
-import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
+import {HomeTreeNodePastData} from 'src/app/home/home-tree/domain/HomeTreeNodePastData';
 import 'chartjs-adapter-moment';
-import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
-import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
-import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
+import {ChartOptionsConfig} from 'src/app/util/chart/domain/ChartOptionsConfig';
+import {ChartXAxis, xAxisTime} from 'src/app/util/chart/domain/ChartXAxis';
+import {ChartDataConfig, ChartDataset} from 'src/app/util/chart/domain/ChartDataConfig';
 
 
 @Component({
@@ -16,17 +16,17 @@ import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartData
 export class HomeTreeNodeChildComponent {
 
   @Input()
-  data: Array<HomeTreeNodePastData>
+  data: Array<HomeTreeNodePastData>;
 
   @Input()
-  id: string
+  id: string;
 
   @Input()
-  name: string
+  name: string;
 
-  chartConfig: ChartOptionsConfig
+  chartConfig: ChartOptionsConfig;
 
-  chartData: ChartDataConfig
+  chartData: ChartDataConfig;
 
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class HomeTreeNodeChildComponent {
         'timeseries',
         {display: false, text: null},
         {parser: xAxisTime.DaysAndMonth}))
-      .withType('line')
+      .withType('line');
 
     this.chartData = new ChartDataConfig()
       .withLabels(this.data.map(data => data.date))
@@ -45,7 +45,7 @@ export class HomeTreeNodeChildComponent {
         'green',
         'black',
         2
-      )])
+      )]);
   }
 
 

@@ -1,13 +1,12 @@
-from django.db import models
+from account.models import Transaction
+from cryptocurrency.models import Cryptocurrency
 from django.contrib.auth import get_user_model
+from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from account.models import Transaction
-from cryptocurrency.models import Cryptocurrency
-
-
 User = get_user_model()
+
 
 # Create your models here.
 class CryptoAccount(models.Model):
@@ -16,6 +15,7 @@ class CryptoAccount(models.Model):
 
     def __str__(self):
         return self.owner.login + ' ' + str(self.balance)
+
 
 class Owned(models.Model):
     crypto = models.ForeignKey(Cryptocurrency, on_delete=models.CASCADE)

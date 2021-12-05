@@ -1,4 +1,4 @@
-import {AccountPastDataDTO} from "src/app/account/account/inftrastructure/AccountPastDataDTO";
+import {AccountPastDataDTO} from 'src/app/account/account/inftrastructure/AccountPastDataDTO';
 
 export class BalanceHistory {
   constructor(readonly date: Date,
@@ -7,7 +7,7 @@ export class BalanceHistory {
   }
 
   static fromArrayDTO(arrayDTO: Array<AccountPastDataDTO>): Array<BalanceHistory> {
-    return arrayDTO.map(dto => new BalanceHistory(new Date(dto.date), dto.balance))
+    return arrayDTO.map(dto => new BalanceHistory(new Date(dto.date), dto.balance));
   }
 
 

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {FormInput} from "src/app/util/form/domain/FormInput";
-import {FormGroup} from "@angular/forms";
+import {FormInput} from 'src/app/util/form/domain/FormInput';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,13 +12,13 @@ import {FormGroup} from "@angular/forms";
 export class SignUpComponent implements OnInit {
 
   @Output()
-  readonly email: EventEmitter<string> = new EventEmitter<string>()
+  readonly email: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
-  readonly password: EventEmitter<string> = new EventEmitter<string>()
+  readonly password: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
-  readonly login: EventEmitter<string> = new EventEmitter<string>()
+  readonly login: EventEmitter<string> = new EventEmitter<string>();
 
   form: FormGroup;
 
@@ -55,7 +55,7 @@ export class SignUpComponent implements OnInit {
       this.email.emit(value.email);
       this.login.emit(value.login);
       this.password.emit(value.password);
-    })
+    });
   }
 
 

@@ -3,11 +3,11 @@ export class UserLoginRequest {
   }
 
   getEmail(): string {
-    return this.email
+    return this.email;
   }
 
   getPassword(): string {
-    return this.password
+    return this.password;
   }
 
 

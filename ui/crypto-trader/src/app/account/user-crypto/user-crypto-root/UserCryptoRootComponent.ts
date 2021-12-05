@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {OwnedCryptoService} from "src/app/account/user-crypto/domain/OwnedCryptoService";
-import {Observable} from "rxjs";
+import {OwnedCryptoService} from 'src/app/account/user-crypto/domain/OwnedCryptoService';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-user-crypto-root',
@@ -18,7 +18,7 @@ export class UserCryptoRootComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.ownedCryptoService.fetchOwnedCrypto().subscribe()
-    this.balance$ = this.ownedCryptoService.getBalance()
+    this.ownedCryptoService.fetchOwnedCrypto().subscribe();
+    this.balance$ = this.ownedCryptoService.getBalance();
   }
 }

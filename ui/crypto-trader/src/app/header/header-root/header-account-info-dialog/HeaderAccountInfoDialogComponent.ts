@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation} from '@angular/core';
-import {NgxSpinnerService} from "ngx-spinner";
-import {HeaderAccountService} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountService";
-import {HeaderAccount} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderAccount";
-import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
-import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
-import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
-import {faUserAlt} from "@fortawesome/free-solid-svg-icons";
-import {User} from "src/app/authentication/domain/User";
+import {NgxSpinnerService} from 'ngx-spinner';
+import {HeaderAccountService} from 'src/app/header/header-root/header-account-info-dialog/domain/HeaderAccountService';
+import {HeaderAccount} from 'src/app/header/header-root/header-account-info-dialog/domain/HeaderAccount';
+import {ChartOptionsConfig} from 'src/app/util/chart/domain/ChartOptionsConfig';
+import {ChartXAxis, xAxisTime} from 'src/app/util/chart/domain/ChartXAxis';
+import {ChartDataConfig, ChartDataset} from 'src/app/util/chart/domain/ChartDataConfig';
+import {faUserAlt} from '@fortawesome/free-solid-svg-icons';
+import {User} from 'src/app/authentication/domain/User';
 
 @Component({
   selector: 'app-header-account-info-dialog',
@@ -18,21 +18,21 @@ import {User} from "src/app/authentication/domain/User";
 export class HeaderAccountInfoDialogComponent {
 
   @Input()
-  showDialog: boolean = false
+  showDialog = false;
 
 
   @Input()
-  user: User
+  user: User;
 
   headerAccountData: HeaderAccount;
 
-  isLoaded: boolean = false;
+  isLoaded = false;
 
-  chartConfig: ChartOptionsConfig
+  chartConfig: ChartOptionsConfig;
 
-  chartData: ChartDataConfig
+  chartData: ChartDataConfig;
 
-  faUserAlt = faUserAlt
+  faUserAlt = faUserAlt;
 
   constructor(private spinner: NgxSpinnerService,
               private headerAccountService: HeaderAccountService,
@@ -42,22 +42,22 @@ export class HeaderAccountInfoDialogComponent {
 
 
   ngOnInit(): void {
-    this.fetchAndObserveAccountData()
+    this.fetchAndObserveAccountData();
     this.spinner.show();
   }
 
 
   onUserClick() {
-    this.showDialog = !this.showDialog
+    this.showDialog = !this.showDialog;
     this.initChart();
-    this.changeDetectorRef.detectChanges()
+    this.changeDetectorRef.detectChanges();
   }
 
   private initChart() {
     if (!!this.headerAccountData) {
-      this.createChartConfig()
-      this.isLoaded = true
-      this.spinner.hide()
+      this.createChartConfig();
+      this.isLoaded = true;
+      this.spinner.hide();
     }
   }
 
@@ -68,7 +68,7 @@ export class HeaderAccountInfoDialogComponent {
         'timeseries',
         {display: false, text: null},
         { parser: xAxisTime.DaysAndMonth} ))
-      .withType('line')
+      .withType('line');
 
     this.chartData = new ChartDataConfig()
       .withLabels(this.headerAccountData.pastData.map(data => data.date))
@@ -78,14 +78,14 @@ export class HeaderAccountInfoDialogComponent {
         'green',
         'black',
         0.1
-      )])
+      )]);
   }
 
   private fetchAndObserveAccountData(): void {
-    this.headerAccountService.fetchHeaderAccount()
+    this.headerAccountService.fetchHeaderAccount();
     this.headerAccountService.selectHeaderAccount().subscribe((account: HeaderAccount) => {
-      this.headerAccountData = account
-    })
+      this.headerAccountData = account;
+    });
   }
 
 }

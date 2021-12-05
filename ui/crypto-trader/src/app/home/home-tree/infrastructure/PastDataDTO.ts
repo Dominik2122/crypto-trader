@@ -1,7 +1,7 @@
 export class PastDataDTO {
 
-  value: string
+  value: string;
 
-  date: string
+  date: string;
 
 }

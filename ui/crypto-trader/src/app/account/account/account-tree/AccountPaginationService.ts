@@ -1,27 +1,27 @@
-import {Injectable} from "@angular/core";
-import {AccountDataService} from "src/app/account/account/domain/AccountDataService";
+import {Injectable} from '@angular/core';
+import {AccountDataService} from 'src/app/account/account/domain/AccountDataService';
 
-import {BehaviorSubject, combineLatest, Observable} from "rxjs";
-import {map, tap} from "rxjs/operators";
-import {Transaction} from "src/app/shared/transactions/domain/Transaction";
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {map, tap} from 'rxjs/operators';
+import {Transaction} from 'src/app/shared/transactions/domain/Transaction';
 
 @Injectable()
 export class AccountPaginationService {
 
-  NODES_PER_PAGE: number = 10
+  NODES_PER_PAGE = 10;
 
-  paginationPage: number = 0
+  paginationPage = 0;
   paginationPage$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-  transactions: Array<Transaction>
+  transactions: Array<Transaction>;
 
-  transactions$: Observable<Array<Transaction>>
+  transactions$: Observable<Array<Transaction>>;
 
-  transactionsNumber: number
+  transactionsNumber: number;
 
 
   constructor(private readonly accountDataService: AccountDataService) {
-    this.getNodes()
+    this.getNodes();
   }
 
   transactionsToShow(): Observable<Array<Transaction>> {
@@ -35,14 +35,14 @@ export class AccountPaginationService {
       .pipe(
         map(([transactions, page]: [Array<Transaction>, number]) => {
           return transactions && transactions.filter((transaction, index) =>
-            page * this.NODES_PER_PAGE <= index && (page * this.NODES_PER_PAGE + this.NODES_PER_PAGE) > index)
+            page * this.NODES_PER_PAGE <= index && (page * this.NODES_PER_PAGE + this.NODES_PER_PAGE) > index);
         })
-      )
+      );
   }
 
   clickPaginationPage(page: number): void {
-    this.paginationPage = page
-    this.paginationPage$.next(page)
+    this.paginationPage = page;
+    this.paginationPage$.next(page);
   }
 
   currentPaginationPages(): Observable<Array<number>> {
@@ -53,34 +53,34 @@ export class AccountPaginationService {
         }
         if (page < 2) {
           if (Math.floor(this.transactionsNumber / 10 + 1) < 5) {
-            return [...Array(this.transactionsNumber / 10).keys()]
+            return [...Array(this.transactionsNumber / 10).keys()];
           }
-          return [...Array(5).keys()]
+          return [...Array(5).keys()];
         } else if (page > this.transactionsNumber / 10 - 2) {
-          const pages: Array<number> = []
+          const pages: Array<number> = [];
           for (let i = Math.floor(this.transactionsNumber / 10 + 1) - 5;
                i < Math.floor(this.transactionsNumber / 10 + 1);
                i++) {
-            pages.push(i)
+            pages.push(i);
           }
-          return pages
+          return pages;
         } else {
-          const pages: Array<number> = []
+          const pages: Array<number> = [];
           for (let i = page - 2; i <= page + 2; i++) {
-            pages.push(i)
+            pages.push(i);
           }
-          return pages
+          return pages;
         }
       })
-    )
+    );
   }
 
   private getNodes() {
-    this.transactions$ = this.accountDataService.selectAccountTransactions()
+    this.transactions$ = this.accountDataService.selectAccountTransactions();
     this.transactions$.subscribe((transactions) => {
-      this.transactions = transactions
-      this.transactionsNumber = transactions && transactions.length
-    })
+      this.transactions = transactions;
+      this.transactionsNumber = transactions && transactions.length;
+    });
   }
 
 

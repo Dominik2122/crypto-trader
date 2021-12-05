@@ -20,22 +20,22 @@ import {
 export class DialogWindowComponent {
 
   @Input()
-  template: TemplateRef<ElementRef>
+  template: TemplateRef<ElementRef>;
 
-  @ViewChild('popperContent') popperContento
+  @ViewChild('popperContent') popperContento;
 
 
   @Output()
-  readonly clicked: EventEmitter<void> = new EventEmitter<void>()
+  readonly clicked: EventEmitter<void> = new EventEmitter<void>();
 
-  text = "ADaSDADSD"
+  text = 'ADaSDADSD';
 
   ngOnInit() {
-    setTimeout(() => this.text = 'adadasd', 3000)
+    setTimeout(() => this.text = 'adadasd', 3000);
   }
 
   onClick() {
-    this.clicked.emit()
+    this.clicked.emit();
   }
 
 }

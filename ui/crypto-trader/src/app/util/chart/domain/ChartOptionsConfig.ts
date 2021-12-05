@@ -1,39 +1,39 @@
-import {ChartType} from "chart.js";
-import {ChartXAxis} from "src/app/util/chart/domain/ChartXAxis";
+import {ChartType} from 'chart.js';
+import {ChartXAxis} from 'src/app/util/chart/domain/ChartXAxis';
 
 export class ChartOptionsConfig {
 
-  xAxis: ChartXAxis
-  yAxisTick: boolean = true
+  xAxis: ChartXAxis;
+  yAxisTick = true;
 
-  type: ChartType
+  type: ChartType;
 
-  title: string
-  displayLegend: boolean = true
+  title: string;
+  displayLegend = true;
 
   withXAxis(xAxis: ChartXAxis): ChartOptionsConfig {
-    this.xAxis = xAxis
-    return this
+    this.xAxis = xAxis;
+    return this;
   }
 
   withDisabledYAxisTicks(): ChartOptionsConfig {
-    this.yAxisTick
-    return this
+    this.yAxisTick;
+    return this;
   }
 
   withType(type: ChartType): ChartOptionsConfig {
-    this.type = type
-    return this
+    this.type = type;
+    return this;
   }
 
   withTitle(title: string): ChartOptionsConfig {
-    this.title = title
-    return this
+    this.title = title;
+    return this;
   }
 
   withoutLegend(): ChartOptionsConfig {
-    this.displayLegend = false
-    return this
+    this.displayLegend = false;
+    return this;
   }
 
 
@@ -60,7 +60,7 @@ export class ChartOptionsConfig {
           }
         }
       }
-    }
+    };
   }
 
 }

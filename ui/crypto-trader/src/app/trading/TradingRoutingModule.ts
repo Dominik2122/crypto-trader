@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {TradingRootComponent} from "src/app/trading/trading-root/TradingRootComponent";
-import {TradingCryptoPickerResolver} from "src/app/trading/trading-root/TradingCryptoPickerResolver";
+import {TradingRootComponent} from 'src/app/trading/trading-root/TradingRootComponent';
+import {TradingCryptoPickerResolver} from 'src/app/trading/trading-root/TradingCryptoPickerResolver';
 
 
 const routes: Routes = [

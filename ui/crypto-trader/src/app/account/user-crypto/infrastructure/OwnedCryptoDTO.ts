@@ -1,10 +1,10 @@
 export class OwnedCryptoDTO {
 
-  readonly name: string
+  readonly name: string;
 
-  readonly current_price: number
+  readonly current_price: number;
 
-  readonly value: number
+  readonly value: number;
 
-  readonly amount: string
+  readonly amount: string;
 }

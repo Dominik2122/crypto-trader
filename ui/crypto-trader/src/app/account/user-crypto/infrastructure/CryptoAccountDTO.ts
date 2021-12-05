@@ -1,4 +1,4 @@
-import {OwnedCryptoDTO} from "src/app/account/user-crypto/infrastructure/OwnedCryptoDTO";
+import {OwnedCryptoDTO} from 'src/app/account/user-crypto/infrastructure/OwnedCryptoDTO';
 
 export class CryptoAccountDTO {
   constructor(

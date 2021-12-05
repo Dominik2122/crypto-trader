@@ -1,11 +1,13 @@
 from celery import shared_task
-from datetime import datetime
 from pycoingecko import CoinGeckoAPI
-from celery.utils.log import get_task_logger
+
 from .models import Price, Cryptocurrency
+
 cg = CoinGeckoAPI()
 
-cryptos = ['bitcoin', 'litecoin', 'ethereum', 'tether', 'binance coin', 'cardano', 'xrp', 'dogecoin', 'usd coin', 'polkadot', 'uniswap']
+cryptos = ['bitcoin', 'litecoin', 'ethereum', 'tether', 'binance coin', 'cardano', 'xrp', 'dogecoin', 'usd coin',
+           'polkadot', 'uniswap']
+
 
 # @shared_task(bind=True)
 # def makeAnAPICall(self):

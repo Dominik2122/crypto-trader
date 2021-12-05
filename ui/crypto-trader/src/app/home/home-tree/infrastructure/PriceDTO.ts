@@ -2,8 +2,8 @@ export class PriceDTO {
 
   change?: number;
 
-  name: string
+  name: string;
 
-  price: number
+  price: number;
 
 }

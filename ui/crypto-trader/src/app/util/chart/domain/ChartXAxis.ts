@@ -4,8 +4,8 @@ export interface xAxisTitle {
 }
 
 export interface xAxisTimeOption {
-  parser?: xAxisTime,
-  unit?: string
+  parser?: xAxisTime;
+  unit?: string;
 }
 
 export enum xAxisTime {

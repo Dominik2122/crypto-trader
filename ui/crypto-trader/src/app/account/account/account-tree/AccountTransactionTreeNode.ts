@@ -1,6 +1,6 @@
-import {TreeNode} from "src/app/util/tree/ui/domain/TreeNode";
-import {Transaction} from "src/app/shared/transactions/domain/Transaction";
-import {AccountTransactionTreeNodeData} from "src/app/account/account/account-tree/AccountTransactionTreeNodeData";
+import {TreeNode} from 'src/app/util/tree/ui/domain/TreeNode';
+import {Transaction} from 'src/app/shared/transactions/domain/Transaction';
+import {AccountTransactionTreeNodeData} from 'src/app/account/account/account-tree/AccountTransactionTreeNodeData';
 
 export class AccountTransactionTreeNode implements TreeNode {
 
@@ -19,16 +19,16 @@ export class AccountTransactionTreeNode implements TreeNode {
       0,
       false,
       null,
-    )
+    );
   }
 
   static fromArrayDomain(arrayDomain: Array<Transaction>): Array<AccountTransactionTreeNode> {
-    return arrayDomain.map((domain: Transaction, index: number) => AccountTransactionTreeNode.fromDomain(domain).withPosition(index))
+    return arrayDomain.map((domain: Transaction, index: number) => AccountTransactionTreeNode.fromDomain(domain).withPosition(index));
   }
 
   withPosition(position: number): AccountTransactionTreeNode {
-    this.position = position
-    return this
+    this.position = position;
+    return this;
   }
 
 }

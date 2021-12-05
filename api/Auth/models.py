@@ -1,7 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from datetime import datetime
-# Create your models here.
+from django.db import models
 
 
 class UserManager(BaseUserManager):
@@ -24,7 +22,6 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-
     email = models.EmailField(max_length=255, blank=False, unique=True)
     login = models.CharField(max_length=255, blank=False, unique=True)
     is_staff = models.BooleanField(max_length=255, default=False)
@@ -35,7 +32,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['login']
-
 
     def __str__(self):
         return self.login

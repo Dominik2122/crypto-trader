@@ -1,5 +1,5 @@
-import {TreeNodeData} from "src/app/util/tree/ui/domain/TreeNodeData";
-import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
+import {TreeNodeData} from 'src/app/util/tree/ui/domain/TreeNodeData';
+import {OwnedCrypto} from 'src/app/account/user-crypto/domain/OwnedCrypto';
 
 export class OwnedCryptoTreeNodeData implements TreeNodeData {
 
@@ -16,7 +16,7 @@ export class OwnedCryptoTreeNodeData implements TreeNodeData {
       domain.price,
       domain.value,
       domain.amount,
-      domain.name)
+      domain.name);
   }
 
 }

@@ -1,7 +1,7 @@
-import {TreeNode} from "src/app/util/tree/ui/domain/TreeNode";
-import {HomeTreeNodeData} from "src/app/home/home-tree/domain/HomeTreeNodeData";
-import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
-import {HomeTreeNodeDTO} from "src/app/home/home-tree/infrastructure/HomeTreeNodeDTO";
+import {TreeNode} from 'src/app/util/tree/ui/domain/TreeNode';
+import {HomeTreeNodeData} from 'src/app/home/home-tree/domain/HomeTreeNodeData';
+import {HomeTreeNodePastData} from 'src/app/home/home-tree/domain/HomeTreeNodePastData';
+import {HomeTreeNodeDTO} from 'src/app/home/home-tree/infrastructure/HomeTreeNodeDTO';
 
 export class HomeTreeNode implements TreeNode {
 
@@ -22,16 +22,16 @@ export class HomeTreeNode implements TreeNode {
       false,
       null,
       HomeTreeNodePastData.fromDTO(dto)
-    )
+    );
   }
 
   static fromArrayDTO(arrayDTO: Array<HomeTreeNodeDTO>): Array<HomeTreeNode> {
-    return arrayDTO.map((dto: HomeTreeNodeDTO, index: number) => HomeTreeNode.fromDTO(dto).withPosition(index))
+    return arrayDTO.map((dto: HomeTreeNodeDTO, index: number) => HomeTreeNode.fromDTO(dto).withPosition(index));
   }
 
   withPosition(position: number): HomeTreeNode {
-    this.position = position
-    return this
+    this.position = position;
+    return this;
   }
 
 }

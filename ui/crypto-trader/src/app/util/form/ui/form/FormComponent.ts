@@ -7,7 +7,7 @@ import {
   Output,
   ViewEncapsulation
 } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -35,7 +35,7 @@ export class FormComponent implements OnInit {
   createGroup() {
     const group = this.fb.group({});
     this.config.forEach(control => group.addControl(control.name, this.fb.control('')));
-    this.formOutput.emit(group)
+    this.formOutput.emit(group);
     return group;
   }
 

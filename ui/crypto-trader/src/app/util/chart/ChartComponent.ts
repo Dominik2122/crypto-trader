@@ -8,9 +8,9 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import Chart from "chart.js/auto";
-import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
-import {ChartDataConfig} from "src/app/util/chart/domain/ChartDataConfig";
+import Chart from 'chart.js/auto';
+import {ChartOptionsConfig} from 'src/app/util/chart/domain/ChartOptionsConfig';
+import {ChartDataConfig} from 'src/app/util/chart/domain/ChartDataConfig';
 
 
 @Component({
@@ -24,25 +24,25 @@ export class ChartComponent implements AfterViewInit {
   @ViewChild('canvas') canvas: ElementRef;
 
   @Input()
-  id: string
+  id: string;
 
   @Input()
-  chartConfig: ChartOptionsConfig
+  chartConfig: ChartOptionsConfig;
 
   @Input()
-  chartData: ChartDataConfig
+  chartData: ChartDataConfig;
 
-  chart: Chart
+  chart: Chart;
 
   ngOnChanges(changes: SimpleChanges) {
     if ((changes.chartConfig || changes.chartData) && this.chart) {
-      this.chart.data = this.chartData.addData() && this.chartData.addData().data
-      this.chart && this.chart.update()
+      this.chart.data = this.chartData.addData() && this.chartData.addData().data;
+      this.chart && this.chart.update();
     }
   }
 
   ngAfterViewInit() {
-    this.reloadChart()
+    this.reloadChart();
   }
 
   private reloadChart() {
@@ -51,7 +51,7 @@ export class ChartComponent implements AfterViewInit {
         ...this.chartConfig.build(),
         ...this.chartData.addData()
       }
-    )
+    );
   }
 
 }

@@ -1,7 +1,7 @@
 import {ComponentFactoryResolver, ComponentRef, Directive, Input, OnInit, ViewContainerRef} from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {formInput} from "src/app/util/form/domain/FormInput";
-import {FieldComponent} from "src/app/util/form/ui/form-inputs/FieldComponent";
+import {FormGroup} from '@angular/forms';
+import {formInput} from 'src/app/util/form/domain/FormInput';
+import {FieldComponent} from 'src/app/util/form/ui/form-inputs/FieldComponent';
 
 @Directive({
   selector: '[appForm]'
@@ -12,7 +12,7 @@ export class FormDirective implements OnInit {
 
   @Input() group: FormGroup;
 
-  component: ComponentRef<FieldComponent>
+  component: ComponentRef<FieldComponent>;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,

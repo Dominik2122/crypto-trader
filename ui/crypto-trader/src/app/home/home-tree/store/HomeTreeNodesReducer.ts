@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import * as HomeTreeNodesActions from 'src/app/home/home-tree/store/HomeTreeNodesActions';
-import {HomeTreeNode} from "src/app/home/home-tree/domain/HomeTreeNode";
+import {HomeTreeNode} from 'src/app/home/home-tree/domain/HomeTreeNode';
 
 
 export const homeTreeNodesFeatureKey = 'homeTreeNodes';

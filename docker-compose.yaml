@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+  dj:
+    container_name: dj
+    build: api
+    command: python manage.py runserver 0.0.0.0:80
+    volumes:
+      - ./api:/code
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    links:
+      - db:db

@@ -1,4 +1,4 @@
-import {TransactionDTO} from "src/app/shared/transactions/inftrastructure/TransactionDTO";
+import {TransactionDTO} from 'src/app/shared/transactions/inftrastructure/TransactionDTO';
 
 export class Transaction {
   constructor(
@@ -19,6 +19,6 @@ export class Transaction {
       dto.price,
       parseFloat(dto.amount),
       parseFloat(dto.value)
-    )
+    );
   }
 }

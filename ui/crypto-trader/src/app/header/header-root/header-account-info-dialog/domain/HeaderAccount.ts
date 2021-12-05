@@ -1,6 +1,6 @@
-import {HeaderBalanceHistoryNode} from "src/app/header/header-root/header-account-info-dialog/domain/HeaderBalanceHistoryNode";
-import {HeaderAccountDTO} from "src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountDTO";
-import {Account} from "src/app/account/account/domain/Account";
+import {HeaderBalanceHistoryNode} from 'src/app/header/header-root/header-account-info-dialog/domain/HeaderBalanceHistoryNode';
+import {HeaderAccountDTO} from 'src/app/header/header-root/header-account-info-dialog/infrastructure/HeaderAccountDTO';
+import {Account} from 'src/app/account/account/domain/Account';
 
 export class HeaderAccount extends Account {
 
@@ -8,11 +8,11 @@ export class HeaderAccount extends Account {
     currentBalance: number,
     balanceHistory: Array<HeaderBalanceHistoryNode>
   ) {
-    super(currentBalance, balanceHistory, null)
+    super(currentBalance, balanceHistory, null);
   }
 
   static fromDTO(dto: HeaderAccountDTO): HeaderAccount {
-    return new HeaderAccount(dto.balance, HeaderBalanceHistoryNode.fromArrayDTO(dto.pastData))
+    return new HeaderAccount(dto.balance, HeaderBalanceHistoryNode.fromArrayDTO(dto.pastData));
   }
 
 }

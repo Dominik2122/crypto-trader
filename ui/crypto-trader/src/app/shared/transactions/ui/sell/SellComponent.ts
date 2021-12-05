@@ -7,12 +7,12 @@ import {
   Output,
   ViewEncapsulation
 } from '@angular/core';
-import {TransactionResource} from "src/app/shared/transactions/inftrastructure/TransactionResource";
-import {TransactionRequest} from "src/app/shared/transactions/inftrastructure/TransactionRequest";
-import {FormGroup} from "@angular/forms";
-import {FormInput} from "src/app/util/form/domain/FormInput";
-import {ButtonColors} from "src/app/util/button/ButtonColors";
-import {take} from "rxjs/operators";
+import {TransactionResource} from 'src/app/shared/transactions/inftrastructure/TransactionResource';
+import {TransactionRequest} from 'src/app/shared/transactions/inftrastructure/TransactionRequest';
+import {FormGroup} from '@angular/forms';
+import {FormInput} from 'src/app/util/form/domain/FormInput';
+import {ButtonColors} from 'src/app/util/button/ButtonColors';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sell',
@@ -33,13 +33,13 @@ export class SellComponent implements OnInit {
   maxAmount: number;
 
   @Output()
-  sold: EventEmitter<void> = new EventEmitter<void>()
+  sold: EventEmitter<void> = new EventEmitter<void>();
 
   amount: number;
 
   form: FormGroup;
 
-  ButtonColors = ButtonColors
+  ButtonColors = ButtonColors;
 
 
   config = [
@@ -64,15 +64,15 @@ export class SellComponent implements OnInit {
     this.form = form;
     this.form.valueChanges.subscribe(value => {
       this.amount = value.amount;
-    })
+    });
   }
 
   onSellAmount() {
-    this.sellCrypto(-this.amount)
+    this.sellCrypto(-this.amount);
   }
 
   onSellAll() {
-    this.sellCrypto(-this.maxAmount)
+    this.sellCrypto(-this.maxAmount);
   }
 
   sellCrypto(amount: number) {
@@ -80,8 +80,8 @@ export class SellComponent implements OnInit {
       .pipe(
         take(1))
       .subscribe(() => {
-        this.sold.emit()
-      })
+        this.sold.emit();
+      });
   }
 
 }

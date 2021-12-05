@@ -1,4 +1,4 @@
-import {TransactionDTO} from "src/app/shared/transactions/inftrastructure/TransactionDTO";
+import {TransactionDTO} from 'src/app/shared/transactions/inftrastructure/TransactionDTO';
 
 
 export class Transaction {
@@ -18,6 +18,6 @@ export class Transaction {
       +dto.value,
      +dto.amount,
       dto.crypto
-    ))
+    ));
   }
 }

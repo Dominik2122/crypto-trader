@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {FieldComponent} from "src/app/util/form/ui/form-inputs/FieldComponent";
-import {FormGroup} from "@angular/forms";
+import {FieldComponent} from 'src/app/util/form/ui/form-inputs/FieldComponent';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-email-input',

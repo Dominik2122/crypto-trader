@@ -1,8 +1,8 @@
-import {Observable} from "rxjs";
-import {Injectable} from "@angular/core";
-import {AccountDataRepository} from "src/app/account/account/domain/state/AccountDataRepository";
-import {BalanceHistory} from "src/app/account/account/domain/BalanceHistory";
-import {Transaction} from "src/app/shared/transactions/domain/Transaction";
+import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {AccountDataRepository} from 'src/app/account/account/domain/state/AccountDataRepository';
+import {BalanceHistory} from 'src/app/account/account/domain/BalanceHistory';
+import {Transaction} from 'src/app/shared/transactions/domain/Transaction';
 
 @Injectable()
 export class AccountDataService {
@@ -10,19 +10,19 @@ export class AccountDataService {
   }
 
   fetchAccountData(days: number): void {
-    return this.accountDataRepository.fetchAccountData(days)
+    return this.accountDataRepository.fetchAccountData(days);
   }
 
   selectAccountBalance(): Observable<number> {
-    return this.accountDataRepository.selectAccountBalance()
+    return this.accountDataRepository.selectAccountBalance();
   }
 
   selectAccountPastData(): Observable<Array<BalanceHistory>> {
-    return this.accountDataRepository.selectAccountPastData()
+    return this.accountDataRepository.selectAccountPastData();
   }
 
   selectAccountTransactions(): Observable<Array<Transaction>> {
-    return this.accountDataRepository.selectAccountTransactions()
+    return this.accountDataRepository.selectAccountTransactions();
   }
 
 

@@ -1,6 +1,6 @@
-import {TreeNode} from "src/app/util/tree/ui/domain/TreeNode";
-import {OwnedCryptoTreeNodeData} from "src/app/account/user-crypto/user-crypto-tree/OwnedCryptoTreeNodeData";
-import {OwnedCrypto} from "src/app/account/user-crypto/domain/OwnedCrypto";
+import {TreeNode} from 'src/app/util/tree/ui/domain/TreeNode';
+import {OwnedCryptoTreeNodeData} from 'src/app/account/user-crypto/user-crypto-tree/OwnedCryptoTreeNodeData';
+import {OwnedCrypto} from 'src/app/account/user-crypto/domain/OwnedCrypto';
 
 export class OwnedCryptoTreeNode implements TreeNode {
 
@@ -20,7 +20,7 @@ export class OwnedCryptoTreeNode implements TreeNode {
       0,
       false,
       null,
-    )
+    );
   }
 
 }

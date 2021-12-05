@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
-import {HomeTreeNodePastData} from "src/app/home/home-tree/domain/HomeTreeNodePastData";
-import {ChartOptionsConfig} from "src/app/util/chart/domain/ChartOptionsConfig";
-import {ChartDataConfig, ChartDataset} from "src/app/util/chart/domain/ChartDataConfig";
-import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
+import {HomeTreeNodePastData} from 'src/app/home/home-tree/domain/HomeTreeNodePastData';
+import {ChartOptionsConfig} from 'src/app/util/chart/domain/ChartOptionsConfig';
+import {ChartDataConfig, ChartDataset} from 'src/app/util/chart/domain/ChartDataConfig';
+import {ChartXAxis, xAxisTime} from 'src/app/util/chart/domain/ChartXAxis';
 
 @Component({
   selector: 'app-trading-chart',
@@ -14,17 +14,17 @@ import {ChartXAxis, xAxisTime} from "src/app/util/chart/domain/ChartXAxis";
 export class TradingChartComponent implements OnInit {
 
   @Input()
-  data: Array<HomeTreeNodePastData>
+  data: Array<HomeTreeNodePastData>;
 
   @Input()
-  id: string
+  id: string;
 
   @Input()
-  currentPrice: string
+  currentPrice: string;
 
-  chartConfig: ChartOptionsConfig
+  chartConfig: ChartOptionsConfig;
 
-  chartData: ChartDataConfig
+  chartData: ChartDataConfig;
 
 
   ngOnInit() {
@@ -32,11 +32,11 @@ export class TradingChartComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.data) {
-      this.createChart()
+      this.createChart();
     }
 
     if (changes.currentPrice) {
-      this.createChart()
+      this.createChart();
     }
   }
 
@@ -47,7 +47,7 @@ export class TradingChartComponent implements OnInit {
         'timeseries',
         {display: false, text: null},
         {parser: xAxisTime.DaysAndMonth}))
-      .withType('line')
+      .withType('line');
 
     this.chartData = new ChartDataConfig()
       .withLabels(this.data.map(data => data.date))
@@ -57,6 +57,6 @@ export class TradingChartComponent implements OnInit {
         'green',
         'black',
         2
-      )])
+      )]);
   }
 }

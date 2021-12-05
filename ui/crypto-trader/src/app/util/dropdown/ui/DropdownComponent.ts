@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, ContentChild, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
-import {DropdownOption} from "src/app/util/dropdown/ui/DropdownOption";
+import {DropdownOption} from 'src/app/util/dropdown/ui/DropdownOption';
 
 
 @Component({
@@ -18,6 +18,6 @@ export class DropdownComponent {
   dropdownOptions: Array<DropdownOption>;
 
   @ContentChild('dropdown')
-  dropdownConfig: TemplateRef<any>
+  dropdownConfig: TemplateRef<any>;
 
 }

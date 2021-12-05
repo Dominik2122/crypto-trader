@@ -1,8 +1,8 @@
+from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins, generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 

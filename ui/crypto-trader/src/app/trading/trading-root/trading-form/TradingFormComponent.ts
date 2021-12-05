@@ -8,10 +8,10 @@ import {
   SimpleChanges,
   ViewEncapsulation
 } from '@angular/core';
-import {FormInput} from "src/app/util/form/domain/FormInput";
-import {FormGroup} from "@angular/forms";
-import {distinctUntilChanged, map} from "rxjs/operators";
-import {Subject} from "rxjs";
+import {FormInput} from 'src/app/util/form/domain/FormInput';
+import {FormGroup} from '@angular/forms';
+import {distinctUntilChanged, map} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 
 @Component({
@@ -24,39 +24,39 @@ import {Subject} from "rxjs";
 export class TradingFormComponent implements OnInit {
 
   @Input()
-  label: string
+  label: string;
 
   @Input()
-  maxAmount: number
+  maxAmount: number;
 
   @Input()
-  disable: boolean = false
+  disable = false;
 
   @Input()
-  clear$: Subject<void>
+  clear$: Subject<void>;
 
   @Output()
-  amount$: EventEmitter<number> = new EventEmitter<number>()
+  amount$: EventEmitter<number> = new EventEmitter<number>();
 
-  amount: number = 0;
+  amount = 0;
 
   form: FormGroup;
 
-  config
+  config;
 
   ngOnInit(): void {
-    this.createFormConfig()
+    this.createFormConfig();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.disable) {
-      this.createFormConfig()
+      this.createFormConfig();
     }
 
     if (changes.clear$) {
       this.clear$.asObservable().subscribe(() => {
-        this.clearForm()
-      })
+        this.clearForm();
+      });
     }
   }
 
@@ -67,33 +67,33 @@ export class TradingFormComponent implements OnInit {
       distinctUntilChanged()
     ).subscribe(amount => {
       if (amount < 0) {
-        this.setValue(0)
+        this.setValue(0);
       } else if (amount > this.maxAmount) {
-        this.setValue(this.maxAmount)
+        this.setValue(this.maxAmount);
       } else {
         this.amount = amount;
-        this.amount$.next(amount)
+        this.amount$.next(amount);
       }
 
-    })
+    });
   }
 
   increaseValue() {
-    this.amount = this.amount ? ++this.amount : 1
-    this.setValue(this.amount)
+    this.amount = this.amount ? ++this.amount : 1;
+    this.setValue(this.amount);
   }
 
   decreaseValue() {
-    this.amount = --this.amount
-    this.setValue(this.amount)
+    this.amount = --this.amount;
+    this.setValue(this.amount);
   }
 
   isMinusDisabled(): boolean {
-    return this.amount <= 0 || !this.amount
+    return this.amount <= 0 || !this.amount;
   }
 
   isPlusDisabled(): boolean {
-    return this.amount >= this.maxAmount
+    return this.amount >= this.maxAmount;
   }
 
   private createFormConfig() {
@@ -110,11 +110,11 @@ export class TradingFormComponent implements OnInit {
 
   private setValue(value: number) {
     if (this.form) {
-      this.form.controls.amount.setValue(value)
+      this.form.controls.amount.setValue(value);
     }
   }
 
   private clearForm() {
-    this.setValue(undefined)
+    this.setValue(undefined);
   }
 }

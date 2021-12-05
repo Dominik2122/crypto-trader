@@ -1,6 +1,7 @@
+from datetime import date, datetime, timedelta
+
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
-from datetime import date, datetime, timedelta
 from rest_framework.authtoken.models import Token
 
 
@@ -34,7 +35,6 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-
 class AuthTokenSerializer(serializers.Serializer):
     email = serializers.CharField()
     password = serializers.CharField(
@@ -49,7 +49,7 @@ class AuthTokenSerializer(serializers.Serializer):
         user = authenticate(
             username=email,
             password=password
-            )
+        )
 
         if not user:
             raise serializers.ValidationError('unable to authenticate', code='authentication')
