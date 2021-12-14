@@ -1,12 +1,21 @@
-FROM node:11.4.0-alpine as builder
+FROM node:16 AS builder
 
-RUN mkdir /app
-WORKDIR /app
-
-
-COPY ./package.json ./package-lock.json /app/crypto-trader/
-RUN npm install --prefix crypto-trader
+RUN mkdir /app /app/crypto-trader
+WORKDIR /app/crypto-trader
 
 
-COPY . /app
-RUN npm run build --prefix crypto-trader -- --output-path=./dist/out
+COPY ./package.json ./package-lock.json ./
+RUN npm install
+
+
+COPY . .
+RUN npm run build
+
+
+FROM nginx:alpine
+WORKDIR ../
+
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /app/crypto-trader/dist/crypto-trader /usr/share/nginx/html
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
