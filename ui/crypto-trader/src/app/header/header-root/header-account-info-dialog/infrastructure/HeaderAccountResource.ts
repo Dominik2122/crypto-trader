@@ -9,7 +9,7 @@ import {map} from 'rxjs/operators';
 export class HeaderAccountResource extends BaseResource {
 
   getAccount(): Observable<HeaderAccount> {
-    return this.get<HeaderAccountDTO>('api/account/home-account-info').pipe(
+    return this.get<HeaderAccountDTO>('account/home-account-info').pipe(
       map((dto: HeaderAccountDTO) => HeaderAccount.fromDTO(dto) )
     );
   }

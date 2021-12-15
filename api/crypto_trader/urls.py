@@ -19,7 +19,7 @@ from django.urls import path, include, re_path
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('api/crypto/', include('cryptocurrency.urls')),
     path('api/user/', include('Auth.urls')),
     path('api/account/', include('account.urls')),

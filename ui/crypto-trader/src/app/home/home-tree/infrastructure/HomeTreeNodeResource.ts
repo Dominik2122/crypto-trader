@@ -10,7 +10,7 @@ import {HomeTreeNodeDTO} from 'src/app/home/home-tree/infrastructure/HomeTreeNod
 export class HomeTreeNodeResource extends BaseResource implements TreeNodeResource {
 
   getTreeNodes(): Observable<Array<HomeTreeNode>> {
-    return this.get<Array<HomeTreeNodeDTO>>('api/crypto/home/').pipe(
+    return this.get<Array<HomeTreeNodeDTO>>('crypto/home/').pipe(
       map((dto: Array<HomeTreeNodeDTO>) => HomeTreeNode.fromArrayDTO(dto))
     );
   }

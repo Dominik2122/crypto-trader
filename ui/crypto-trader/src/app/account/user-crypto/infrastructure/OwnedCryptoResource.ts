@@ -9,7 +9,7 @@ import {CryptoAccount} from 'src/app/account/user-crypto/domain/CryptoAccount';
 export class OwnedCryptoResource extends BaseResource {
 
   fetchOwnedCrypto(): Observable<CryptoAccount> {
-    return this.get<CryptoAccountDTO>('api/crypto-account/my/').pipe(
+    return this.get<CryptoAccountDTO>('crypto-account/my/').pipe(
       map((account: CryptoAccountDTO) => CryptoAccount.fromDTO(account))
     );
   }

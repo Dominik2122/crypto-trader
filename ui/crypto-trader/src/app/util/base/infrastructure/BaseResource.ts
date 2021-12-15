@@ -4,6 +4,7 @@ import {Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {PermissionService} from 'src/app/authentication/domain/PermissionService';
 import {User} from 'src/app/authentication/domain/User';
+import {environment} from "src/environments/environment";
 
 
 function getCookie(name) {
@@ -27,15 +28,14 @@ const csrftoken = getCookie('csrftoken');
 
 @Injectable()
 export class BaseResource {
-
+  API_URL: string = environment.apiUrl;
 
   constructor(private readonly http: HttpClient,
               private readonly permissionService: PermissionService) {
   }
 
   protected get<T>(url: string, params?: HttpParams): Observable<T> {
-
-    return this.http.get<T>(url, this.getParams(params));
+    return this.http.get<T>(`${this.API_URL}/${url}`, this.getParams(params));
   }
 
   protected put(url: string, params?: { [key: string]: string }): Observable<any> {
@@ -43,7 +43,7 @@ export class BaseResource {
   }
 
   protected post<T>(url: string, data, params?: HttpParams): Observable<T> {
-    return this.http.post<T>(url, data, this.getParams(params));
+    return this.http.post<T>(`${this.API_URL}/${url}`, data, this.getParams(params));
   }
 
   private getParams(params?: HttpParams) {

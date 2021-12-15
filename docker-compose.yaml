@@ -1,8 +1,15 @@
 version: "3"
 
 services:
-  db:
-    image: postgres
+#  db:
+#    image: postgres
+#    container_name: db
+#    ports:
+#      - "5432:5432"
+#    restart: always
+#    environment:
+#     - POSTGRES_PASSWORD=postgres
+
   dj:
     container_name: dj
     build: api
@@ -10,12 +17,20 @@ services:
     volumes:
       - ./api:/code
     environment:
+      - DB_HOST=db
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
       - "80:80"
-    depends_on:
-      - db
-    links:
-      - db:db
+#    depends_on:
+#      - db
+#    links:
+#      - db:db
+    restart: always
+
+  ng:
+    container_name: ng
+    build: ui/crypto-trader
+    ports:
+      - "8080:80"
