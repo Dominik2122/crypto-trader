@@ -20,6 +20,7 @@ import {TradingFormComponent} from 'src/app/trading/trading-root/trading-form/Tr
 import {TradingBalanceComponent} from 'src/app/trading/trading-root/trading-balance/TradingBalanceComponent';
 import {ChartModule} from 'src/app/util/chart/ChartModule';
 import {TradingService} from 'src/app/trading/trading-root/TradingService';
+import {TradingChartWrapperComponent} from "src/app/trading/trading-root/trading-chart/e2e/TradingChartWrapperComponent";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {TradingService} from 'src/app/trading/trading-root/TradingService';
     TradingDashboardComponent,
     TradingChartComponent,
     TradingFormComponent,
-    TradingBalanceComponent
+    TradingBalanceComponent,
+    TradingChartWrapperComponent
   ],
   imports: [
     TradingRoutingModule,

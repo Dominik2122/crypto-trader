@@ -57,7 +57,6 @@
     "codelyzer": "^6.0.2",
     "jest": "^27.2.5",
     "jest-preset-angular": "^10.0.1",
-    "karma-coverage": "~2.0.3",
     "protractor": "~7.0.0",
     "ts-node": "~10.2.1",
     "tslint": "~6.1.0",
@@ -71,6 +70,10 @@
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/dist/"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "."
     ],
     "globals": {
       "ts-jest": {

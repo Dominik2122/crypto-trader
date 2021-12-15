@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
   SimpleChanges,
   ViewChild,
   ViewEncapsulation
@@ -20,7 +21,7 @@ import {ChartDataConfig} from 'src/app/util/chart/domain/ChartDataConfig';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChartComponent implements AfterViewInit {
+export class ChartComponent implements OnChanges, AfterViewInit {
   @ViewChild('canvas') canvas: ElementRef;
 
   @Input()
@@ -34,18 +35,18 @@ export class ChartComponent implements AfterViewInit {
 
   chart: Chart;
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if ((changes.chartConfig || changes.chartData) && this.chart) {
       this.chart.data = this.chartData.addData() && this.chartData.addData().data;
       this.chart && this.chart.update();
     }
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.reloadChart();
   }
 
-  private reloadChart() {
+  private reloadChart(): void {
     // @ts-ignore
     this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {
         ...this.chartConfig.build(),

@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 import {HomeTreeNodePastData} from 'src/app/home/home-tree/domain/HomeTreeNodePastData';
 import {ChartOptionsConfig} from 'src/app/util/chart/domain/ChartOptionsConfig';
 import {ChartDataConfig, ChartDataset} from 'src/app/util/chart/domain/ChartDataConfig';
@@ -11,7 +19,7 @@ import {ChartXAxis, xAxisTime} from 'src/app/util/chart/domain/ChartXAxis';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TradingChartComponent implements OnInit {
+export class TradingChartComponent implements OnChanges, OnInit {
 
   @Input()
   data: Array<HomeTreeNodePastData>;
@@ -26,22 +34,16 @@ export class TradingChartComponent implements OnInit {
 
   chartData: ChartDataConfig;
 
-
-  ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.data) {
-      this.createChart();
-    }
-
-    if (changes.currentPrice) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data || changes.currentPrice) {
       this.createChart();
     }
   }
 
+  ngOnInit(): void {
+  }
 
-  private createChart() {
+  private createChart(): void {
     this.chartConfig = new ChartOptionsConfig()
       .withXAxis(new ChartXAxis(
         'timeseries',

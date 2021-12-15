@@ -4,14 +4,15 @@ import {ChartComponent} from 'src/app/util/chart/ChartComponent';
 
 
 @NgModule({
-	declarations: [
-		ChartComponent
-	],
-	exports: [
-		ChartComponent
-	],
-	imports: [
-		CommonModule
-	]
+  declarations: [
+    ChartComponent
+  ],
+  exports: [
+    ChartComponent
+  ],
+  imports: [
+    CommonModule
+  ]
 })
-export class ChartModule { }
+export class ChartModule {
+}

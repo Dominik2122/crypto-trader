@@ -19,7 +19,7 @@ export class FormDirective implements OnInit {
     private viewContainerRef: ViewContainerRef
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const component = formInput[this.config.type];
     const factory = this.componentFactoryResolver.resolveComponentFactory<FieldComponent>(component);
     this.component = this.viewContainerRef.createComponent(factory);
