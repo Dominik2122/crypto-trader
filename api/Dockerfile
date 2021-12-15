@@ -9,10 +9,10 @@ COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
 # Set work directory.
-RUN mkdir /code
-WORKDIR /code
+RUN mkdir /api
+WORKDIR /api
 
 # Copy project code.
-COPY . /code/
+COPY . /api/
 
 EXPOSE 80

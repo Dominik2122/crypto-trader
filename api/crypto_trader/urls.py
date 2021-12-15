@@ -15,8 +15,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include, re_path
-from django.views.generic.base import TemplateView
+from django.urls import path, include
 
 urlpatterns = [
     path('admin', admin.site.urls),
@@ -24,5 +23,4 @@ urlpatterns = [
     path('api/user/', include('Auth.urls')),
     path('api/account/', include('account.urls')),
     path('api/crypto-account/', include('cryptoAccount.urls')),
-    re_path('$', TemplateView.as_view(template_name="home.html"), name="home"),
 ]
